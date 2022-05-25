@@ -1,0 +1,144 @@
+<div class="wrapper">
+    <app-publisher-nav></app-publisher-nav>
+    <div class="content-wrapper">
+      <div class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1 class="m-0">Profile</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+      <section class="content">
+        <div class="container-fluid">
+          <!-- <div class="row">
+            <div
+              class="card"
+              style="width: 100%; border-top: solid rgb(150, 150, 151)"
+            >
+              <div class="card-header">
+                <h1 class="card-title" style="padding: 10px">Subscriber list</h1>
+                <button
+                  style="float: right; margin-left: 2px"
+                  class="btn btn-info"
+                  data-widget="control-sidebar"
+                  data-controlsidebar-slide="true"
+                >
+                  <i class="fa-solid fa-filter"></i>
+                  filter
+                </button>
+                <button
+                  style="float: right"
+                  class="btn btn-primary"
+                  (click)="onCreate()"
+                >
+                  + Add
+                </button>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table table-hover" style="min-height: 300px">
+                    <thead>
+                      <tr>
+                        <th>Image</th>
+                        <th>Name</th>
+                        <th>Gender</th>
+                        <th>Mobile No</th>
+                        <th>Birthdate</th>
+                        <th>Email Id</th>
+                        <th>Opration</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let user of userlist">
+                        <td>
+                          <img
+                            src="http://localhost:3000/{{
+                              user.file[0] ? user.file[0].path : ''
+                            }}"
+                            class="img-circle"
+                            height="40px"
+                            width="40px"
+                            alt="User Image"
+                          />
+                        </td>
+                        <td>{{ user.name }}</td>
+                        <td>{{ user.gender }}</td>
+                        <td>{{ user.mobileno }}</td>
+                        <td>{{ user.dob | date }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>
+                          <i
+                            class="fas fa-pen"
+                            style="color: green; cursor: pointer"
+                            (click)="open(user)"
+                          ></i>
+                          <i
+                            class="fas fa-trash"
+                            style="color: red; cursor: pointer"
+                            (click)="onDelete(user._id)"
+                          ></i>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <br /><br />
+                  <div align="center" style="width: 100%" *ngIf="userlist != ''">
+                    <div class="pagination">
+                      <a style="cursor: pointer" (click)="getpagedata(0)"
+                        >&laquo;</a
+                      >
+                      <a
+                        style="cursor: pointer"
+                        [ngClass]="{ aactive: pageActive(index) }"
+                        *ngFor="let a of fakearray; let index = index"
+                        (click)="getpagedata(index)"
+                        >{{ index + 1 }}</a
+                      >
+                      <a
+                        style="cursor: pointer"
+                        (click)="getpagedata(paggerno - 1)"
+                        >&raquo;</a
+                      >
+                    </div>
+                  </div>
+  
+                  <div
+                    *ngIf="userlist == ''"
+                    class="emptydata"
+                    style="width: 100%"
+                    align="center"
+                  >
+                    <img
+                      src="https://cdn.iconscout.com/icon/free/png-256/data-not-found-1965034-1662569.png"
+                      alt=""
+                      srcset=""
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> -->
+        </div>
+      </section>
+    </div>
+    <footer class="main-footer">
+      <strong>Copyright &copy; 2014-2021.</strong>
+      All rights reserved.
+      <div class="float-right d-none d-sm-inline-block"><b>Version</b> 2.0</div>
+    </footer>
+    <aside class="control-sidebar control-sidebar-dark" style="padding: 20px">
+      <div>
+        <b
+          style="float: right; cursor: pointer"
+          data-widget="control-sidebar"
+          data-controlsidebar-slide="true"
+          >X</b
+        >
+        <h3>Filter</h3>
+      </div>
+      <hr />
+    </aside>
+  </div>
+  

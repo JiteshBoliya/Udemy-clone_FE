@@ -2,18 +2,18 @@
     <nav class="navbar navbar-expand-xl navbar-light" >
         <div class="container">
             <!-- Logo -->
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" routerLink="../publisher-dashboard">
                 <img src="https://eduguard-html.netlify.app/dist/images/favicon/favicon.png
                 " alt="Logo" class="img-fluid" style="height: 50px ;"/>
             </a>
-            <button class="menu-icon-container">
+            <button class="menu-icon-container"(click)="manuop()">
                 <span class="menu-icon"></span>
             </button>
             <!-- Navbar Item -->
             <div class="collapse navbar-collapse d-none d-xl-block d-none d-xl-block" id="navbarSupportedContent">
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" routerLink="home" routerLinkActive="active" aria-current="page" href="#">
+                        <a class="nav-link" routerLink="../" routerLinkActive="active" aria-current="page" href="#">
                             Home
                         </a>
                         <div class="nav-item--dropdown">
@@ -30,14 +30,14 @@
                         </a>
                         <div class="nav-item--dropdown">
                             <ul>
-                                <li><a href="course-search.html" routerLinkActive="active" routerLink="course-search">search course list</a></li>
-                                <li><a href="course-details.html" routerLinkActive="active" routerLink="course-details">course details</a></li>
-                                <li><a href="watch.html" routerLinkActive="active" routerLink="course-watches">Watch Course</a></li>
+                                <li><a href="course-search.html" routerLinkActive="active" routerLink="../course-search">search course list</a></li>
+                                <li><a href="course-details.html" routerLinkActive="active" routerLink="../course-details">course details</a></li>
+                                <li><a href="watch.html" routerLinkActive="active" routerLink="../course-watches">Watch Course</a></li>
                             </ul>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="about.html" routerLinkActive="active" routerLink="about">About</a>
+                        <a class="nav-link" aria-current="page" href="about.html" routerLinkActive="active" routerLink="../about">About</a>
                     </li>
                     <!-- <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="#">
@@ -62,19 +62,19 @@
                                     </a>
                                     <div class="nav-item--subDropdown">
                                         <ul>
-                                            <li><a href="students-profile.html" routerLinkActive="active" routerLink="student-profile">Students Profile</a></li>
+                                            <li><a href="students-profile.html" routerLinkActive="active" routerLink="../student-profile">Students Profile</a></li>
                                             <li><a href="signin.html">Sign in</a></li>
                                             <li><a href="signup.html">Sign up</a></li>
-                                            <li><a href="verify.html" routerLinkActive="active" routerLink="verify-email">Verify Email</a></li>
+                                            <li><a href="verify.html" routerLinkActive="active" routerLink="../verify-email">Verify Email</a></li>
                                             <li><a href="forget-password.html">Forget Password</a></li>
                                             <li><a href="reset-password.html">Reset Password</a></li>
                                         </ul>
                                     </div>
                                 </li>
-                                <li><a href="instructor-profile.html" routerLinkActive="active" routerLink="instructor-profile">Instructor Profile</a></li>
+                                <li><a href="instructor-profile.html" routerLinkActive="active" routerLink="../instructor-profile">Instructor Profile</a></li>
                                 <!-- <li><a href="become-instructor.html">Become Instructor</a></li> -->
-                                <li><a href="cart.html" routerLinkActive="active" routerLink="cart">cart</a></li>
-                                <li><a href="checkout.html" routerLinkActive="active" routerLink="checkout">Check out</a></li>
+                                <li><a href="cart.html" routerLinkActive="active" routerLink="../cart">cart</a></li>
+                                <li><a href="checkout.html" routerLinkActive="active" routerLink="../checkout">Check out</a></li>
                                 <!-- <li><a href="faq.html">Faq</a></li> -->
                                 <!-- <li><a href="404.html">404</a></li> -->
                                 <!-- <li><a href="comingsoon.html">Coming Soon</a></li> -->
@@ -82,7 +82,7 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="contact.html" routerLinkActive="active" routerLink="contact">Contact</a>
+                        <a class="nav-link" href="contact.html" routerLinkActive="active" routerLink="../contact">Contact</a>
                     </li>
                 </ul>
                 <div class="d-flex align-items-center justify-content-between rightContent">
@@ -136,10 +136,10 @@
                 </div>
             </div>
 
-            <div class="navbar-mobile">
+            <div class="navbar-mobile" *ngIf="manuopen" >
                 <div>
                     <div class="navbar-mobile__top">
-                        <a href="index.html">
+                        <a routerLink="Admin-dashboard">
                             <img src="https://eduguard-html.netlify.app/dist/images/logo/logo.png" alt="brand" class="img-fluid" />
                         </a>
                         <div>
@@ -155,7 +155,7 @@
                                 <span class="badge bg-primary">2</span>
                                 <span class="visually-hidden">Items Added</span>
                             </a>
-                            <button class="navbar-mobile--cross">
+                            <button  class="navbar-mobile--cross">
                                 <svg width="20" height="19" viewBox="0 0 20 19" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M14.5967 4.59668L5.40429 13.7891" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                                     <path d="M5.40332 4.59668L14.5957 13.7891" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
@@ -163,7 +163,7 @@
                             </button>
                         </div>
                     </div>
-                    <div class="navbar-mobile__menu">
+                    <div class="navbar-mobile__menu" >
                         <ul class="navbar-mobile__menu-list">
                             <li class="active navbar-mobile__menu-item">
                                 <a href="#">
@@ -186,7 +186,7 @@
                                     </span>
                                 </a>
                                 <ul class="navbar-mobile__menu-dropmenu">
-                                    <li><a href="index.html" class="active">Homepage 01</a></li>
+                                    <li><a href="index.html" class="active">Homepage01</a ></li>
                                     <li><a href="home-02.html">Homepage 02</a></li>
                                     <li><a href="home-03.html">Homepage 03</a></li>
                                 </ul>

@@ -21,9 +21,26 @@ import { VerifyEmailComponent } from './subscriber/verify-email/verify-email.com
 import { RessetPasswordComponent } from './subscriber/resset-password/resset-password.component';
 import { ForgetPasswordComponent } from './subscriber/forget-password/forget-password.component';
 import { PageNotfoundComponent } from './subscriber/page-notfound/page-notfound.component';
-
+import { AdminDashboardComponent } from './Admin/admin-dashboard/admin-dashboard.component';
+import { DialogUserComponent } from './shared/dailogs/dialog-user/dialog-user.component';
+import { DialogAdduserComponent } from './shared/dailogs/dialog-adduser/dialog-adduser.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+// import { HttpModule } from 'http';
+import { AuthInterceptorServiceService } from './shared/service/auth-interceptor.service.service';
+import { ReactiveFormsModule } from '@angular/forms';
+import {MaterialExampleModule } from './material.module';
+import { AdminNavComponent } from './Admin/admin-nav/admin-nav.component';
+import { AdminPublisherManageComponent } from './Admin/admin-publisher-manage/admin-publisher-manage.component';
+import { PublisherNavComponent } from './publisher/publisher-nav/publisher-nav.component';
+import { PublisherDashboardComponent } from './publisher/publisher-dashboard/publisher-dashboard.component';
+import { PublisherManageUserComponent } from './publisher/publisher-manage-user/publisher-manage-user.component';
+import { PublisherManageCourseComponent } from './publisher/publisher-manage-course/publisher-manage-course.component';
+import { PublisherManageProfileComponent } from './publisher/publisher-manage-profile/publisher-manage-profile.component';
+import { PublisherManageDoubtsComponent } from './publisher/publisher-manage-doubts/publisher-manage-doubts.component'
 @NgModule({
   declarations: [
+    //Subscriber
     AppComponent,
     HomeComponent,
     ContactComponent,
@@ -43,10 +60,29 @@ import { PageNotfoundComponent } from './subscriber/page-notfound/page-notfound.
     RessetPasswordComponent,
     ForgetPasswordComponent,
     PageNotfoundComponent,
+    AdminDashboardComponent,
+    //Admin
+    DialogUserComponent,
+    DialogAdduserComponent,
+    AdminDashboardComponent,
+    AdminNavComponent,
+    AdminPublisherManageComponent,
+    //Publisher
+    PublisherNavComponent,
+    PublisherDashboardComponent,
+    PublisherManageUserComponent,
+    PublisherManageCourseComponent,
+    PublisherManageProfileComponent,
+    PublisherManageDoubtsComponent,
+    
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MaterialExampleModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

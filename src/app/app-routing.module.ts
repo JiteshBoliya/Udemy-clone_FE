@@ -16,14 +16,16 @@ import { StudentProfileComponent } from './subscriber/student-profile/student-pr
 import { VerifyEmailComponent } from './subscriber/verify-email/verify-email.component';
 import { ForgetPasswordComponent } from './subscriber/forget-password/forget-password.component';
 import { PageNotfoundComponent } from './subscriber/page-notfound/page-notfound.component';
-
+import { AdminDashboardComponent } from './Admin/admin-dashboard/admin-dashboard.component'
+import { AdminPublisherManageComponent } from './Admin/admin-publisher-manage/admin-publisher-manage.component';
+import { PublisherDashboardComponent } from './publisher/publisher-dashboard/publisher-dashboard.component';
+import { PublisherManageCourseComponent } from './publisher/publisher-manage-course/publisher-manage-course.component';
+import { PublisherManageUserComponent } from './publisher/publisher-manage-user/publisher-manage-user.component';
+import { PublisherManageDoubtsComponent } from './publisher/publisher-manage-doubts/publisher-manage-doubts.component';
+import { PublisherManageProfileComponent } from './publisher/publisher-manage-profile/publisher-manage-profile.component';
 const routes: Routes = [
-  {
-    path: '',
-    redirectTo: '/home',
-    pathMatch: 'full'
-  },
-  { path: 'home', component: HomeComponent },
+  //Subscriber
+  { path: '', component: HomeComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'course-search', component: CourseSearchComponent },
   { path: 'course-details', component: CourseDetailsComponent },
@@ -39,6 +41,15 @@ const routes: Routes = [
   { path: 'resset-password', component: RessetPasswordComponent },
   { path: 'forget-password', component: ForgetPasswordComponent },
   { path: 'page-notfound', component: PageNotfoundComponent },
+  //Admin
+  { path: 'Admin-dashboard', component: AdminDashboardComponent },
+  { path: 'Admin-publisher', component: AdminPublisherManageComponent },
+  //publisher
+  { path: 'publisher-dashboard', component: PublisherDashboardComponent },
+  { path: 'publisher-course', component: PublisherManageCourseComponent},
+  { path: 'publisher-user', component: PublisherManageUserComponent },
+  { path: 'publisher-doubts', component: PublisherManageDoubtsComponent },
+  { path: 'publisher-profile', component: PublisherManageProfileComponent }
 ];
 
 @NgModule({
