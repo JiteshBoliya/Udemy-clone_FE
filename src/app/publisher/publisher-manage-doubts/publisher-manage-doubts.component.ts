@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./publisher-manage-doubts.component.css']
 })
 export class PublisherManageDoubtsComponent implements OnInit {
-
+  items!:[1,2,3,4,5,6,7,7]
   constructor() { }
 
   ngOnInit(): void {

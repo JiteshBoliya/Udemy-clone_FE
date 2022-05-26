@@ -1,3 +1,6 @@
 .body{
     background-color: #ebebf2
 }
+.nav-link.active{
+    background-color: transparent;
+}

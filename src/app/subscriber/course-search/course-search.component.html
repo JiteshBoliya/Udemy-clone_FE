@@ -1,9 +1,9 @@
         <!-- Breadcrumb Starts Here -->
         <app-nav></app-nav>
-      
+      <div class="body">
         <div class="event-sub-section event-sub-section--spaceY eventsearch-sub-section">
             <div class="container">
-                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                <!-- <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb align-items-center bg-transparent p-0 mb-0">
                         <li class="breadcrumb-item">
                             <a href="index.html" class="fs-6 text-secondary">Home </a>
@@ -12,7 +12,7 @@
                             <a href="course-search.html" class="fs-6 text-secondary"> course</a>
                         </li>
                     </ol>
-                </nav>
+                </nav> -->
             </div>
         </div>
         <!-- Breadcrumb Ends Here -->
@@ -385,7 +385,7 @@
                     <div class="col-lg-8">
                         <div class="event-search-results">
                             <div class="event-search-results-heading">
-                                <div class="nice-select" tabindex="0">
+                                <!-- <div class="nice-select" tabindex="0">
                                     <span class="current">Most Viewed</span>
                                     <ul class="list">
                                         <li data-value="Nothing" data-display="category" class="option selected focus">
@@ -395,7 +395,7 @@
                                         <li data-value="2" class="option">Another option</li>
                                         <li data-value="4" class="option">Potato</li>
                                     </ul>
-                                </div>
+                                </div> -->
                                 <p>1, 254 results found.</p>
                                 <button class="button button-lg button--primary button--primary-filter d-lg-none" id="filter">
                                     <span>
@@ -419,14 +419,14 @@
                             <div class="col-md-6 mb-4">
                                 <div class="contentCard contentCard--course">
                                     <div class="contentCard-top">
-                                        <a href="course-details.html"><img src="https://eduguard-html.netlify.app/dist/images/courses/demo-img-04.png" alt="images" class="img-fluid" /></a>
+                                        <a routerLink="../course-details"><img src="https://eduguard-html.netlify.app/dist/images/courses/demo-img-04.png" alt="images" class="img-fluid" /></a>
                                     </div>
                                     <div class="contentCard-bottom">
                                         <h5>
-                                            <a href="course-details.html" class="font-title--card">Chicago International Conference on Education</a>
+                                            <a routerLink="../course-details" class="font-title--card">Chicago International Conference on Education</a>
                                         </h5>
                                         <div class="contentCard-info d-flex align-items-center justify-content-between">
-                                            <a href="instructor-profile.html" class="contentCard-user d-flex align-items-center">
+                                            <a routerLink="../instructor-profile" class="contentCard-user d-flex align-items-center">
                                                 <img src="https://eduguard-html.netlify.app/dist/images/courses/7.png" alt="client-image" class="rounded-circle" />
                                                 <p class="font-para--md">Brandon Dias</p>
                                             </a>
@@ -1087,6 +1087,8 @@
                 Apply
             </button>
         </div>
+        
+      </div>
         <app-footer></app-footer>
 
         <script>

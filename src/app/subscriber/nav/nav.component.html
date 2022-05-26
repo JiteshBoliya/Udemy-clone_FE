@@ -2,7 +2,7 @@
     <nav class="navbar navbar-expand-xl navbar-light" >
         <div class="container">
             <!-- Logo -->
-            <a class="navbar-brand" routerLink="../publisher-dashboard">
+            <a class="navbar-brand" routerLink="../Admin-dashboard">
                 <img src="https://eduguard-html.netlify.app/dist/images/favicon/favicon.png
                 " alt="Logo" class="img-fluid" style="height: 50px ;"/>
             </a>
@@ -13,7 +13,7 @@
             <div class="collapse navbar-collapse d-none d-xl-block d-none d-xl-block" id="navbarSupportedContent">
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" routerLink="../" routerLinkActive="active" aria-current="page" href="#">
+                        <a class="nav-link" routerLink="../home" routerLinkActive="active" aria-current="page">
                             Home
                         </a>
                         <div class="nav-item--dropdown">
@@ -25,61 +25,19 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" routerLinkActive="active" >
+                        <a class="nav-link" aria-current="page" routerLinkActive="active" routerLink="../course-search" >
                             Course
                         </a>
-                        <div class="nav-item--dropdown">
+                        <!-- <div class="nav-item--dropdown">
                             <ul>
                                 <li><a href="course-search.html" routerLinkActive="active" routerLink="../course-search">search course list</a></li>
                                 <li><a href="course-details.html" routerLinkActive="active" routerLink="../course-details">course details</a></li>
                                 <li><a href="watch.html" routerLinkActive="active" routerLink="../course-watches">Watch Course</a></li>
                             </ul>
-                        </div>
+                        </div> -->
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="about.html" routerLinkActive="active" routerLink="../about">About</a>
-                    </li>
-                    <!-- <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">
-                            Events
-                        </a>
-                        <div class="nav-item--dropdown">
-                            <ul>
-                                <li><a href="event-search.html">Events Search list</a></li>
-                                <li><a href="event.html">Event Details</a></li>
-                            </ul>
-                        </div>
-                    </li> -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            Pages
-                        </a>
-                        <div class="nav-item--dropdown">
-                            <ul>
-                                <li>
-                                    <a href="#">
-                                        My Account
-                                    </a>
-                                    <div class="nav-item--subDropdown">
-                                        <ul>
-                                            <li><a href="students-profile.html" routerLinkActive="active" routerLink="../student-profile">Students Profile</a></li>
-                                            <li><a href="signin.html">Sign in</a></li>
-                                            <li><a href="signup.html">Sign up</a></li>
-                                            <li><a href="verify.html" routerLinkActive="active" routerLink="../verify-email">Verify Email</a></li>
-                                            <li><a href="forget-password.html">Forget Password</a></li>
-                                            <li><a href="reset-password.html">Reset Password</a></li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li><a href="instructor-profile.html" routerLinkActive="active" routerLink="../instructor-profile">Instructor Profile</a></li>
-                                <!-- <li><a href="become-instructor.html">Become Instructor</a></li> -->
-                                <li><a href="cart.html" routerLinkActive="active" routerLink="../cart">cart</a></li>
-                                <li><a href="checkout.html" routerLinkActive="active" routerLink="../checkout">Check out</a></li>
-                                <!-- <li><a href="faq.html">Faq</a></li> -->
-                                <!-- <li><a href="404.html">404</a></li> -->
-                                <!-- <li><a href="comingsoon.html">Coming Soon</a></li> -->
-                            </ul>
-                        </div>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="contact.html" routerLinkActive="active" routerLink="../contact">Contact</a>
@@ -87,13 +45,13 @@
                 </ul>
                 <div class="d-flex align-items-center justify-content-between rightContent">
                     <form class="header__Search-form" id="searchForm">
-                        <button type="button" class="border-0 bg-transparent header__Search-button" onclick="openSearch()">
+                        <!-- <button type="button" class="border-0 bg-transparent header__Search-button" onclick="openSearch()">
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="9.19522" cy="9.19518" r="7.61714" stroke="#35343E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></circle>
                                 <path d="M15.0493 15.4866L18.3493 18.778" stroke="#35343E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
                             </svg>
-                        </button>
-                        <div id="myOverlay" class="overlay">
+                        </button> -->
+                        <!-- <div id="myOverlay" class="overlay">
                             <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
                             <div class="overlay-content">
                                 <div>
@@ -117,9 +75,9 @@
                                     </button>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </form>
-                    <a href="cart.html" class="cart-nav border-0 bg-transparent mx-3" routerLinkActive="active" routerLink="cart">
+                    <a  class="cart-nav border-0 bg-transparent mx-3" routerLinkActive="active" routerLink="../cart">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 fill-rule="evenodd"
@@ -131,10 +89,11 @@
                         <span class="badge bg-primary">2</span>
                         <span class="visually-hidden">Items Added</span>
                     </a>
-                    <a  class="button button--text" routerLinkActive="active" routerLink="signin" aria-current="signin">Sign in</a>
-                    <a  class="button button--dark"routerLinkActive="active" routerLink="signup" aria-current="signup">Sign Up</a>
+                    <a  class="button button--text" routerLinkActive="active" routerLink="../signin" aria-current="signin">Sign in</a>
+                    <a  class="button button--dark" routerLink="../student-profile" aria-current="signup">Profile</a>
                 </div>
             </div>
+
 
             <div class="navbar-mobile" *ngIf="manuopen" >
                 <div>
@@ -247,7 +206,7 @@
                                     <li><a href="event.html">Event Details</a></li>
                                 </ul>
                             </li>
-                            <li class="navbar-mobile__menu-item">
+                            <!-- <li class="navbar-mobile__menu-item">
                                 <a href="#">
                                     <span class="navbar-mobile__menu-link"> Pages </span>
                                     <span class="navbar-mobile__menu-dropicon">
@@ -282,7 +241,7 @@
                                     <li><a href="404.html">404</a></li>
                                     <li><a href="comingsoon.html">coming soon</a></li>
                                 </ul>
-                            </li>
+                            </li> -->
                             <li class="navbar-mobile__menu-item">
                                 <a href="contact.html">
                                     <span class="navbar-mobile__menu-link"> Contact </span>

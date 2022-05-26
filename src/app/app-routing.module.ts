@@ -25,7 +25,12 @@ import { PublisherManageDoubtsComponent } from './publisher/publisher-manage-dou
 import { PublisherManageProfileComponent } from './publisher/publisher-manage-profile/publisher-manage-profile.component';
 const routes: Routes = [
   //Subscriber
-  { path: '', component: HomeComponent },
+  {
+    path:'', 
+    redirectTo:'/home', 
+    pathMatch:'full'
+  },
+  { path: 'home', component: HomeComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'course-search', component: CourseSearchComponent },
   { path: 'course-details', component: CourseDetailsComponent },
@@ -49,7 +54,13 @@ const routes: Routes = [
   { path: 'publisher-course', component: PublisherManageCourseComponent},
   { path: 'publisher-user', component: PublisherManageUserComponent },
   { path: 'publisher-doubts', component: PublisherManageDoubtsComponent },
-  { path: 'publisher-profile', component: PublisherManageProfileComponent }
+  { path: 'publisher-profile', component: PublisherManageProfileComponent },
+
+  {
+    path:'page-notfound',
+    component: PageNotfoundComponent
+  },
+  {path:'**',redirectTo:'/page-notfound'},
 ];
 
 @NgModule({

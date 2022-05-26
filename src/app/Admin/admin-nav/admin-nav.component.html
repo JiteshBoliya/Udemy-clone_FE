@@ -73,7 +73,7 @@
         class="brand-image img-circle elevation-3"
         style="opacity: 0.8"
       />
-      <span class="brand-text font-weight-light">Classroom</span>
+      <span class="brand-text font-weight-light">Online Class</span>
     </a>
 
     <!-- Sidebar -->
@@ -114,7 +114,7 @@
           data-accordion="false"
         >
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a  class="nav-link">
               <!-- <i class="fas fa-angle-left right info"></i> -->
               <img
                 src="https://i.pinimg.com/474x/4b/71/f8/4b71f8137985eaa992d17a315997791e.jpg"
@@ -122,7 +122,7 @@
                 alt="User Image"
                 height="35px"
               />
-              <p style="cursor: pointer; margin-left: 10px">{{ user?.name }}</p>
+              <p style="cursor: pointer; margin-left: 10px">{{ user?user.name:'Admin' }}</p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
@@ -133,14 +133,16 @@
               </li>
             </ul>
           </li>
+          <hr style="background-color: white;">
+            
           <li class="nav-item menu-open">
-            <a routerLink="../Admin-dashboard" class="nav-link  active">
+            <a routerLinkActive="active" routerLink="../Admin-dashboard" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>Dashboard</p>
             </a>
           </li>
           <li class="nav-item menu-open">
-            <a routerLink="../Admin-publisher" class="nav-link">
+            <a routerLinkActive="active" routerLink="../Admin-publisher" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>Publisher</p>
             </a>

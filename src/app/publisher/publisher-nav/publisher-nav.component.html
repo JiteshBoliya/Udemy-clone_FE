@@ -122,7 +122,7 @@
                 alt="User Image"
                 height="35px"
               />
-              <p style="cursor: pointer; margin-left: 10px">{{ user?.name }}</p>
+              <p style="cursor: pointer; margin-left: 10px">{{ user?user.name:'Publisher' }}</p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
@@ -133,32 +133,33 @@
               </li>
             </ul>
           </li>
+          <hr>
           <li class="nav-item menu-open">
-            <a routerLink="../publisher-dashboard" class="nav-link  active">
+            <a routerLinkActive="active" routerLink="../publisher-dashboard" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>Dashboard</p>
             </a>
           </li>
           <li class="nav-item menu-open">
-            <a routerLink="../publisher-user" class="nav-link">
+            <a routerLinkActive="active" routerLink="../publisher-user" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>Subscriber</p>
             </a>
           </li>
           <li class="nav-item menu-open">
-            <a routerLink="../publisher-course" class="nav-link active">
+            <a routerLinkActive="active" routerLink="../publisher-course" class="nav-link ">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>Course</p>
             </a>
           </li>
           <li class="nav-item menu-open">
-            <a routerLink="../publisher-doubts" class="nav-link active">
+            <a routerLinkActive="active" routerLink="../publisher-doubts" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>Doubts</p>
             </a>
           </li>
           <li class="nav-item menu-open">
-            <a routerLink="../publisher-profile" class="nav-link active">
+            <a routerLinkActive="active" routerLink="../publisher-profile" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>Profile</p>
             </a>
