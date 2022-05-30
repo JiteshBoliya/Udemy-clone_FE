@@ -20,7 +20,7 @@
                   <!-- small box -->
                   <div class="small-box bg-info">
                     <div class="inner">
-                      <h3>150</h3>
+                      <h3>{{countPublisher}}</h3>
       
                       <p>Publisher</p>
                     </div>
@@ -50,7 +50,7 @@
                   <!-- small box -->
                   <div class="small-box bg-warning">
                     <div class="inner">
-                      <h3>44</h3>
+                      <h3>{{countSubscriber}}</h3>
       
                       <p>User</p>
                     </div>
@@ -420,7 +420,7 @@
     </ul> -->
     <!-- <button class="btn btn-dark form-control" style="background-color: rgb(27, 27, 27);">Apply</button> -->
     <hr>
-    <form [formGroup]="filterForm" (ngSubmit)="onApply()" >
+    <form [formGroup]="filterForm" >
     <p>Sort by</p>
     <hr>
     <select name="" id="" class="form-control" formControlName="sortby">

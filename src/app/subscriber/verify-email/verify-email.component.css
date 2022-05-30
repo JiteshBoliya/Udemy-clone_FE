@@ -1,0 +1,10 @@
+button[type="submit"]:disabled {
+    background: #dddddd;
+}
+button[type="submit"]:disabled:hover {
+    box-shadow: none;
+}
+.erroralert{
+    background-color: red !important;
+    color: white !important;
+}

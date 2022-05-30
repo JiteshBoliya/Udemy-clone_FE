@@ -38,15 +38,15 @@ export class DialogAdduserComponent implements OnInit {
   
     this.imageSrc="https://icon-library.com/images/default-user-icon/default-user-icon-13.jpg"
 
-    this.deshboard.getUserlist().subscribe(res => {
-      if(this.deshboard.userData!=''){
-        this.userData =  this.deshboard.userData
-        this.deshboard.userData=''
-        this.imageSrc="http://localhost:3000/"+ this.userData.file[0].path    
-      }
-      else  this.userData = ''
-      this.userlist = res
-    })
+    // this.deshboard.getUserlist().subscribe(res => {
+    //   if(this.deshboard.userData!=''){
+    //     this.userData =  this.deshboard.userData
+    //     this.deshboard.userData=''
+    //     this.imageSrc="http://localhost:3000/"+ this.userData.file[0].path    
+    //   }
+    //   else  this.userData = ''
+    //   this.userlist = res
+    // })
   }
   uploadFileEvt(imgFile: any) {
     this.text = imgFile.target.files[0].name
@@ -66,35 +66,35 @@ export class DialogAdduserComponent implements OnInit {
     formData.append('dob', value['dob'])
     formData.append('file', this.image)
     
-    if(this.userData!='') this.update(classname,formData)
-    else{
-      this.deshboard.AddUserlist(formData)
-          .subscribe((res) => {
-            this.snackBar.open(massege, close, {
-                duration: 2000,
-                panelClass: [classname]
-            });
-      this.deshboard.getUserlist().subscribe(res => {
-         this.userlist = res
-      })
-      this.clear()
-      })
-    }
+    // if(this.userData!='') this.update(classname,formData)
+    // else{
+    //   this.deshboard.AddUserlist(formData)
+    //       .subscribe((res) => {
+    //         this.snackBar.open(massege, close, {
+    //             duration: 2000,
+    //             panelClass: [classname]
+    //         });
+    //   this.deshboard.getUserlist().subscribe(res => {
+    //      this.userlist = res
+    //   })
+    //   this.clear()
+    //   })
+    // }
   }
   clear() {
     this.userForm.reset()
     this.image = ''
   }
-  update(classname:any,formData:any){
-    this.deshboard.UpadteUserlist(this.userData._id,formData).subscribe(res=>{
-      this.snackBar.open("Updated","close", {
-              duration: 2000,
-              panelClass: [classname]
-      });
-      this.deshboard.getUserlist().subscribe(res => {
-          this.userlist = res
-      })
-      this.clear()
-    })
-  }
+  // update(classname:any,formData:any){
+  //   this.deshboard.UpadteUserlist(this.userData._id,formData).subscribe(res=>{
+  //     this.snackBar.open("Updated","close", {
+  //             duration: 2000,
+  //             panelClass: [classname]
+  //     });
+  //     // this.deshboard.getUserlist().subscribe(res => {
+  //     //     this.userlist = res
+  //     // })
+  //     this.clear()
+  //   })
+  // }
 }

@@ -14,9 +14,9 @@ export class AdminNavComponent implements OnInit {
 
   ngOnInit(): void {
     // this.authGurd.canActivate()
-    this.deshboard.getUserDetail(localStorage.getItem('userid')).subscribe(res => {
-      this.user = res
-    })
+    // this.deshboard.getUserDetail(localStorage.getItem('userid')).subscribe(res => {
+    //   this.user = res
+    // })
   }
 
   onLogout() {

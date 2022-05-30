@@ -8,19 +8,13 @@
                         <p class="mt-2 mb-lg-4 mb-3 text-secondary">
                             Please enter the 6 digit code sent to your email
                         </p>
-                        <form action="#" class="mt-35">
+                        <form [formGroup]="VerifyForm" (ngSubmit)="OnVerify()"  class="mt-35">
+                            <mat-form-field class="example-full-width" appearance="fill" style="width: 100%;margin: 0px; padding: 0px">
+                                <mat-label>6 digit code</mat-label>
+                                <input matInput type="text" formControlName="code"/>
+                            </mat-form-field>
                             <div class="form-element">
-                                <div class="verification d-flex align-items-center justify-content-between">
-                                    <input type="text" placeholder="-" class="border-lowBlack text-center rounded-0 rounded-start" maxlength="1" />
-                                    <input type="text" placeholder="-" class="border-lowBlack text-center rounded-0" maxlength="1" />
-                                    <input type="text" placeholder="-" class="border-lowBlack text-center rounded-0" maxlength="1" />
-                                    <input type="text" placeholder="-" class="border-lowBlack text-center rounded-0" maxlength="1" />
-                                    <input type="text" placeholder="-" class="border-lowBlack text-center rounded-0" maxlength="1" />
-                                    <input type="text" placeholder="-" class="border-lowBlack text-center rounded-0 rounded-end" maxlength="1" />
-                                </div>
-                            </div>
-                            <div class="form-element">
-                                <button type="submit" class="button button-lg button--primary w-100">Confirm</button>
+                                <button type="submit" class="button button-lg button--primary w-100" [disabled]="!VerifyForm.valid">Confirm</button>
                             </div>
                         </form>
                     </div>

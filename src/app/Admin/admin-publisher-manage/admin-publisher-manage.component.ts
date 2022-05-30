@@ -37,9 +37,9 @@ export class AdminPublisherManageComponent implements OnInit {
     private activeRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.deshboard.getUserDetail(localStorage.getItem('userid')).subscribe(res => {
-      this.user = res
-    })
+    // this.deshboard.getUserDetail(localStorage.getItem('userid')).subscribe(res => {
+    //   this.user = res
+    // })
     this.isSelected=0
 
     this.userForm = new FormGroup({
@@ -56,9 +56,9 @@ export class AdminPublisherManageComponent implements OnInit {
       sortby:new FormControl('')
     })
 
-    this.deshboard.getUserlist().subscribe(res => {
-      this.userlist = res
-    })
+    // this.deshboard.getUserlist().subscribe(res => {
+    //   this.userlist = res
+    // })
 
     // this.refreash()
 
@@ -75,43 +75,43 @@ export class AdminPublisherManageComponent implements OnInit {
     reader.readAsDataURL(file);
   }
   onApply(){
-    const value = this.filterForm.value
-    this.deshboard.sortdata(value['sortby'],value['sortwith']).subscribe(res=>{
-      this.userlist=res
-      console.log(res);
-    })
+    // const value = this.filterForm.value
+    // this.deshboard.sortdata(value['sortby'],value['sortwith']).subscribe(res=>{
+    //   this.userlist=res
+    //   console.log(res);
+    // })
     // this.refreash()
   }
   getpagedata(pagerdata:any){
-    this.isSelected=pagerdata
-    this.deshboard.getpage(pagerdata*3).subscribe(res=>{
-      this.userlist=res
-    })
+    // this.isSelected=pagerdata
+    // this.deshboard.getpage(pagerdata*3).subscribe(res=>{
+    //   this.userlist=res
+    // })
   }
   pageActive(item:any){
     return this.isSelected==item
   }
   refreash(){
-    this.deshboard.getallUserlist().subscribe(res=>{
-      var list=res
-      this.paggerno=Math.ceil([...list].length/3)
-      this.fakearray=new Array(this.paggerno)
-    })
+    // this.deshboard.getallUserlist().subscribe(res=>{
+    //   var list=res
+    //   this.paggerno=Math.ceil([...list].length/3)
+    //   this.fakearray=new Array(this.paggerno)
+    // })
   }
   onLogout() {
     localStorage.clear()
     this.router.navigate([''])
   }
   onCreate() {
-    this.dialog.open(DialogAdduserComponent).afterClosed().subscribe(res=>{
-      this.deshboard.getUserlist().subscribe(res => {
-        this.userlist = res
-        this.refreash()
-      })
-    })
+    // this.dialog.open(DialogAdduserComponent).afterClosed().subscribe(res=>{
+    //   this.deshboard.getUserlist().subscribe(res => {
+    //     this.userlist = res
+    //     this.refreash()
+    //   })
+    // })
   }
   submitdata(massege: any, close: any, classname: any) {
-    this.deshboard.isUpdate=false
+    // this.deshboard.isUpdate=false
     const value = this.userForm.value
     let formData = new FormData()
     formData.append('name', value['name'])
@@ -122,55 +122,55 @@ export class AdminPublisherManageComponent implements OnInit {
     formData.append('file', this.image)
     console.log(value)
 
-    this.deshboard.AddUserlist(formData)
-      .subscribe((res) => {
-        this.snackBar.open(massege, close, {
-          duration: 2000,
-          panelClass: [classname]
-        });
+    // this.deshboard.AddUserlist(formData)
+    //   .subscribe((res) => {
+    //     this.snackBar.open(massege, close, {
+    //       duration: 2000,
+    //       panelClass: [classname]
+    //     });
 
-        this.deshboard.getUserlist().subscribe(res => {
-          this.userlist = res
-        })
-        this.refreash()
-        this.clear()
-      })
+    //     this.deshboard.getUserlist().subscribe(res => {
+    //       this.userlist = res
+    //     })
+    //     this.refreash()
+    //     this.clear()
+    //   })
   }
   clear() {
     this.userForm.reset()
     this.image = ''
   }
   open(user: any) {
-    this.deshboard.userData = user
-    this.dialog.open(DialogAdduserComponent).afterClosed().subscribe(res=>{
-      this.deshboard.getUserlist().subscribe(res => {
-        this.userlist = res
-      })
-    })
+    // this.deshboard.userData = user
+    // this.dialog.open(DialogAdduserComponent).afterClosed().subscribe(res=>{
+    //   this.deshboard.getUserlist().subscribe(res => {
+    //     this.userlist = res
+    //   })
+    // })
   }
   onDelete(id:any){
-    Swal.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, remove it!'
-    }).then((result:any) => {
-      if (result.isConfirmed) {
-        this.deshboard.DeleteUserlist(id).subscribe(res=>{
-          this.snackBar.open('Deleted','close', {
-            duration: 2000,
-            panelClass: ['success']
-          });
-          this.deshboard.getUserlist().subscribe(res => {
-            this.userlist = res
-          })
-          this.refreash()
-        })
-      }
-    })
+    // Swal.fire({
+    //   title: 'Are you sure?',
+    //   text: "You won't be able to revert this!",
+    //   icon: 'warning',
+    //   showCancelButton: true,
+    //   confirmButtonColor: '#3085d6',
+    //   cancelButtonColor: '#d33',
+    //   confirmButtonText: 'Yes, remove it!'
+    // }).then((result:any) => {
+    //   if (result.isConfirmed) {
+    //     this.deshboard.DeleteUserlist(id).subscribe(res=>{
+    //       this.snackBar.open('Deleted','close', {
+    //         duration: 2000,
+    //         panelClass: ['success']
+    //       });
+    //       this.deshboard.getUserlist().subscribe(res => {
+    //         this.userlist = res
+    //       })
+    //       this.refreash()
+    //     })
+    //   }
+    // })
     
   }
 

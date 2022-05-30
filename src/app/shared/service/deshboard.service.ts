@@ -5,40 +5,14 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class DeshboardService {
-  private userUrl="http://localhost:3000/user"
-  private userlistUrl="http://localhost:3000/userlist"
-  public userData:any=''
-  public isUpdate:any=false
-  public usermail:any
+  private Url="http://localhost:3000/"
+  // private userUrl= process.env['URL']+"/user"
   constructor(private http:HttpClient) { }
 
+  Count_subscriber(){
+    return this.http.get<any>(`${this.Url}count-subscriber`)}
 
-  getUserDetail(id:any){
-    return this.http.get<any>(`${this.userUrl}/`+id)}
+  Count_publisher(){
+    return this.http.get<any>(`${this.Url}count-publisher`)}
 
-  AddUserlist(data:any){
-    return this.http.post<any>(this.userlistUrl,data)}
-  
-  UpadteUserlist(id:any,data:any){
-    return this.http.post<any>(`${this.userlistUrl}/update/`+id,data)}
-  
-  DeleteUserlist(id:any){
-    return this.http.get<any>(`${this.userlistUrl}/delete/`+id)}
-    
-  getUserListDetail(id:any){
-    return this.http.get<any>(`${this.userlistUrl}/getData/`+id)}
-  
-  getUserlist(){
-    return this.http.get<any>(this.userlistUrl)
-  }
-  sortdata(sortby:any,sortwith:any){
-    return this.http.get<any>(`${this.userlistUrl}/sort/`+sortby+`/`+sortwith)
-  }
-  getallUserlist(){
-    return this.http.get<any>(`${this.userlistUrl}/all`)
-  }
-  getpage(page:any){
-    return this.http.get<any>(`${this.userlistUrl}/pagger/`+page)
-  }
-  sendMail(data:any){return this.http.post(`${this.userUrl}/mail`,data)}
 }
