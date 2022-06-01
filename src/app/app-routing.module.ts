@@ -23,6 +23,8 @@ import { PublisherManageCourseComponent } from './publisher/publisher-manage-cou
 import { PublisherManageUserComponent } from './publisher/publisher-manage-user/publisher-manage-user.component';
 import { PublisherManageDoubtsComponent } from './publisher/publisher-manage-doubts/publisher-manage-doubts.component';
 import { PublisherManageProfileComponent } from './publisher/publisher-manage-profile/publisher-manage-profile.component';
+import { AdminSubscriberManageComponent } from './Admin/admin-subscriber-manage/admin-subscriber-manage.component';
+import { AdminGetInTouchManageComponent } from './Admin/admin-get-in-touch-manage/admin-get-in-touch-manage.component';
 const routes: Routes = [
   //Subscriber
   {
@@ -49,6 +51,8 @@ const routes: Routes = [
   //Admin
   { path: 'Admin-dashboard', component: AdminDashboardComponent },
   { path: 'Admin-publisher', component: AdminPublisherManageComponent },
+  { path: 'Admin-subscriber', component: AdminSubscriberManageComponent },
+  { path: 'Admin-getInTouch', component: AdminGetInTouchManageComponent },
   //publisher
   { path: 'publisher-dashboard', component: PublisherDashboardComponent },
   { path: 'publisher-course', component: PublisherManageCourseComponent},

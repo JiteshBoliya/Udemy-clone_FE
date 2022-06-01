@@ -256,7 +256,7 @@
         />
       </div>
       <div class="col-lg-7 form-area">
-        <form action="#">
+        <form [formGroup]="contactForm" (ngSubmit)="OnSubmit()" >
           <div class="row g-3">
             <div class="col-lg-6">
               <label for="name">Name</label>
@@ -265,6 +265,7 @@
                 class="form-control form-control--focused"
                 placeholder="Type here..."
                 id="name"
+                formControlName="name"
               />
             </div>
             <div class="col-lg-6">
@@ -274,6 +275,7 @@
                 class="form-control"
                 placeholder="Type here..."
                 id="email"
+                formControlName="email"
               />
             </div>
           </div>
@@ -285,6 +287,7 @@
                 id="subject"
                 class="form-control"
                 placeholder="Type here..."
+                formControlName="subject"
               />
             </div>
           </div>
@@ -295,6 +298,7 @@
                 id="message"
                 placeholder="Type here..."
                 class="form-control"
+                formControlName="massage"
               ></textarea>
             </div>
           </div>

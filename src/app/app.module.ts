@@ -38,6 +38,10 @@ import { PublisherManageUserComponent } from './publisher/publisher-manage-user/
 import { PublisherManageCourseComponent } from './publisher/publisher-manage-course/publisher-manage-course.component';
 import { PublisherManageProfileComponent } from './publisher/publisher-manage-profile/publisher-manage-profile.component';
 import { PublisherManageDoubtsComponent } from './publisher/publisher-manage-doubts/publisher-manage-doubts.component'
+import { DataTablesModule } from 'angular-datatables';
+import * as XLSX from 'xlsx';
+import { AdminSubscriberManageComponent } from './Admin/admin-subscriber-manage/admin-subscriber-manage.component';
+import { AdminGetInTouchManageComponent } from './Admin/admin-get-in-touch-manage/admin-get-in-touch-manage.component';
 @NgModule({
   declarations: [
     //Subscriber
@@ -74,6 +78,8 @@ import { PublisherManageDoubtsComponent } from './publisher/publisher-manage-dou
     PublisherManageCourseComponent,
     PublisherManageProfileComponent,
     PublisherManageDoubtsComponent,
+    AdminSubscriberManageComponent,
+    AdminGetInTouchManageComponent,
     
   ],
   imports: [
@@ -82,7 +88,8 @@ import { PublisherManageDoubtsComponent } from './publisher/publisher-manage-dou
     MaterialExampleModule,
     ReactiveFormsModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    DataTablesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

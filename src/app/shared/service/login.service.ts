@@ -19,13 +19,15 @@ export class LoginService {
     return this.http.post<any>(`${this.loginUrl}/varify-email`,data)}
   
   login(data:any){
-    return this.http.post<any>(`${this.loginUrl}/login`,data)}
-
+    return this.http.post<any>(`${this.loginUrl}/login`,data)
+  }
+  resetPassword(id:any,data:any){
+    return this.http.post<any>(`${this.loginUrl}/resetpassword/${id}`,data)
+  }
   forgetPassword(data:any){
     return this.http.post<any>(`${this.loginUrl}/forgetpassword`,data)}
 
   getUserInfo(userid:any){
-    if(this.UserId==null) this.UserId!=localStorage.getItem('UID')
     return this.http.get<any>(`${this.loginUrl}/userDetail/`+userid)
   }
 }

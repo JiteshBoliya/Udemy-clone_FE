@@ -49,7 +49,7 @@ export class AuthService {
   
   // #Auto Login
   loggedIn(){
-    return !!localStorage.getItem('userData')}
+    return !!localStorage.getItem('UID')}
 
   RegisterManual(user:any){
     return this.http.post<any>(`${this.url}/register`,user)

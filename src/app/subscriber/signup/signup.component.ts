@@ -29,10 +29,9 @@ export class SignupComponent implements OnInit {
       console.log(repassword);
       if(repassword!=password){
         this.RegistrationForm.get('repassword')?.reset()
-        console.log("not same");
         return
       }
-    formData.append('username', this.RegistrationForm.get('username')?.value)
+    formData.append('name', this.RegistrationForm.get('username')?.value)
     formData.append('email', this.RegistrationForm.get('email')?.value)
     formData.append('password', this.RegistrationForm.get('password')?.value)
     formData.append('type', this.RegistrationForm.get('type')?.value)

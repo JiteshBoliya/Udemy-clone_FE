@@ -39,27 +39,27 @@ export class DialogEmailComponent implements OnInit {
     formData.append('subject', value['subject'])
     formData.append('bodyText', value['bodyText'])
     
-    this.assign.sendMail(formData)
-        .subscribe((res)=>{
-          console.log(res)
-      Swal.fire({
-        position: 'center',
-        icon: 'success',
-        title: 'Email sent', 
-        showConfirmButton: false,
-        timer: 1500
-      })
-      this.EmailForm.reset()
-      this.dialogRef.close();
-    },(err)=>{
-      Swal.fire({
-        position: 'center',
-        // icon: 'Cancelled',
-        title: 'Email not sent', 
-        showConfirmButton: false,
-        timer: 1500
-      })
-    })
+    // this.assign.sendMail(formData)
+    //     .subscribe((res)=>{
+    //       console.log(res)
+    //   Swal.fire({
+    //     position: 'center',
+    //     icon: 'success',
+    //     title: 'Email sent', 
+    //     showConfirmButton: false,
+    //     timer: 1500
+    //   })
+    //   this.EmailForm.reset()
+    //   this.dialogRef.close();
+    // },(err)=>{
+    //   Swal.fire({
+    //     position: 'center',
+    //     // icon: 'Cancelled',
+    //     title: 'Email not sent', 
+    //     showConfirmButton: false,
+    //     timer: 1500
+    //   })
+    // })
     // this.disabled=false
   }
 }

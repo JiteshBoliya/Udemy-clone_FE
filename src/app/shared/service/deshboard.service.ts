@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class DeshboardService {
   private Url="http://localhost:3000/"
+  usermail: any;
   // private userUrl= process.env['URL']+"/user"
   constructor(private http:HttpClient) { }
 
@@ -15,4 +16,7 @@ export class DeshboardService {
   Count_publisher(){
     return this.http.get<any>(`${this.Url}count-publisher`)}
 
+  Count_GIT(){
+    return this.http.get<any>(`${this.Url}count-GIT`)}
+  
 }

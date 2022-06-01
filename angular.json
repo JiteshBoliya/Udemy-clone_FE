@@ -32,10 +32,10 @@
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/admin-lte/plugins/fontawesome-free/css/all.css",
               "node_modules/admin-lte/plugins/overlayScrollbars/css/OverlayScrollbars.css",
-              "node_modules/admin-lte/dist/css/adminlte.css"
+              "node_modules/admin-lte/dist/css/adminlte.css",
+              "node_modules/datatables.net-dt/css/jquery.dataTables.min.css"
             ],
             "scripts": [
-
               "node_modules/admin-lte/plugins/jquery/jquery.js",
               "node_modules/admin-lte/plugins/bootstrap/js/bootstrap.bundle.js",
               "node_modules/admin-lte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.js",
@@ -56,7 +56,9 @@
               "node_modules/admin-lte/plugins/pdfmake/vfs_fonts.js",
               "node_modules/admin-lte/plugins/datatables-buttons/js/buttons.html5.min.js",
               "node_modules/admin-lte/plugins/datatables-buttons/js/buttons.print.min.js",
-              "node_modules/admin-lte/plugins/datatables-buttons/js/buttons.colVis.min.js"
+              "node_modules/admin-lte/plugins/datatables-buttons/js/buttons.colVis.min.js",
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/datatables.net/js/jquery.dataTables.min.js"
             ]
           },
           "configurations": {

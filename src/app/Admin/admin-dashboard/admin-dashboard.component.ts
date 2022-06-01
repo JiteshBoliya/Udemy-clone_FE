@@ -34,6 +34,7 @@ export class AdminDashboardComponent implements OnInit {
   isSelected!:any
   countPublisher!:any
   countSubscriber!:any
+  countGIT!:any
 
   constructor(private router: Router,
     private authGurd: AuthGuard,
@@ -55,9 +56,13 @@ export class AdminDashboardComponent implements OnInit {
     this.deshboard.Count_subscriber().subscribe(res=>{
       this.countSubscriber=res.data
     })
-    this.login.getUserInfo(this.userId).subscribe(res=>{
-      console.log(res);
+    this.deshboard.Count_GIT().subscribe(res=>{
+      this.countGIT=res.data
     })
+    
+    // this.login.getUserInfo(this.userId).subscribe(res=>{
+    //   console.log(res);
+    // })
     this.isSelected=0
 
     this.userForm = new FormGroup({

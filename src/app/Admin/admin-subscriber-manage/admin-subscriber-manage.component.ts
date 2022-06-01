@@ -12,18 +12,12 @@ import { AdminService } from 'src/app/shared/service/admin.service';
 import * as XLSX from 'xlsx'
 import { ExcelService } from 'src/app/shared/service/excel.service';
 
-// class DataTablesResponse {
-//   data!: any[];
-//   draw!: number;
-//   recordsFiltered!: number;
-//   recordsTotal!: number;
-// }
 @Component({
-  selector: 'app-admin-publisher-manage',
-  templateUrl: './admin-publisher-manage.component.html',
-  styleUrls: ['./admin-publisher-manage.component.css']
+  selector: 'app-admin-subscriber-manage',
+  templateUrl: './admin-subscriber-manage.component.html',
+  styleUrls: ['./admin-subscriber-manage.component.css']
 })
-export class AdminPublisherManageComponent implements OnInit {
+export class AdminSubscriberManageComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
   persons!: any[];
 
@@ -31,7 +25,7 @@ export class AdminPublisherManageComponent implements OnInit {
   public userForm !: FormGroup;
   public filterForm !: FormGroup;
   // public slidetoggle!: FormGroup
-  AllpublisherList!:any
+  AllsubscriberList!:any
   block!:boolean
   userData!: any
   user!: any
@@ -40,7 +34,7 @@ export class AdminPublisherManageComponent implements OnInit {
   text!: any;
   path!: any
   imageSrc!: any;
-  publisherlist!: any;
+  subscriberlist!: any;
   isUpdate: boolean = false;
   lenth!:any
   paggerno!:any
@@ -57,29 +51,7 @@ export class AdminPublisherManageComponent implements OnInit {
     private excelService:ExcelService) { }
 
   ngOnInit(): void {
-    // const that = this;
 
-    // this.dtOptions = {
-    //   pagingType: 'full_numbers',
-    //   pageLength: 2,
-    //   serverSide: true,
-    //   processing: true,
-    //   ajax: (dataTablesParameters: any, callback:any) => {
-    //     this.admin.getpublisher().subscribe(resp => {
-    //         this.persons = resp;
-    //         callback({
-    //           recordsTotal: resp.recordsTotal,
-    //           recordsFiltered: resp.recordsFiltered,
-    //           data: []
-    //         });
-    //       });
-    //   },
-    //   columns: [{ data: 'Sr' },{ data: 'name' },{ data: 'Email' }, { data: 'phoneno' }]
-    // };
-
-    // this.deshboard.getUserDetail(localStorage.getItem('userid')).subscribe(res => {
-    //   this.user = res
-    // })
     this.isSelected=0
 
     this.userForm = new FormGroup({
@@ -98,14 +70,17 @@ export class AdminPublisherManageComponent implements OnInit {
     // this.slidetoggle=new FormGroup({
     //   block:new FormControl('')
     // })
-    this.admin.getpublisherLimit().subscribe(res=>{
-      this.publisherlist=res
+    this.admin.getsubscriberlimit().subscribe(res=>{
+      console.log(res);
+      
+      this.subscriberlist=res
     })
 
     this.refreash()
 
     this.userData = ''
   }
+
   uploadFileEvt(imgFile: any) {
     this.text = imgFile.target.files[0].name
     this.image = imgFile.target.files[0]
@@ -119,23 +94,23 @@ export class AdminPublisherManageComponent implements OnInit {
   onApply(){
     const value = this.filterForm.value
     this.admin.getsort(value['sortwith'],value['sortby']).subscribe(res=>{
-        this.publisherlist=res
+        this.subscriberlist=res
       })
     // this.refreash()
   }
   getpagedata(pagerdata:any){
     this.isSelected=pagerdata
     this.admin.getpage(pagerdata*3).subscribe(res=>{
-        this.publisherlist=res
+        this.subscriberlist=res
       })
   }
   pageActive(item:any){
     return this.isSelected==item
   }
   refreash(){
-    this.admin.getpublisher().subscribe(res=>{
+    this.admin.getsubscriber().subscribe(res=>{
       var list=res
-      this.AllpublisherList=res
+      this.AllsubscriberList=res
       this.rowsLength=[...list].length
       this.paggerno=Math.ceil([...list].length/3)
       this.fakearray=new Array(this.paggerno)
@@ -147,8 +122,12 @@ export class AdminPublisherManageComponent implements OnInit {
   }
   
   open(user: any) {
+    // this.deshboard.userData = user
     this.dialog.open(DialogAdduserComponent).afterClosed().subscribe(res=>{
-   })
+      // this.deshboard.getUserlist().subscribe(res => {
+      //   this.userlist = res
+      // })
+    })
   }
   
   onStatuschnage(id:any,status:any){
@@ -156,7 +135,7 @@ export class AdminPublisherManageComponent implements OnInit {
     if(status=="active") state="Deactive"
     else state="active"
     Swal.fire({
-      title: 'Are you sure to?',
+      title: 'Are you sure ?',
       text: `${state} this account`,
       icon: 'warning',
       showCancelButton: true,
@@ -166,8 +145,8 @@ export class AdminPublisherManageComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.admin.getstatus(id,state).subscribe(res=>{
-          this.admin.getpublisherLimit().subscribe(res=>{
-            this.publisherlist=res
+          this.admin.getsubscriberlimit().subscribe(res=>{
+            this.subscriberlist=res
           })
         })
         this.snackBar.open(`${state}`,"close", {
@@ -178,6 +157,6 @@ export class AdminPublisherManageComponent implements OnInit {
     })
   }
   exportAsXLSX():void {
-    this.excelService.exportAsExcelFile(this.AllpublisherList, 'sample');
+    this.excelService.exportAsExcelFile(this.AllsubscriberList, 'sample');
   }
 }

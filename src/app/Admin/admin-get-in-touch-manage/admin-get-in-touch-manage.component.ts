@@ -12,18 +12,12 @@ import { AdminService } from 'src/app/shared/service/admin.service';
 import * as XLSX from 'xlsx'
 import { ExcelService } from 'src/app/shared/service/excel.service';
 
-// class DataTablesResponse {
-//   data!: any[];
-//   draw!: number;
-//   recordsFiltered!: number;
-//   recordsTotal!: number;
-// }
 @Component({
-  selector: 'app-admin-publisher-manage',
-  templateUrl: './admin-publisher-manage.component.html',
-  styleUrls: ['./admin-publisher-manage.component.css']
+  selector: 'app-admin-get-in-touch-manage',
+  templateUrl: './admin-get-in-touch-manage.component.html',
+  styleUrls: ['./admin-get-in-touch-manage.component.css']
 })
-export class AdminPublisherManageComponent implements OnInit {
+export class AdminGetInTouchManageComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
   persons!: any[];
 
@@ -31,7 +25,7 @@ export class AdminPublisherManageComponent implements OnInit {
   public userForm !: FormGroup;
   public filterForm !: FormGroup;
   // public slidetoggle!: FormGroup
-  AllpublisherList!:any
+  AllGITList!:any
   block!:boolean
   userData!: any
   user!: any
@@ -40,7 +34,7 @@ export class AdminPublisherManageComponent implements OnInit {
   text!: any;
   path!: any
   imageSrc!: any;
-  publisherlist!: any;
+  GITlist!: any;
   isUpdate: boolean = false;
   lenth!:any
   paggerno!:any
@@ -98,8 +92,8 @@ export class AdminPublisherManageComponent implements OnInit {
     // this.slidetoggle=new FormGroup({
     //   block:new FormControl('')
     // })
-    this.admin.getpublisherLimit().subscribe(res=>{
-      this.publisherlist=res
+    this.admin.getGITLimit().subscribe(res=>{
+      this.GITlist=res
     })
 
     this.refreash()
@@ -118,24 +112,24 @@ export class AdminPublisherManageComponent implements OnInit {
   }
   onApply(){
     const value = this.filterForm.value
-    this.admin.getsort(value['sortwith'],value['sortby']).subscribe(res=>{
-        this.publisherlist=res
+    this.admin.getGITsort(value['sortwith'],value['sortby']).subscribe(res=>{
+        this.GITlist=res
       })
     // this.refreash()
   }
   getpagedata(pagerdata:any){
     this.isSelected=pagerdata
-    this.admin.getpage(pagerdata*3).subscribe(res=>{
-        this.publisherlist=res
+    this.admin.getGITpage(pagerdata*3).subscribe(res=>{
+        this.GITlist=res
       })
   }
   pageActive(item:any){
     return this.isSelected==item
   }
   refreash(){
-    this.admin.getpublisher().subscribe(res=>{
+    this.admin.getGIT().subscribe(res=>{
       var list=res
-      this.AllpublisherList=res
+      this.AllGITList=res
       this.rowsLength=[...list].length
       this.paggerno=Math.ceil([...list].length/3)
       this.fakearray=new Array(this.paggerno)
@@ -152,12 +146,12 @@ export class AdminPublisherManageComponent implements OnInit {
   }
   
   onStatuschnage(id:any,status:any){
-    var state="active"
-    if(status=="active") state="Deactive"
-    else state="active"
+    var state="Not seen"
+    if(status=="Not seen") state="seen"
+    else state="Not seen"
     Swal.fire({
       title: 'Are you sure to?',
-      text: `${state} this account`,
+      text: `Change status to ${state}`,
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -165,12 +159,12 @@ export class AdminPublisherManageComponent implements OnInit {
       confirmButtonText: 'Yes'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.admin.getstatus(id,state).subscribe(res=>{
-          this.admin.getpublisherLimit().subscribe(res=>{
-            this.publisherlist=res
+        this.admin.changeStatusGIT(id,state).subscribe(res=>{
+          this.admin.getGITLimit().subscribe(res=>{
+            this.GITlist=res
           })
         })
-        this.snackBar.open(`${state}`,"close", {
+        this.snackBar.open(`Status updated to ${state}`,"close", {
           duration: 2000,
           panelClass: ['sucess']
         });
@@ -178,6 +172,28 @@ export class AdminPublisherManageComponent implements OnInit {
     })
   }
   exportAsXLSX():void {
-    this.excelService.exportAsExcelFile(this.AllpublisherList, 'sample');
+    this.excelService.exportAsExcelFile(this.AllGITList, 'sample');
+  }
+  onDelete(id:any){
+    Swal.fire({
+      title: 'Are you sure to Delete ?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.admin.deleteGIT(id).subscribe(res=>{
+          this.admin.getGITLimit().subscribe(res=>{
+            this.GITlist=res
+          })
+        })
+        this.snackBar.open(`Record deleted..`,"close", {
+          duration: 2000,
+          panelClass: ['sucess']
+        });
+      }
+    })
   }
 }

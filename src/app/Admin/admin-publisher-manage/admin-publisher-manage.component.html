@@ -1,56 +1,59 @@
 <div class="wrapper">
-    <!-- Preloader -->
-    <!-- <div class="preloader flex-column justify-content-center align-items-center">
+  <!-- Preloader -->
+  <!-- <div class="preloader flex-column justify-content-center align-items-center">
         <img class="animation__shake" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Android_O_Preview_Logo.png/1024px-Android_O_Preview_Logo.png" alt="AdminLTELogo" height="60" width="60">
       </div> -->
-  
-      <app-admin-nav></app-admin-nav>
-    <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
-      <!-- Content Header (Page header) -->
-      <div class="content-header">
-        <div class="container-fluid">
-          <div class="row mb-2">
-            <div class="col-sm-6">
-              <h1 class="m-0">Publishers</h1>
-            </div>
-            <!-- /.col -->
-            <!-- <div class="col-sm-6">
+
+  <app-admin-nav></app-admin-nav>
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">Publishers</h1>
+          </div>
+          <!-- /.col -->
+          <!-- <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                   <li class="breadcrumb-item"><a href="#">Home</a></li>
                   <li class="breadcrumb-item active">Dashboard v1</li>
                 </ol>
               </div> -->
-            <!-- /.col -->
-          </div>
-          <!-- /.row -->
+          <!-- /.col -->
         </div>
-        <!-- /.container-fluid -->
+        <!-- /.row -->
       </div>
-      <!-- /.content-header -->
-  
-      <!-- Main content -->
-      <section class="content" >
-        <div class="container-fluid">
-          <div class="row" >
-            <!-- Main content -->
-            <!-- <section class="content"> -->
-            <!-- <div class="container-fluid"> -->
-            <!-- <div class="row"> -->
-            <!-- <div class="col-md-12"> -->
-  
-            <!-- /.card -->
-  
-            <div class="card" style="width: 100%;border-top: solid rgb(150, 150, 151);">
-              <div class="card-header">
-                <h1 class="card-title" style="padding: 10px">
-                  <!-- <h1 class="" style="padding: 10px;"> -->
-                  <!-- <i class="fa-duotone fa-list-timeline"></i> -->
-  
-                  Publisher list
-                  <!-- </h1> -->
-                </h1>
-                <button
+      <!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <!-- Main content -->
+          <!-- <section class="content"> -->
+          <!-- <div class="container-fluid"> -->
+          <!-- <div class="row"> -->
+          <!-- <div class="col-md-12"> -->
+
+          <!-- /.card -->
+
+          <div
+            class="card"
+            style="width: 100%; border-top: solid rgb(150, 150, 151)"
+          >
+            <div class="card-header">
+              <h1 class="card-title" style="padding: 10px">
+                <!-- <h1 class="" style="padding: 10px;"> -->
+                <!-- <i class="fa-duotone fa-list-timeline"></i> -->
+
+                Publisher list
+                <!-- </h1> -->
+              </h1>
+              <!-- <button
                   style="float: right; margin-left: 2px"
                   class="btn btn-info"
                   data-widget="control-sidebar"
@@ -58,221 +61,240 @@
                 >
                   <i class="fa-solid fa-filter"></i>
                   filter
-                </button>
-                <button
+                </button> -->
+              <!-- <button
                   style="float: right"
                   class="btn btn-primary"
                   (click)="onCreate()"
                 >
                   + Add
                 </button>
-  
-                <!-- data-widget="control-sidebar"
-                data-controlsidebar-slide="true" -->
-                <!-- <button style="float: left; margin-left: 10px;" data-widget="control-sidebar" data-controlsidebar-slide="true" class="btn btn-primary"> </button> -->
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body">
-                <div class="table-responsive">
-                  <table class="table table-hover" style="min-height: 300px;">
+   -->
+            <div style="float: right; margin-left: 2px;">
+             
+             
+              <button class="btn btn-primary" (click)="exportAsXLSX()">export As XLSX</button>
+            </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <div class="table-responsive">
+                <!-- <table datatable [dtOptions]="dtOptions" class="row-border hover">
                     <thead>
                       <tr>
-                        <!-- <th *ngIf="colimage">Image</th>
-                        <th *ngIf="colname">Name</th>
-                        <th *ngIf="colgender">Gender</th>
-                        <th *ngIf="colmobile">Mobile No</th>
-                        <th *ngIf="colbirthdate">Birthdate</th>
-                        <th *ngIf="colemail">Email Id</th>
-                         -->
-                        <th>Image</th>
-                        <th >Name</th>
-                        <th >Gender</th>
-                        <th >Mobile No</th>
-                        <th >Birthdate</th>
-                        <th >Email Id</th>
-                        <th >Opration</th>
+                        <th>Sr</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>phoneno</th>
                       </tr>
                     </thead>
-                    <tbody>
-                      <tr *ngFor="let user of userlist">
-                        <td>
-                          <img
-                            src="http://localhost:3000/{{ user.file[0]?user.file[0].path:'' }}"
-                            class="img-circle"
-                            height="40px"
-                            width="40px"
-                            alt="User Image"
-                          />
-                        </td>
-                        <td >{{ user.name }}</td>
-                        <td >{{ user.gender }}</td>
-                        <td >{{ user.mobileno }}</td>
-                        <td >{{ user.dob | date }}</td>
-                        <td >{{ user.email }}</td>
-                        <td>
-                          <!-- <button class="btn btn-warning"> -->
-                          <!-- <i
-                            class="fas fa-pen"
-                            style="color: green;cursor: pointer;"
-                            data-widget="control-sidebar"
-                            data-controlsidebar-slide="true"
-                            (click)="open(user)"
-                          ></i> -->
-                          <i
-                            class="fas fa-pen"
-                            style="color: green; cursor: pointer"
-                            (click)="open(user)"
-                          ></i>
-  
-                          <!-- </button> | -->
-                          |
-                          <!-- <button class="btn btn-danger"> -->
-                          <i
-                            class="fas fa-trash"
-                            style="color: red; cursor: pointer"
-                            (click)="onDelete(user._id)"
-                          ></i>
-                           <!-- | -->
-                          <!-- <i class="fa fa-envelope" style="color: blue; cursor: pointer"></i> -->
-                          <!-- </button>    -->
-                        </td>
+                    <tbody *ngIf="persons?.length != 0">
+                      <tr *ngFor="let person of persons;let i=index">
+                        <td>{{i+1}}</td>
+                        <td>{{ person.name }}</td>
+                        <td>{{ person.user?person.user.email:'abc@123' }}</td>
+                        <td>{{ person.phoneno }}</td>
                       </tr>
                     </tbody>
-                    <!-- <tfoot>
-                                  <tr>
-                                      <th>Image</th>
-                                      <th>Name</th>
-                                      <th>Gender</th>
-                                      <th>Birthdate</th>
-                                      <th>Email Id</th>
-                                      <th>Edit/Delete</th>
-                                    </tr>
-                                    </tfoot> -->
-                                    
-                                    
-                  </table>
-                  <br><br>
-                  <div align="center" style="width: 100%;" *ngIf="userlist != ''">
-  
-                  <div class="pagination"  >
-                    <a style="cursor: pointer;" (click)="getpagedata(0)">&laquo;</a>
-                    <a  style="cursor: pointer;" [ngClass]="{aactive: pageActive(index)}" *ngFor="let a of fakearray; let index = index" (click)="getpagedata(index)" >{{index+1}}</a>
-                    <a style="cursor: pointer;" (click)="getpagedata(paggerno-1)">&raquo;</a>
-                  </div>
-                  </div>
-  
-                  <div
-                    *ngIf="userlist == ''"
-                    class="emptydata"
-                    style="width: 100%"
-                    align="center"
+                    <tbody *ngIf="persons?.length == 0">
+                      <tr>
+                        <td colspan="3" class="no-data-available">No data!</td>
+                      </tr>
+                    </tbody>
+                  </table> -->
+                <!-- <br><br> -->
+                <table
+                  datatable
+                  class="table table-hover"
+                  style="min-height: 300px"
+                >
+                  <thead align="center">
+                    <tr>
+                      <!-- <th>Sr.</th> -->
+                      <th>Image</th>
+                      <th>Name</th>
+                      <th>job</th>
+                      <th>Mobile</th>
+                      <th>Email Id</th>
+                      <th>Social Accounts</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody align="center">
+                    <tr *ngFor="let user of publisherlist; let index = index">
+                      <!-- <td>{{ index + 1 }}</td> -->
+                      <td>Image</td>
+                      <td>{{ user.name }}</td>
+                      <td>{{ user.job }}</td>
+                      <td>{{ user.phoneno }}</td>
+                      <td>{{ user.user ? user.user.email : "abc@123" }}</td>
+
+                      <td>
+                        <tr>
+                          <td>
+                            <a href="{{ user.link.instagram }}"
+                              ><img
+                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/2048px-Instagram_logo_2016.svg.png"
+                                height="20px"
+                                width="20px"
+                                style="filter: grayscale(10%)"
+                                alt="Instagram"
+                            /></a>
+                          </td>
+                          <td>
+                            <a href="{{ user.link.facebook }}"
+                              ><img
+                                src="https://d2v9ipibika81v.cloudfront.net/uploads/sites/261/2017/01/facebook-logo-3.png"
+                                height="20px"
+                                width="20px"
+                                style="filter: grayscale(10%)"
+                                alt="Instagram"
+                            /></a>
+                          </td>
+                          <td>
+                            <a href="{{ user.link.linkedIn }}"
+                              ><img
+                                src="https://www.seekpng.com/png/full/8-84419_linkedin-logo-png-icon-linkedin-logo-png.png"
+                                height="20px"
+                                width="20px"
+                                style="filter: grayscale(10%)"
+                                alt="Instagram"
+                            /></a>
+                          </td>
+                          <td>
+                            <a href="{{ user.link.twitter }}"
+                              ><img
+                                src="http://assets.stickpng.com/images/580b57fcd9996e24bc43c53e.png"
+                                height="30px"
+                                width="30px"
+                                style="filter: grayscale(10%)"
+                                alt="Instagram"
+                            /></a>
+                          </td>
+                          <td>
+                            <a href="{{ user.link.youtube }}"
+                              ><img
+                                src="https://www.tnlcoc.org/wp-content/uploads/2021/07/hd-youtube-logo-png-transparent-background-20.png"
+                                height="30px"
+                                width="30px"
+                                style="filter: grayscale(10%)"
+                                alt="Instagram"
+                            /></a>
+                          </td>
+                        </tr>
+                      </td>
+
+                      <td>
+
+                        <a style="cursor: pointer;" (click)="onStatuschnage(user._id,user.status)" ><p [ngStyle]="user.status== 'Deactive'? {'background-color': 'red'}:{'background-color':'green'}" class="badge" style="width: 100%;">{{user.status}}</p> </a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div style="float: left">
+                  <p>
+                    <b>{{ rowsLength }}</b> Records
+                  </p>
+                </div>
+                <form [formGroup]="filterForm" (ngSubmit)="onApply()" style="float: right;border-radius: 50px;">
+                  <!-- <select name="" id="" class="form-control"  formControlName="sortby">
+                    <option value="name">Name</option>
+                    <option value="dob">Birthdate</option>
+                    <option value="gender">Gender</option>
+                    <option value="mobileno">Mobileno</option>
+                  </select>
+                  <select name="" id="" class="form-control" formControlName="sortwith">
+                    <option value="Assending">Assending</option>
+                    <option value="Desending">Desending</option>
+                  </select> -->
+                   <mat-select style="width: 200px;padding: 5px; ;" formControlName="sortby" placeholder="Sort column">
+                  <mat-option value="name">Name</mat-option>
+                  <mat-option value="job">Job</mat-option>
+                  <mat-option value="phoneno">Mobile number</mat-option>
+                </mat-select>
+                <mat-select style="width: 200px;padding: 5px;" formControlName="sortwith" placeholder="Sort Type">
+                  <mat-option value="Assending" >Assending</mat-option>
+                  <mat-option value="Desending">Dissending</mat-option>
+                </mat-select>
+                  <button
+                    class="btn btn-outline-dark form-control"
+                    style="width: 100px;"
+                    type="submit"
                   >
-                    <!-- <iframe src="https://embed.lottiefiles.com/animation/85023" style="border: 0px; height:300px;width: 100%;"></iframe>  -->
-  
-                    <img
-                      src="https://cdn.iconscout.com/icon/free/png-256/data-not-found-1965034-1662569.png"
-                      alt=""
-                      srcset=""
-                    />
+                    Apply
+                  </button>
+                </form>
+                <br /><br />
+                <div
+                  align="center"
+                  style="width: 100%"
+                  *ngIf="publisherlist != ''"
+                >
+                  <div class="pagination">
+                    <a style="cursor: pointer" (click)="getpagedata(0)"
+                      >&laquo;</a
+                    >
+                    <a
+                      style="cursor: pointer"
+                      [ngClass]="{ aactive: pageActive(index) }"
+                      *ngFor="let a of fakearray; let index = index"
+                      (click)="getpagedata(index)"
+                      >{{ index + 1 }}</a
+                    >
+                    <a
+                      style="cursor: pointer"
+                      (click)="getpagedata(paggerno - 1)"
+                      >&raquo;</a
+                    >
                   </div>
                 </div>
+
+                <div
+                  *ngIf="publisherlist == ''"
+                  class="emptydata"
+                  style="width: 100%"
+                  align="center"
+                >
+                  <!-- <iframe src="https://embed.lottiefiles.com/animation/85023" style="border: 0px; height:300px;width: 100%;"></iframe>  -->
+
+                  <img
+                    src="https://cdn.iconscout.com/icon/free/png-256/data-not-found-1965034-1662569.png"
+                    alt=""
+                    srcset=""
+                  />
+                </div>
               </div>
-              <!-- /.card-body -->
             </div>
-  
-            <!-- /.card -->
+            <!-- /.card-body -->
           </div>
-          <!-- /.col -->
-          <!-- </div> -->
-          <!-- /.row -->
+
+          <!-- /.card -->
         </div>
-        <!-- /.container-fluid -->
-      </section>
-      <!-- /.content -->
-      <!-- </div> -->
-      <!-- /.content-wrapper -->
-  
-      <!-- </div>/.container-fluid -->
-      <!-- </section> -->
-  
-      <!-- /.content -->
-    </div>
-    <!-- /.content-wrapper -->
-    <footer class="main-footer">
-      <strong>Copyright &copy; 2014-2021.</strong>
-      All rights reserved.
-      <div class="float-right d-none d-sm-inline-block"><b>Version</b> 2.0</div>
-    </footer>
-  
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark" style="padding: 20px;" >
-      <!-- Control sidebar content goes here -->
-      <div>
-      <b style="float: right;cursor: pointer;" data-widget="control-sidebar" data-controlsidebar-slide="true">X</b>
-      <h3 > Filter</h3>
+        <!-- /.col -->
+        <!-- </div> -->
+        <!-- /.row -->
       </div>
-      <!-- <hr> -->
-      <!-- <p>Columns to show</p> -->
-      <!-- <hr> -->
-      <!-- <ul class="filter-list">
-        <li>
-          <input type="checkbox" name="" id="" checked="{{listcol('image')}}">
-          <span> Image</span>
-        </li>
-        <li>
-          <input type="checkbox" name="" id="" checked="{{listcol('name')}}">
-          <span> Name</span>
-        </li>
-        <li>
-          <input type="checkbox" name="" id="" checked="{{listcol('gender')}}">
-          <span> Gender</span>
-        </li>
-        <li>
-          <input type="checkbox" name="" id="" checked="{{listcol('mobile')}}">
-          <span> mobile</span>
-        </li>
-        <li>
-          <input type="checkbox" name="" id="" checked="{{listcol('dob')}}">
-          <span> Birthdate</span>
-        </li>
-        <li>
-          <input type="checkbox" name="" id="" checked="{{listcol('email')}}">
-          <span> Email</span>
-        </li>
-      </ul> -->
-      <!-- <button class="btn btn-dark form-control" style="background-color: rgb(27, 27, 27);">Apply</button> -->
-      <hr>
-      <form [formGroup]="filterForm" (ngSubmit)="onApply()" >
-      <p>Sort by</p>
-      <hr>
-      <select name="" id="" class="form-control" formControlName="sortby">
-        <option value="name">Name</option>
-        <option value="dob">Birthdate</option>
-        <option value="gender">Gender</option>
-        <option value="mobileno">Mobileno</option>
-      </select>
-      <br>
-      <select name="" id="" class="form-control" formControlName="sortwith">
-        <option value="Assending">Assending</option>
-        <option value="Desending">Desending</option>
-      </select>
-    
-    <!-- <hr> -->
-      <!-- <button class="btn btn-dark form-control" style="background-color: rgb(27, 27, 27);">Show</button> -->
-      <!-- <hr>
-      <p>Show number of Row (Pagination)</p>
-      <hr><select name="" id="" class="form-control">
-        <option value="5">5</option>
-        <option value="10">10</option>
-        <option value="15">15</option>
-      </select> -->
-    <hr>
-      <button class="btn btn-dark form-control" style="background-color: rgb(27, 27, 27);" type="submit">Apply</button>
-      <hr>
-      </form>
-    </aside>
-    <!-- /.control-sidebar -->
+      <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+    <!-- </div> -->
+    <!-- /.content-wrapper -->
+
+    <!-- </div>/.container-fluid -->
+    <!-- </section> -->
+
+    <!-- /.content -->
   </div>
-  <!-- ./wrapper -->
-  
-  
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <strong>Copyright &copy; 2014-2021.</strong>
+    All rights reserved.
+    <div class="float-right d-none d-sm-inline-block"><b>Version</b> 2.0</div>
+  </footer>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark" style="padding: 20px">
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
