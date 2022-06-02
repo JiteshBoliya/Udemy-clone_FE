@@ -20,10 +20,12 @@ export class StudentProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.profileForm = new FormGroup({
-      name: new FormControl(""),
+      firstname: new FormControl(""),
+      lastname:new FormControl(""),
       email: new FormControl(""),
-      subject: new FormControl(""),
-      massage: new FormControl("")
+      phoneno:new FormControl(""),
+      nationality:new FormControl(""),
+      job:new FormControl(""),
     })
     this.auth.usersubject.subscribe(res=>{
       if(res==null){
@@ -35,6 +37,8 @@ export class StudentProfileComponent implements OnInit {
     })
   }
   OnSubmit(){
+    console.log("hiii");
+    
     const formData = new FormData()
     formData.append('firstname', this.profileForm.get('firstname')?.value)
     formData.append('lastname', this.profileForm.get('lastname')?.value)

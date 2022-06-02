@@ -25,6 +25,7 @@ import { PublisherManageDoubtsComponent } from './publisher/publisher-manage-dou
 import { PublisherManageProfileComponent } from './publisher/publisher-manage-profile/publisher-manage-profile.component';
 import { AdminSubscriberManageComponent } from './Admin/admin-subscriber-manage/admin-subscriber-manage.component';
 import { AdminGetInTouchManageComponent } from './Admin/admin-get-in-touch-manage/admin-get-in-touch-manage.component';
+import { PublisherSalesComponent } from './publisher/publisher-sales/publisher-sales.component';
 const routes: Routes = [
   //Subscriber
   {
@@ -55,10 +56,11 @@ const routes: Routes = [
   { path: 'Admin-getInTouch', component: AdminGetInTouchManageComponent },
   //publisher
   { path: 'publisher-dashboard', component: PublisherDashboardComponent },
-  { path: 'publisher-course', component: PublisherManageCourseComponent},
-  { path: 'publisher-user', component: PublisherManageUserComponent },
+  { path: 'publisher-Course', component: PublisherManageCourseComponent},
+  { path: 'publisher-subscriber', component: PublisherManageUserComponent },
   { path: 'publisher-doubts', component: PublisherManageDoubtsComponent },
   { path: 'publisher-profile', component: PublisherManageProfileComponent },
+  { path: 'publisher-sales', component: PublisherSalesComponent },
 
   {
     path:'page-notfound',

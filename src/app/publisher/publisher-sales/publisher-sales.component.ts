@@ -13,11 +13,11 @@ import * as XLSX from 'xlsx'
 import { ExcelService } from 'src/app/shared/service/excel.service';
 
 @Component({
-  selector: 'app-publisher-manage-user',
-  templateUrl: './publisher-manage-user.component.html',
-  styleUrls: ['./publisher-manage-user.component.css']
+  selector: 'app-publisher-sales',
+  templateUrl: './publisher-sales.component.html',
+  styleUrls: ['./publisher-sales.component.css']
 })
-export class PublisherManageUserComponent implements OnInit {
+export class PublisherSalesComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
   persons!: any[];
 

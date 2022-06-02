@@ -32,6 +32,8 @@ export class AdminNavComponent implements OnInit {
       }
       this.user=res
     })
+    console.log(this.user);
+    
   // #Auto logout
   if (this.authGurd.canActivate() == false) this.router.navigate([''])
   }

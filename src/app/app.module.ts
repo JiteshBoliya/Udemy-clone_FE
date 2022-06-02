@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './subscriber/home/home.component';
@@ -42,6 +41,10 @@ import { DataTablesModule } from 'angular-datatables';
 import * as XLSX from 'xlsx';
 import { AdminSubscriberManageComponent } from './Admin/admin-subscriber-manage/admin-subscriber-manage.component';
 import { AdminGetInTouchManageComponent } from './Admin/admin-get-in-touch-manage/admin-get-in-touch-manage.component';
+import { DialogPublisherprofileComponent } from './shared/dailogs/dialog-publisherprofile/dialog-publisherprofile.component';
+import { DialogCourseComponent } from './shared/dailogs/dialog-course/dialog-course.component';
+import { NgxEditorModule } from 'ngx-editor';
+import { PublisherSalesComponent } from './publisher/publisher-sales/publisher-sales.component';
 @NgModule({
   declarations: [
     //Subscriber
@@ -71,6 +74,8 @@ import { AdminGetInTouchManageComponent } from './Admin/admin-get-in-touch-manag
     AdminDashboardComponent,
     AdminNavComponent,
     AdminPublisherManageComponent,
+    AdminSubscriberManageComponent,
+    AdminGetInTouchManageComponent,
     //Publisher
     PublisherNavComponent,
     PublisherDashboardComponent,
@@ -78,9 +83,9 @@ import { AdminGetInTouchManageComponent } from './Admin/admin-get-in-touch-manag
     PublisherManageCourseComponent,
     PublisherManageProfileComponent,
     PublisherManageDoubtsComponent,
-    AdminSubscriberManageComponent,
-    AdminGetInTouchManageComponent,
-    
+    DialogPublisherprofileComponent,
+    DialogCourseComponent,
+    PublisherSalesComponent,
   ],
   imports: [
     BrowserModule,
@@ -89,7 +94,8 @@ import { AdminGetInTouchManageComponent } from './Admin/admin-get-in-touch-manag
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    DataTablesModule
+    DataTablesModule,
+    NgxEditorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
