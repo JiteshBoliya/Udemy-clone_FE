@@ -75,6 +75,15 @@
              
               <button class="btn btn-primary" (click)="exportAsXLSX()">export As XLSX</button>
             </div>
+            <mat-form-field class="example-full-width" appearance="fill" style="width: 100%;">
+              <mat-select placeholder="Select Course">
+                  <mat-option [value]="">abc</mat-option>
+                  <mat-option [value]="">xyzsdfgggggggggggggggggggggggcccccccccccc</mat-option>
+                  <mat-option [value]="">pqr</mat-option>
+                  <mat-option [value]="">mno</mat-option>
+              </mat-select>
+              </mat-form-field>
+
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -110,23 +119,29 @@
                 >
                   <thead align="center">
                     <tr>
+                      <th>Course</th>
                       <th>Image</th>
                       <th>first Name</th>
                       <th>last Name</th>
                       <th>Job</th>
                       <th>Mobile</th>
                       <th>Email Id</th>
+                      <th>Status</th>
                     </tr>
                   </thead>
                   <tbody align="center">
                     <tr *ngFor="let user of subscriberlist; let index = index">
-                      <!-- <td>{{ index + 1 }}</td> -->
+                      <td>{{ index + 1 }}</td>
                       <td>Image</td>
                       <td>{{ user.firstname }}</td>
                       <td>{{ user.lastname }}</td>
                       <td>{{ user.job }}</td>
                       <td>{{ user.phoneno }}</td>
                       <td>{{ user.user ? user.user.email : "abc@123" }}</td>
+                      <td>
+                        <!-- <span class="badge" style="background-color: red;width: fit-content;cursor: pointer;">Blocked</span> -->
+                        <span class="badge" style="background-color: green;width: fit-content;cursor: pointer;">Active</span>
+                    </td>
                     </tr>
                   </tbody>
                 </table>

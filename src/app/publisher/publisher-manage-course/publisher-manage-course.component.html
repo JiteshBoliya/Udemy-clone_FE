@@ -114,23 +114,26 @@
                       <th>title</th>
                       <th>Description</th>
                       <th>UploadOn</th>
+                      <!-- <th>Duration</th>
+                      <th>Lesson</th> -->
                       <th>Price</th>
                       <th>Catagory</th>
                       <th>Opration</th>
                     </tr>
                   </thead>
                   <tbody align="center">
-                    <tr *ngFor="let user of subscriberlist; let index = index">
+                    <tr *ngFor="let course of courselist; let index = index">
                       <!-- <td>{{ index + 1 }}</td> -->
                       <td>Image</td>
-                      <td>{{ user.firstname }}</td>
-                      <td>{{ user.lastname }}</td>
-                      <td>{{ user.job }}</td>
-                      <td>{{ user.phoneno }}</td>
-                      <td>{{ user.user ? user.user.email : "abc@123" }}</td>
+                      <td>{{ course.title }}</td>
+                      <td>{{ course.description }}</td>
+                      <td>{{ course.uploadDate }}</td>
+                      <td>{{ course.price }}/-</td>
+                      <td>{{ course.catagory }}</td>
                       <td>
-
-                      </td>
+                        <i class="fas fa-trash-alt " style="color: red;cursor: pointer;"></i> | 
+                        <i class="fas fa-pen " style="color: green;cursor: pointer;"></i>
+                    </td>
                     </tr>
                   </tbody>
                 </table>
@@ -173,7 +176,7 @@
                 <div
                   align="center"
                   style="width: 100%"
-                  *ngIf="subscriberlist != ''"
+                  *ngIf="courselist != ''"
                 >
                   <div class="pagination">
                     <a style="cursor: pointer" (click)="getpagedata(0)"
@@ -195,7 +198,7 @@
                 </div>
 
                 <div
-                  *ngIf="subscriberlist == ''"
+                  *ngIf="courselist == ''"
                   class="emptydata"
                   style="width: 100%"
                   align="center"

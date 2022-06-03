@@ -4,9 +4,10 @@
       <div class="white-bg">
         <div class="students-info-form">
           <h6 class="font-title--card">Course information</h6>
+          <hr>
           <form [formGroup]="courseForm" (ngSubmit)="onadd()">
             <div class="row g-3">
-              <div class="col-lg-6">
+              <div class="col-lg-12">
                 <label for="fname">Title</label>
                 <input
                   type="text"
@@ -15,14 +16,14 @@
                   formControlName="title"
                 />
               </div>
-              <div class="col-lg-6">
+              <!-- <div class="col-lg-6">
                 <label for="lname">UploadDate</label>
                 <input
                   type="date"
                   class="form-control"
                   formControlName="uploaddate"
                 />
-              </div>
+              </div> -->
             </div>
 
             <div class="row g-3">
@@ -78,7 +79,7 @@
                   </p>     -->
               </div>
             </div>
-            <div class="row g-3">
+            <!-- <div class="row g-3">
                 <div>
                     <img *ngFor="let url of urls" [src]="url" class="rounded mb-3" width="180" style="margin: 10px;">
                 </div>
@@ -87,7 +88,7 @@
               <div class="col-lg-6">
                 
               </div>
-            </div>
+            </div> -->
           </form>
         </div>
       </div>
@@ -108,7 +109,7 @@
               </button>
             </div>
           </form>
-          <p>Image size should be under 1MB image ratio 200px.</p>
+          <!-- <p>Image size should be under 1MB image ratio 200px.</p> -->
         </div>
         <hr>
         <label for="pnumber">Specification</label>

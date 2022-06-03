@@ -1,0 +1,38 @@
+.pagination {
+    display: inline-block;
+  }
+  
+  .pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+  }
+  .aactive{
+    background-color: rgb(94, 158, 253);
+    border-radius: 100%;
+    color: white !important;
+  }
+  mat-select:hover{
+      background-color: rgb(194, 192, 192);
+      /* color: white !important; */
+    border-radius: 5px;
+  }
+  .success{
+    background-color: green !important;
+  }
+  .courseCard{
+      /* border: 0.1px solid gray; */
+      /* margin: 1px; */
+    padding: 10px;
+  }
+  .courseCard:hover{
+    box-shadow: 0px 1px 10px gray;
+    /* border-radius: 10px; */
+  }
+  .contentCard-top{
+      height: 150px;
+  }
+  .img-fluid{
+    height: 150px;
+  }

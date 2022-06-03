@@ -26,6 +26,8 @@ import { PublisherManageProfileComponent } from './publisher/publisher-manage-pr
 import { AdminSubscriberManageComponent } from './Admin/admin-subscriber-manage/admin-subscriber-manage.component';
 import { AdminGetInTouchManageComponent } from './Admin/admin-get-in-touch-manage/admin-get-in-touch-manage.component';
 import { PublisherSalesComponent } from './publisher/publisher-sales/publisher-sales.component';
+import { PublisherManageTutorialComponent } from './publisher/publisher-manage-tutorial/publisher-manage-tutorial.component';
+import { PublisherRatingComponent } from './publisher/publisher-rating/publisher-rating.component';
 const routes: Routes = [
   //Subscriber
   {
@@ -61,7 +63,8 @@ const routes: Routes = [
   { path: 'publisher-doubts', component: PublisherManageDoubtsComponent },
   { path: 'publisher-profile', component: PublisherManageProfileComponent },
   { path: 'publisher-sales', component: PublisherSalesComponent },
-
+  { path: 'publisher-tutorial', component: PublisherManageTutorialComponent },
+  { path: 'publisher-rating', component: PublisherRatingComponent },
   {
     path:'page-notfound',
     component: PageNotfoundComponent

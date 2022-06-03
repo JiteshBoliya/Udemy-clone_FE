@@ -45,6 +45,10 @@ import { DialogPublisherprofileComponent } from './shared/dailogs/dialog-publish
 import { DialogCourseComponent } from './shared/dailogs/dialog-course/dialog-course.component';
 import { NgxEditorModule } from 'ngx-editor';
 import { PublisherSalesComponent } from './publisher/publisher-sales/publisher-sales.component';
+import { PublisherManageTutorialComponent } from './publisher/publisher-manage-tutorial/publisher-manage-tutorial.component';
+import { DialogTutorialComponent } from './shared/dailogs/dialog-tutorial/dialog-tutorial.component';
+import { PublisherRatingComponent } from './publisher/publisher-rating/publisher-rating.component';
+import { NgxPrintModule } from "ngx-print";
 @NgModule({
   declarations: [
     //Subscriber
@@ -86,6 +90,10 @@ import { PublisherSalesComponent } from './publisher/publisher-sales/publisher-s
     DialogPublisherprofileComponent,
     DialogCourseComponent,
     PublisherSalesComponent,
+    PublisherManageTutorialComponent,
+    DialogTutorialComponent,
+    PublisherRatingComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -95,7 +103,8 @@ import { PublisherSalesComponent } from './publisher/publisher-sales/publisher-s
     HttpClientModule,
     BrowserAnimationsModule,
     DataTablesModule,
-    NgxEditorModule
+    NgxEditorModule,
+    NgxPrintModule
   ],
   providers: [],
   bootstrap: [AppComponent]

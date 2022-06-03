@@ -1,0 +1,251 @@
+<div class="wrapper">
+    <!-- Preloader -->
+    <!-- <div class="preloader flex-column justify-content-center align-items-center">
+          <img class="animation__shake" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Android_O_Preview_Logo.png/1024px-Android_O_Preview_Logo.png" alt="AdminLTELogo" height="60" width="60">
+        </div> -->
+  
+    <app-publisher-nav></app-publisher-nav>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <div class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1 class="m-0">Review & Rating</h1>
+            </div>
+            <!-- /.col -->
+            <!-- <div class="col-sm-6">
+                  <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">Dashboard v1</li>
+                  </ol>
+                </div> -->
+            <!-- /.col -->
+          </div>
+          <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+      </div>
+      <!-- /.content-header -->
+  
+      <!-- Main content -->
+      <section class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <!-- Main content -->
+            <!-- <section class="content"> -->
+            <!-- <div class="container-fluid"> -->
+            <!-- <div class="row"> -->
+            <!-- <div class="col-md-12"> -->
+  
+            <!-- /.card -->
+  
+            <div
+              class="card"
+              style="width: 100%; border-top: solid rgb(150, 150, 151)"
+            >
+
+            <div class="card-header">
+                <h1 class="card-title" style="padding: 10px">
+                  <!-- <h1 class="" style="padding: 10px;"> -->
+                  <!-- <i class="fa-duotone fa-list-timeline"></i> -->
+  
+                  Rating and Review list
+                  <!-- </h1> -->
+                </h1>
+                <!-- <button
+                    style="float: right; margin-left: 2px"
+                    class="btn btn-info"
+                    data-widget="control-sidebar"
+                    data-controlsidebar-slide="true"
+                  >
+                    <i class="fa-solid fa-filter"></i>
+                    filter
+                  </button> -->
+                <!-- <button
+                    style="float: right"
+                    class="btn btn-primary"
+                    (click)="onCreate()"
+                  >
+                    + Add
+                  </button>
+     -->
+                <br>
+                <mat-form-field class="example-full-width" appearance="fill" style="width: 100%;">
+                    <mat-select placeholder="Select Course">
+                        <mat-option [value]="">abc</mat-option>
+                        <mat-option [value]="">xyzsdfgggggggggggggggggggggggcccccccccccc</mat-option>
+                        <mat-option [value]="">pqr</mat-option>
+                        <mat-option [value]="">mno</mat-option>
+                    </mat-select>
+                    </mat-form-field>
+
+                <!-- <button class="btn btn-primary" (click)="exportAsXLSX()">export As XLSX</button> -->
+        
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <!-- <div class="row">
+                    <div class="col-md-2 mb-4 courseCard" >
+                        <div class="contentCard contentCard--course">
+                            <div class="contentCard-top" >
+                                <a routerLink="../course-details"><img src="https://eduguard-html.netlify.app/dist/images/courses/demo-img-04.png" alt="images" class="img-fluid" /></a>
+                            </div>
+                            <div class="contentCard-bottom">
+                                <h5>
+                                    <a   class="font-title--card">Chicago International Conference on Education</a>
+                                </h5>
+                                <div class="row contentCard-more">
+                                    <div class="col-md-4 d-flex align-items-center">
+                                        <div class="icon">
+                                            <img src="https://eduguard-html.netlify.app/dist/images/icon/star.png" alt="star" />
+                                        </div>
+                                        <span>4.5</span>
+                                    </div>
+                                    <div class=" col-md-4 eye d-flex align-items-center">
+                                        <div class="icon">
+                                            <img src="https://eduguard-html.netlify.app/dist/images/icon/eye.png" alt="eye" />
+                                        </div>
+                                        <span>24,517</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <button class="btn btn-outline-primary" style="width: 100%;"> View Rating</button>
+                        </div>
+                    </div>
+                </div> -->
+
+                <div class="table-responsive" >
+                  <table
+                    datatable
+                    class="table table-hover"
+                    style="min-height: 300px"
+                  >
+                    <thead align="center">
+                      <tr>
+                        <th>Name</th>
+                        <th>Course</th>
+                        <th>Date</th>
+                        <th>Rating</th>
+                        <th>Review</th>
+                        <th>Opration</th>
+                      </tr>
+                    </thead>
+                    <tbody align="center">
+                      <tr *ngFor="let user of subscriberlist; let index = index">
+                        
+                        <td>Image</td>
+                        <td>{{ user.firstname }}</td>
+                        <td>{{ user.phoneno ? user : "abc@123"}}</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>
+                            <i class="fas fa-trash-alt " style="color: red;"></i>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div style="float: left">
+                    <p>
+                      <b>{{ rowsLength }}</b> Records
+                    </p>
+                  </div>
+                  <form [formGroup]="filterForm" (ngSubmit)="onApply()" style="float: right;border-radius: 50px;">
+                    
+                     <mat-select style="width: 200px;padding: 5px; ;" formControlName="sortby" placeholder="Sort column">
+                    <mat-option value="firstName">firstName</mat-option>
+                    <mat-option value="firstName">LastName</mat-option>
+                    <mat-option value="phoneno">Mobile number</mat-option>
+                    <mat-option value="Nationality">Nationality</mat-option>
+                    <mat-option value="phoneno">Nationality</mat-option>
+                  </mat-select>
+                  <mat-select style="width: 200px;padding: 5px;" formControlName="sortwith" placeholder="Sort Type">
+                    <mat-option value="Assending" >Assending</mat-option>
+                    <mat-option value="Desending">Dissending</mat-option>
+                  </mat-select>
+                    <button
+                      class="btn btn-outline-dark form-control"
+                      style="width: 100px;"
+                      type="submit"
+                    >
+                      Apply
+                    </button>
+                  </form>
+                  <br /><br />
+                  <div
+                    align="center"
+                    style="width: 100%"
+                    *ngIf="subscriberlist != ''"
+                  >
+                    <div class="pagination">
+                      <a style="cursor: pointer" (click)="getpagedata(0)"
+                        >&laquo;</a
+                      >
+                      <a
+                        style="cursor: pointer"
+                        [ngClass]="{ aactive: pageActive(index) }"
+                        *ngFor="let a of fakearray; let index = index"
+                        (click)="getpagedata(index)"
+                        >{{ index + 1 }}</a
+                      >
+                      <a
+                        style="cursor: pointer"
+                        (click)="getpagedata(paggerno - 1)"
+                        >&raquo;</a
+                      >
+                    </div>
+                  </div>
+  
+                  <div
+                    *ngIf="subscriberlist == ''"
+                    class="emptydata"
+                    style="width: 100%"
+                    align="center"
+                  >
+  
+                    <img
+                      src="https://cdn.iconscout.com/icon/free/png-256/data-not-found-1965034-1662569.png"
+                      alt=""
+                      srcset=""
+                    />
+                  </div>
+                </div>
+              
+                </div>
+              <!-- /.card-body -->
+            </div>
+  
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+          <!-- </div> -->
+          <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+      </section>
+      <!-- /.content -->
+      <!-- </div> -->
+      <!-- /.content-wrapper -->
+  
+      <!-- </div>/.container-fluid -->
+      <!-- </section> -->
+  
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    <footer class="main-footer">
+      <strong>Copyright &copy; 2014-2021.</strong>
+      All rights reserved.
+      <div class="float-right d-none d-sm-inline-block"><b>Version</b> 2.0</div>
+    </footer>
+  
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark" style="padding: 20px">
+    </aside>
+    <!-- /.control-sidebar -->
+  </div>
+  <!-- ./wrapper -->
+  

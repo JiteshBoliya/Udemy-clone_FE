@@ -12,13 +12,13 @@ import { AdminService } from 'src/app/shared/service/admin.service';
 import * as XLSX from 'xlsx'
 import { ExcelService } from 'src/app/shared/service/excel.service';
 import { DialogCourseComponent } from 'src/app/shared/dailogs/dialog-course/dialog-course.component';
-import { PublisherService } from 'src/app/shared/service/publisher.service';
+import { DialogTutorialComponent } from 'src/app/shared/dailogs/dialog-tutorial/dialog-tutorial.component';
 @Component({
-  selector: 'app-publisher-manage-course',
-  templateUrl: './publisher-manage-course.component.html',
-  styleUrls: ['./publisher-manage-course.component.css']
+  selector: 'app-publisher-manage-tutorial',
+  templateUrl: './publisher-manage-tutorial.component.html',
+  styleUrls: ['./publisher-manage-tutorial.component.css']
 })
-export class PublisherManageCourseComponent implements OnInit {
+export class PublisherManageTutorialComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
   persons!: any[];
 
@@ -26,7 +26,7 @@ export class PublisherManageCourseComponent implements OnInit {
   public userForm !: FormGroup;
   public filterForm !: FormGroup;
   // public slidetoggle!: FormGroup
-  AllCourse!:any
+  AllsubscriberList!:any
   block!:boolean
   userData!: any
   user!: any
@@ -35,7 +35,7 @@ export class PublisherManageCourseComponent implements OnInit {
   text!: any;
   path!: any
   imageSrc!: any;
-  courselist!: any;
+  subscriberlist!: any;
   isUpdate: boolean = false;
   lenth!:any
   paggerno!:any
@@ -49,8 +49,7 @@ export class PublisherManageCourseComponent implements OnInit {
     private activeRoute: ActivatedRoute,
     private http: HttpClient,
     private admin:AdminService,
-    private excelService:ExcelService,
-    private publisher:PublisherService) { }
+    private excelService:ExcelService) { }
 
   ngOnInit(): void {
 
@@ -72,8 +71,10 @@ export class PublisherManageCourseComponent implements OnInit {
     // this.slidetoggle=new FormGroup({
     //   block:new FormControl('')
     // })
-    this.publisher.getCourseLimit().subscribe(res=>{
-      this.courselist=res
+    this.admin.getsubscriberlimit().subscribe(res=>{
+      console.log(res);
+      
+      this.subscriberlist=res
     })
 
     this.refreash()
@@ -93,24 +94,24 @@ export class PublisherManageCourseComponent implements OnInit {
   }
   onApply(){
     const value = this.filterForm.value
-    this.publisher.getsort(value['sortwith'],value['sortby']).subscribe(res=>{
-        this.courselist=res
+    this.admin.getsort(value['sortwith'],value['sortby']).subscribe(res=>{
+        this.subscriberlist=res
       })
     // this.refreash()
   }
   getpagedata(pagerdata:any){
     this.isSelected=pagerdata
-    this.publisher.getpage(pagerdata*3).subscribe(res=>{
-        this.courselist=res
+    this.admin.getpage(pagerdata*3).subscribe(res=>{
+        this.subscriberlist=res
       })
   }
   pageActive(item:any){
     return this.isSelected==item
   }
   refreash(){
-    this.publisher.getCourse().subscribe(res=>{
+    this.admin.getsubscriber().subscribe(res=>{
       var list=res
-      this.AllCourse=res
+      this.AllsubscriberList=res
       this.rowsLength=[...list].length
       this.paggerno=Math.ceil([...list].length/3)
       this.fakearray=new Array(this.paggerno)
@@ -144,9 +145,9 @@ export class PublisherManageCourseComponent implements OnInit {
       confirmButtonText: 'Yes'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.publisher.getstatus(id,state).subscribe(res=>{
-          this.publisher.getCourseLimit().subscribe(res=>{
-            this.courselist=res
+        this.admin.getstatus(id,state).subscribe(res=>{
+          this.admin.getsubscriberlimit().subscribe(res=>{
+            this.subscriberlist=res
           })
         })
         this.snackBar.open(`${state}`,"close", {
@@ -157,10 +158,10 @@ export class PublisherManageCourseComponent implements OnInit {
     })
   }
   exportAsXLSX():void {
-    this.excelService.exportAsExcelFile(this.AllCourse, 'sample');
+    this.excelService.exportAsExcelFile(this.AllsubscriberList, 'sample');
   }
   onAdd(){
-    this.dialog.open(DialogCourseComponent)
+    this.dialog.open(DialogTutorialComponent)
   }
 }
 
