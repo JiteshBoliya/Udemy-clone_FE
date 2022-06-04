@@ -49,6 +49,15 @@ import { PublisherManageTutorialComponent } from './publisher/publisher-manage-t
 import { DialogTutorialComponent } from './shared/dailogs/dialog-tutorial/dialog-tutorial.component';
 import { PublisherRatingComponent } from './publisher/publisher-rating/publisher-rating.component';
 import { NgxPrintModule } from "ngx-print";
+// import { AngularFireModule } from '@angular/fire';
+import { AngularFireModule } from "@angular/fire";
+import {
+  AngularFireStorageModule,
+  AngularFireStorageReference,
+  AngularFireUploadTask,
+  StorageBucket
+} from "@angular/fire/storage";
+import { environment } from '../environments/environment';
 @NgModule({
   declarations: [
     //Subscriber
@@ -104,7 +113,9 @@ import { NgxPrintModule } from "ngx-print";
     BrowserAnimationsModule,
     DataTablesModule,
     NgxEditorModule,
-    NgxPrintModule
+    NgxPrintModule,
+    AngularFireModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig, "cloud")
   ],
   providers: [],
   bootstrap: [AppComponent]

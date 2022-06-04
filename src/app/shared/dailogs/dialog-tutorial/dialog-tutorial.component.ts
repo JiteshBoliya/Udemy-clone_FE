@@ -13,6 +13,7 @@ export class DialogTutorialComponent implements OnInit {
   html!: '';
   typesOfShoes: string[] = ['Boots', 'Clogs', 'Loafers', 'Moccasins', 'Sneakers'];
   urls = new Array<string>();
+  videos= new Array<string>();
   constructor() { }
 
   ngOnInit(): void {
@@ -43,16 +44,13 @@ export class DialogTutorialComponent implements OnInit {
         let reader = new FileReader();
         reader.onload = (e: any) => {
           this.urls.push(e.target.result);
+          this.videos.push(file.name)
         }
         reader.readAsDataURL(file);
       }
     }
   }
   remove(i:any){
-    console.log(i);
-    console.log(this.urls);
-    
     this.urls.splice(i,1);
-    console.log(this.urls);
   }
 }
