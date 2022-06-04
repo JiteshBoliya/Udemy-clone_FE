@@ -50,13 +50,12 @@ import { DialogTutorialComponent } from './shared/dailogs/dialog-tutorial/dialog
 import { PublisherRatingComponent } from './publisher/publisher-rating/publisher-rating.component';
 import { NgxPrintModule } from "ngx-print";
 // import { AngularFireModule } from '@angular/fire';
-import { AngularFireModule } from "@angular/fire";
+import { AngularFireModule } from "@angular/fire/compat";
 import {
   AngularFireStorageModule,
   AngularFireStorageReference,
-  AngularFireUploadTask,
-  StorageBucket
-} from "@angular/fire/storage";
+  AngularFireUploadTask
+} from "@angular/fire/compat/storage";
 import { environment } from '../environments/environment';
 @NgModule({
   declarations: [
