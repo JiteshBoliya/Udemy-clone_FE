@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthGuard } from 'src/app/shared/service/auth.guard';
+import { AuthService } from 'src/app/shared/service/auth.service';
+import { LoginService } from 'src/app/shared/service/login.service';
 
 @Component({
   selector: 'app-nav',
@@ -7,10 +11,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavComponent implements OnInit {
   manuopen!:Boolean
-  constructor() { }
+  user!: any;
+  constructor(private auth:AuthService,
+              private login:LoginService,) { }
 
   ngOnInit(): void {
     this.manuopen=false
+    this.auth.usersubject.subscribe(res=>{
+      if(res==null){
+        this.login.getUserInfo(localStorage.getItem('UID')).subscribe(res=>{
+          this.auth.updateUser(res)
+        })
+      }
+      this.user=res
+      console.log(this.user);
+      
+    })
+   
   }
   manuop(){
     this.manuopen=!this.manuopen

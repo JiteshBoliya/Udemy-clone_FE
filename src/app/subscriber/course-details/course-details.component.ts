@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthGuard } from 'src/app/shared/service/auth.guard';
 
 @Component({
   selector: 'app-course-details',
@@ -7,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CourseDetailsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authGurd: AuthGuard,
+              private router: Router,) { }
 
   ngOnInit(): void {
+    // if (this.authGurd.canActivate() == false) this.router.navigate([''])
   }
 
 }

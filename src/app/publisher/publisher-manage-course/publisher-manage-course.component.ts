@@ -41,6 +41,7 @@ export class PublisherManageCourseComponent implements OnInit {
   paggerno!:any
   fakearray!:any
   isSelected!:any
+  panelOpenState=false
   constructor(private router: Router,
     private authGurd: AuthGuard,
     private dialog: MatDialog,

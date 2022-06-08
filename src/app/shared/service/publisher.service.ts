@@ -10,6 +10,18 @@ export class PublisherService {
   constructor(private http:HttpClient) { }
 
   // #Publisher
+  getCatagory(){
+    return this.http.get<any>(`${this.Url}/Catagory`)
+  }
+  getSpecification(){
+    return this.http.get<any>(`${this.Url}/Specification`)
+  }
+  getCourseList_ById(id:any){
+    return this.http.get<any>(`${this.Url}/courseList/`+id)
+  }
+  getTutorialList_ById(id:any){
+    return this.http.get<any>(`${this.Url}/tutorialList/`+id)
+  }
   getCourse(){
     return this.http.get<any>(`${this.Url}/course`)
   }
@@ -24,5 +36,17 @@ export class PublisherService {
   }
   getstatus(id:any,status:any){
     return this.http.get<any>(`${this.Url}/course/statusChange/${id}/${status}`)
+  }
+  uploadCourse(data:any){
+    return this.http.post<any>(`${this.Url}/course/AddCourse`,data)
+  }
+  uploadtutorial(data:any){
+    return this.http.post<any>(`${this.Url}/course/AddTutorial`,data)
+  }
+  updateLock(id:any,lock:any){
+    return this.http.get<any>(`${this.Url}/tutorialList/update-Lock/${id}/${lock}`)
+  }
+  updateProfile(id:any,data:any){
+    return this.http.get<any>(`${this.Url}/publisher/update/${id}`,data)
   }
 }

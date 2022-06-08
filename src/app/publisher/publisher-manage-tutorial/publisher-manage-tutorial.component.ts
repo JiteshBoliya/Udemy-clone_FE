@@ -13,6 +13,7 @@ import * as XLSX from 'xlsx'
 import { ExcelService } from 'src/app/shared/service/excel.service';
 import { DialogCourseComponent } from 'src/app/shared/dailogs/dialog-course/dialog-course.component';
 import { DialogTutorialComponent } from 'src/app/shared/dailogs/dialog-tutorial/dialog-tutorial.component';
+import { PublisherService } from 'src/app/shared/service/publisher.service';
 @Component({
   selector: 'app-publisher-manage-tutorial',
   templateUrl: './publisher-manage-tutorial.component.html',
@@ -21,12 +22,13 @@ import { DialogTutorialComponent } from 'src/app/shared/dailogs/dialog-tutorial/
 export class PublisherManageTutorialComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
   persons!: any[];
+  panelOpenState = false;
 
   @ViewChild('fileInput') fileInput!: ElementRef;
   public userForm !: FormGroup;
   public filterForm !: FormGroup;
-  // public slidetoggle!: FormGroup
-  AllsubscriberList!:any
+
+  // AllsubscriberList!:any
   block!:boolean
   userData!: any
   user!: any
@@ -35,12 +37,13 @@ export class PublisherManageTutorialComponent implements OnInit {
   text!: any;
   path!: any
   imageSrc!: any;
-  subscriberlist!: any;
+  Tutoriallist!: any;
   isUpdate: boolean = false;
   lenth!:any
   paggerno!:any
   fakearray!:any
   isSelected!:any
+  CourseList: any;
   constructor(private router: Router,
     private authGurd: AuthGuard,
     private dialog: MatDialog,
@@ -49,7 +52,9 @@ export class PublisherManageTutorialComponent implements OnInit {
     private activeRoute: ActivatedRoute,
     private http: HttpClient,
     private admin:AdminService,
-    private excelService:ExcelService) { }
+    private excelService:ExcelService,
+    private publisher:PublisherService,
+    private publisherService: PublisherService,) { }
 
   ngOnInit(): void {
 
@@ -63,22 +68,17 @@ export class PublisherManageTutorialComponent implements OnInit {
       dob: new FormControl("", Validators.required),
       file: new FormControl("", Validators.required)
     })
-
+    this.publisherService.getCourseList_ById(localStorage.getItem('UID')).subscribe(res=>{
+      this.CourseList=res
+    })
     this.filterForm=new FormGroup({
       sortwith:new FormControl(''),
       sortby:new FormControl('')
     })
-    // this.slidetoggle=new FormGroup({
-    //   block:new FormControl('')
-    // })
-    this.admin.getsubscriberlimit().subscribe(res=>{
-      console.log(res);
-      
-      this.subscriberlist=res
+    this.publisher.getTutorialList_ById(localStorage.getItem('UID')).subscribe(res=>{
+        this.Tutoriallist=res  
     })
-
     this.refreash()
-
     this.userData = ''
   }
 
@@ -86,7 +86,6 @@ export class PublisherManageTutorialComponent implements OnInit {
     this.text = imgFile.target.files[0].name
     this.image = imgFile.target.files[0]
     console.log(imgFile.target.files[0]);
-
     const file = imgFile.target.files[0];
     const reader = new FileReader();
     reader.onload = e => this.imageSrc = reader.result;
@@ -94,24 +93,23 @@ export class PublisherManageTutorialComponent implements OnInit {
   }
   onApply(){
     const value = this.filterForm.value
-    this.admin.getsort(value['sortwith'],value['sortby']).subscribe(res=>{
-        this.subscriberlist=res
+    this.publisher.getsort(value['sortwith'],value['sortby']).subscribe(res=>{
+        this.Tutoriallist=res
       })
     // this.refreash()
   }
   getpagedata(pagerdata:any){
     this.isSelected=pagerdata
-    this.admin.getpage(pagerdata*3).subscribe(res=>{
-        this.subscriberlist=res
+    this.publisher.getpage(pagerdata*3).subscribe(res=>{
+        this.Tutoriallist=res
       })
   }
   pageActive(item:any){
     return this.isSelected==item
   }
   refreash(){
-    this.admin.getsubscriber().subscribe(res=>{
+    this.publisher.getTutorialList_ById(localStorage.getItem('UID')).subscribe(res=>{
       var list=res
-      this.AllsubscriberList=res
       this.rowsLength=[...list].length
       this.paggerno=Math.ceil([...list].length/3)
       this.fakearray=new Array(this.paggerno)
@@ -123,11 +121,10 @@ export class PublisherManageTutorialComponent implements OnInit {
   }
   
   open(user: any) {
-    // this.deshboard.userData = user
     this.dialog.open(DialogAdduserComponent).afterClosed().subscribe(res=>{
-      // this.deshboard.getUserlist().subscribe(res => {
-      //   this.userlist = res
-      // })
+      this.publisher.getTutorialList_ById(localStorage.getItem('UID')).subscribe(res=>{
+          this.Tutoriallist=res
+      })
     })
   }
   
@@ -147,7 +144,7 @@ export class PublisherManageTutorialComponent implements OnInit {
       if (result.isConfirmed) {
         this.admin.getstatus(id,state).subscribe(res=>{
           this.admin.getsubscriberlimit().subscribe(res=>{
-            this.subscriberlist=res
+            this.Tutoriallist=res
           })
         })
         this.snackBar.open(`${state}`,"close", {
@@ -158,10 +155,19 @@ export class PublisherManageTutorialComponent implements OnInit {
     })
   }
   exportAsXLSX():void {
-    this.excelService.exportAsExcelFile(this.AllsubscriberList, 'sample');
+    this.excelService.exportAsExcelFile(this.Tutoriallist, 'sample');
   }
   onAdd(){
     this.dialog.open(DialogTutorialComponent)
+  }
+  updateLock(id:any,lock:any){
+    this.publisherService.updateLock(id,lock).subscribe(res=>{  
+    this.publisher.getTutorialList_ById(localStorage.getItem('UID')).subscribe(res=>{
+      this.Tutoriallist=res  
+      console.log("updated");
+      
+      })
+    })
   }
 }
 

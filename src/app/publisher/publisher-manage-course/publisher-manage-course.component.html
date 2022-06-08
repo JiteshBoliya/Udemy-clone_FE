@@ -112,7 +112,7 @@
                     <tr>
                       <th>Image</th>
                       <th>title</th>
-                      <th>Description</th>
+                      <!-- <th>Description</th> -->
                       <th>UploadOn</th>
                       <!-- <th>Duration</th>
                       <th>Lesson</th> -->
@@ -124,12 +124,29 @@
                   <tbody align="center">
                     <tr *ngFor="let course of courselist; let index = index">
                       <!-- <td>{{ index + 1 }}</td> -->
-                      <td>Image</td>
-                      <td>{{ course.title }}</td>
-                      <td>{{ course.description }}</td>
+                      <td><img src="{{course.image}}" alt="Image" srcset="{{course.image}}" style="height: 50px; width:100px"> </td>
+                      <!-- <td>{{ course.title }}</td> -->
+                      <td style="font-size: small;"> 
+                        <mat-accordion>
+                          <mat-expansion-panel
+                            (opened)="panelOpenState = true"
+                            (closed)="panelOpenState = false"
+                          >
+                            <mat-expansion-panel-header
+                              style="box-shadow: 0px 0px 5px black"
+                            >
+                              <mat-panel-title>{{ course.title }}</mat-panel-title>
+                              <mat-panel-description>
+                              
+                              </mat-panel-description>
+                            </mat-expansion-panel-header>
+                            <div [innerHTML]="course.description"></div>
+                          </mat-expansion-panel>
+                        </mat-accordion>  
+                      </td>
                       <td>{{ course.uploadDate }}</td>
                       <td>{{ course.price }}/-</td>
-                      <td>{{ course.catagory }}</td>
+                      <td>{{ course.catagory?.name }}</td>
                       <td>
                         <i class="fas fa-trash-alt " style="color: red;cursor: pointer;"></i> | 
                         <i class="fas fa-pen " style="color: green;cursor: pointer;"></i>

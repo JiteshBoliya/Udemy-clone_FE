@@ -67,20 +67,20 @@
                                                     <input type="checkbox" class="checkbox-primary" />
                                                     <label> All </label>
                                                 </div>
-                                                <p class="check-details">
+                                                <!-- <p class="check-details">
                                                     1,54,750
-                                                </p>
+                                                </p> -->
                                             </div>
-                                            <div class="accordion-body__item">
+                                            <div class="accordion-body__item" *ngFor="let catList of catagoryList">
                                                 <div class="check-box">
                                                     <input type="checkbox" class="checkbox-primary" />
-                                                    <label> Development </label>
+                                                    <label>{{catList.name}} </label>
                                                 </div>
-                                                <p class="check-details">
+                                                <!-- <p class="check-details">
                                                     45,770
-                                                </p>
+                                                </p> -->
                                             </div>
-                                            <div class="accordion-body__item">
+                                            <!-- <div class="accordion-body__item">
                                                 <div class="check-box">
                                                     <input type="checkbox" class="checkbox-primary" />
                                                     <label> Finance & Accounting </label>
@@ -133,13 +133,13 @@
                                                 <p class="check-details">
                                                     70
                                                 </p>
-                                            </div>
+                                            </div> -->
                                         </form>
                                     </div>
                                 </div>
                             </div>
                             <!-- Level  -->
-                            <div class="accordion-item">
+                            <!-- <div class="accordion-item">
                                 <h2 class="accordion-header" id="levelAcc">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#levelCollapse" aria-expanded="false" aria-controls="levelCollapse">
                                         Level
@@ -196,7 +196,7 @@
                                         </form>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                             <!-- Price  -->
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingThree">
@@ -322,7 +322,7 @@
                                 </div>
                             </div>
                             <!-- Duration  -->
-                            <div class="accordion-item">
+                            <!-- <div class="accordion-item">
                                 <h2 class="accordion-header" id="durationAcc">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#durationCollapse" aria-expanded="false" aria-controls="durationCollapse">
                                         Duration
@@ -379,7 +379,7 @@
                                         </form>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                     <div class="col-lg-8">

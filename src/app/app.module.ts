@@ -49,7 +49,6 @@ import { PublisherManageTutorialComponent } from './publisher/publisher-manage-t
 import { DialogTutorialComponent } from './shared/dailogs/dialog-tutorial/dialog-tutorial.component';
 import { PublisherRatingComponent } from './publisher/publisher-rating/publisher-rating.component';
 import { NgxPrintModule } from "ngx-print";
-// import { AngularFireModule } from '@angular/fire';
 import { AngularFireModule } from "@angular/fire/compat";
 import {
   AngularFireStorageModule,
@@ -57,6 +56,9 @@ import {
   AngularFireUploadTask
 } from "@angular/fire/compat/storage";
 import { environment } from '../environments/environment';
+import { UploadDetailsComponent } from './shared/file-upload/upload-details/upload-details.component';
+import { UploadListComponent } from './shared/file-upload/upload-list/upload-list.component';
+// import { FileUpload } from './shared/models/file-upload';
 @NgModule({
   declarations: [
     //Subscriber
@@ -101,7 +103,9 @@ import { environment } from '../environments/environment';
     PublisherManageTutorialComponent,
     DialogTutorialComponent,
     PublisherRatingComponent,
-
+    UploadDetailsComponent,
+    UploadListComponent,
+   
   ],
   imports: [
     BrowserModule,
@@ -114,7 +118,8 @@ import { environment } from '../environments/environment';
     NgxEditorModule,
     NgxPrintModule,
     AngularFireModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig, "cloud")
+    AngularFireModule.initializeApp(environment.firebaseConfig, "cloud"),
+    // FileUpload
   ],
   providers: [],
   bootstrap: [AppComponent]

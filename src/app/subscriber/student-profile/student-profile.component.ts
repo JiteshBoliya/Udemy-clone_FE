@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { AdminService } from 'src/app/shared/service/admin.service';
 import { AuthService } from 'src/app/shared/service/auth.service';
 import { LoginService } from 'src/app/shared/service/login.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-student-profile',
@@ -16,7 +18,8 @@ export class StudentProfileComponent implements OnInit {
   constructor(private admin:AdminService,
               private snackBar: MatSnackBar,
               private auth:AuthService,
-              private login:LoginService) { }
+              private login:LoginService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.profileForm = new FormGroup({
@@ -60,6 +63,25 @@ export class StudentProfileComponent implements OnInit {
       });
     })
 
+  }
+  resetpass(){
+
+  }
+  Logout(){
+    Swal.fire({
+      title: 'Are you sure to Logout ?',
+      text: ``,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        localStorage.clear()
+        this.router.navigate([''])  
+      }
+    })
   }
 
 }

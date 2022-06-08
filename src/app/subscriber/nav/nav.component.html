@@ -89,8 +89,13 @@
                         <span class="badge bg-primary">2</span>
                         <span class="visually-hidden">Items Added</span>
                     </a>
-                    <a  class="button button--text" routerLinkActive="active" routerLink="../signin" aria-current="signin">Sign in</a>
-                    <a  class="button button--dark" routerLink="../student-profile" aria-current="signup">Profile</a>
+                    <a *ngIf="user==null" class="button button--text" routerLinkActive="active" routerLink="../signin" aria-current="signin">Sign in</a>
+                    <div *ngIf="user!=null">
+                        <a *ngIf="user.data.type=='subscriber'" class="button button--dark" routerLink="../student-profile" aria-current="signup">Dashboard</a>
+                        <a *ngIf="user.data.type=='publisher'" class="button button--dark" routerLink="../publisher-dashboard" aria-current="signup">Dashboard</a>
+                        <a *ngIf="user.data.type=='admin'" class="button button--dark" routerLink="../Admin-dashboard" aria-current="signup">Dashboard</a>
+                    </div>
+                    
                 </div>
             </div>
 

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { AdminService } from 'src/app/shared/service/admin.service';
+import { AuthGuard } from 'src/app/shared/service/auth.guard';
 
 @Component({
   selector: 'app-contact',
@@ -11,7 +13,9 @@ import { AdminService } from 'src/app/shared/service/admin.service';
 export class ContactComponent implements OnInit {
   public contactForm !: FormGroup;
   constructor(private admin:AdminService,
-              private snackBar: MatSnackBar,) { }
+              private snackBar: MatSnackBar,
+              private authGurd: AuthGuard,
+              private router: Router,) { }
 
   ngOnInit(): void {
     this.contactForm = new FormGroup({

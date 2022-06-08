@@ -4,7 +4,7 @@
             <div class="white-bg">
                 <div class="students-info-form">
                     <h6 class="font-title--card">Your Information</h6>
-                    <form >
+                    <form [formGroup]="profileForm" (ngSubmit)="save()" >
                         <div class="row g-3">
                             <div class="col-lg-6">
                                 <label for="fname">Name</label>

@@ -1,11 +1,12 @@
 <div style="height: 700px; width: 1000px">
+  <form [formGroup]="courseForm" (ngSubmit)="onadd()">
   <div class="row">
-    <div class="col-lg-9 order-2 order-lg-0">
+    <div class="col-lg-8 order-2 order-lg-0">
       <div class="white-bg">
         <div class="students-info-form">
           <h6 class="font-title--card">Course information</h6>
           <hr>
-          <form [formGroup]="courseForm" (ngSubmit)="onadd()">
+          
             <div class="row g-3">
               <div class="col-lg-12">
                 <label for="fname">Title</label>
@@ -38,11 +39,9 @@
                 </div>
                 <div class="col-lg-6">
                   <label for="nationality">Catagory</label>
-                  <select name="catagory" id="" class="form-control" style="height: 55px;">
-                      <option value="">abc</option>
-                      <option value="">xyz</option>
-                      <option value="">pqr</option>
-                      <option value="">mno</option>
+                  <select name="catagory" id="" class="form-control"  formControlName="catagory" placeholder="Selet Catagory">
+                    <!-- <option value="">alll</option> -->
+                      <option *ngFor="let catagory of CatagoryList" value="{{catagory?._id}}">{{catagory?.name}}</option>
                   </select>
                 </div>
               </div>
@@ -89,39 +88,53 @@
                 
               </div>
             </div> -->
-          </form>
         </div>
       </div>
     </div>
-    <div class="col-lg-3 order-1 order-lg-0 mt-4 mt-lg-0">
+    <div class="col-lg-4 order-1 order-lg-0 mt-4 mt-lg-0">
       <div class="white-bg">
         <div class="change-image-wizard">
-          <div class=" mx-auto">
+          <div class=" mx-auto" align="center">
             <img
-              src="https://education.ec.europa.eu/sites/default/files/styles/eac_ratio_16_9_xl/public/2021-12/Planning%20your%20studies.jpg?h=140710cd&itok=EDqz50YE"
+              src="{{ img?img:'https://cdn-icons-png.flaticon.com/128/254/254491.png'}}"
               alt="User"
+              style="height: 150px;"
             />
           </div>
-          <form action="#">
+          <!-- <form > -->
             <div class="d-flex justify-content-center">
-              <button type="submit" class="button button--primary-outline">
-                CHANGE iMAGE
+              <button
+                type="button"
+                class="btn btn-success"
+                mat-raised-button
+                (click)="fileInput.click()"
+              >
+              Change Image
               </button>
+              <input
+                type="file"
+                #fileInput
+                multiple
+                (change)="detectFiles($event)"
+                hidden
+              />
             </div>
-          </form>
+          <!-- </form> -->
           <!-- <p>Image size should be under 1MB image ratio 200px.</p> -->
         </div>
         <hr>
         <label for="pnumber">Specification</label>
-                <mat-selection-list #shoes>
-                    <mat-list-option *ngFor="let shoe of typesOfShoes">
-                      {{shoe}}
+                <mat-selection-list>
+                    <mat-list-option *ngFor="let list of SpecificationList" color="primary">
+                      {{list.name}}
                     </mat-list-option>
-                  </mat-selection-list><hr>
+                  </mat-selection-list>
+                  <hr>
                   <button class="button button-lg button--primary" type="submit">
                     Save Changes
                   </button>
       </div>
     </div>
   </div>
+</form>
 </div>
