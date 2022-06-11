@@ -1,11 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { FileUpload } from 'src/app/shared/models/file-upload';
 import { AdminService } from 'src/app/shared/service/admin.service';
 import { AuthService } from 'src/app/shared/service/auth.service';
+import { FileUploadService } from 'src/app/shared/service/file-upload.service';
 import { LoginService } from 'src/app/shared/service/login.service';
+import { UserService } from 'src/app/shared/service/user.service';
 import Swal from 'sweetalert2';
+import { RessetPasswordComponent } from '../resset-password/resset-password.component';
 
 @Component({
   selector: 'app-student-profile',
@@ -14,12 +19,24 @@ import Swal from 'sweetalert2';
 })
 export class StudentProfileComponent implements OnInit {
   user!: any
+  courseList!:any
   public profileForm !: FormGroup;
+  publisherDetail: any;
+  TotalEnrollCourse: any;
+  SubscriberDetail: any;
+  file: any;
+  img: any;
+  currentFileUpload: any;
+  basepath: any;
+  uploadImage: any;
   constructor(private admin:AdminService,
               private snackBar: MatSnackBar,
               private auth:AuthService,
               private login:LoginService,
-              private router: Router) { }
+              private router: Router,
+              public userservice:UserService,
+              private uploadService: FileUploadService,
+              private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.profileForm = new FormGroup({
@@ -38,9 +55,20 @@ export class StudentProfileComponent implements OnInit {
       }
       this.user=res
     })
+    this.userservice.getCourse(this.user?this.user.data._id:localStorage.getItem('UID')).subscribe(res=>{
+      this.courseList=res
+      console.log(res);
+      
+    })
+    this.userservice.getTotal_EnrollCourse(this.user?this.user.data._id:localStorage.getItem('UID')).subscribe(res=>{
+      this.TotalEnrollCourse=res
+    })
+     this.userservice.getSubscriberDetail(this.user?this.user.data._id:localStorage.getItem('UID')).subscribe(res=>{
+      this.SubscriberDetail=res
+      this.img=this.SubscriberDetail.image
+    })
   }
   OnSubmit(){
-    console.log("hiii");
     
     const formData = new FormData()
     formData.append('firstname', this.profileForm.get('firstname')?.value)
@@ -65,7 +93,7 @@ export class StudentProfileComponent implements OnInit {
 
   }
   resetpass(){
-
+    this.dialog.open(RessetPasswordComponent)
   }
   Logout(){
     Swal.fire({
@@ -79,9 +107,40 @@ export class StudentProfileComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         localStorage.clear()
+        this.userservice.user=null
         this.router.navigate([''])  
       }
     })
   }
-
+  // getPublisher(id:any){
+  //   this.userservice.getpublisher(id).subscribe(res=>{
+  //     this.publisherDetail=res
+  //   })
+  // }
+  detectFiles(event:any) {
+    const reader = new FileReader();
+    if(event.target.files && event.target.files.length) {
+      this.file = event.target.files; 
+      reader.readAsDataURL(this.file[0]);
+      reader.onload = () => {
+        this.img = reader.result as string;
+      };
+    }
+    this.uploadimg()
+  }
+  uploadimg(){
+    this.currentFileUpload = new FileUpload(this.file[0]);
+    console.log(this.currentFileUpload);
+    
+    this.basepath = `Subscriber`
+       this.uploadService.pushFileToStorage(this.currentFileUpload,this.basepath).subscribe(async res=>{
+       await this.uploadService.getLink().map(res => {
+           this.uploadImage= res;
+           console.log(this.uploadImage);
+         })
+       },
+       error => {
+           console.log(error);
+       }); 
+ }
 }

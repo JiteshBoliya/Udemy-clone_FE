@@ -10,6 +10,7 @@ import { UserService } from 'src/app/shared/service/user.service';
 })
 export class CourseSearchComponent implements OnInit {
   catagoryList: any;
+  courseList: any;
 
   constructor(private user:UserService,
               private authGurd: AuthGuard,
@@ -19,7 +20,9 @@ export class CourseSearchComponent implements OnInit {
     this.user.getCatagory().subscribe(res=>{
       this.catagoryList=res
     })
-    // if (this.authGurd.canActivate() == false) this.router.navigate([''])
+    this.user.getAll_Course().subscribe(res=>{
+      this.courseList=res
+    })
   }
 
 }

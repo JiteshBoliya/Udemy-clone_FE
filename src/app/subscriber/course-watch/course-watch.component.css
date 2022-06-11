@@ -1,3 +1,6 @@
-body{
+.body{
     background-color: #ebebf2
 }
+video {
+    object-fit:cover;
+  }

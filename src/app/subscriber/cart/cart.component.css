@@ -1,3 +1,10 @@
 .body{
     background-color: #ebebf2  
 }
+.trash-icon:hover{
+    background-color: wheat;
+    padding: 5px;
+    border-radius: 20px;
+    box-shadow: 0px 2px 5px gray ;
+    cursor: pointer;
+}

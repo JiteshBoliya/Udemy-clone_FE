@@ -32,17 +32,17 @@ const routes: Routes = [
   //Subscriber
   {
     path:'', 
-    redirectTo:'/home', 
+    redirectTo:'home', 
     pathMatch:'full'
   },
   { path: 'home', component: HomeComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'course-search', component: CourseSearchComponent },
-  { path: 'course-details', component: CourseDetailsComponent },
-  { path: 'course-watches', component: CourseWatchComponent },
+  { path: 'course-details/:id', component: CourseDetailsComponent },
+  { path: 'course-watches/:id', component: CourseWatchComponent },
   { path: 'about', component: AboutComponent },
   { path: 'student-profile', component: StudentProfileComponent },
-  { path: 'instructor-profile', component: InstructorProfileComponent },
+  { path: 'instructor-profile/:id', component: InstructorProfileComponent },
   { path: 'cart', component: CartComponent },
   { path: 'checkout', component: CheckoutComponent },
   { path: 'signin', component: SigninComponent },

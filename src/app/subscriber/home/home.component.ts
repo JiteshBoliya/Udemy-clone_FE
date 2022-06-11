@@ -10,13 +10,21 @@ import { UserService } from 'src/app/shared/service/user.service';
 })
 export class HomeComponent implements OnInit {
 catagoryList:any
+  courseList: any;
   constructor(private user:UserService,
               private authGurd: AuthGuard,
-              private router: Router,) { }
+              private router: Router,
+              public userservice:UserService) { }
 
   ngOnInit(): void {
+    this.userservice.user=null
+    // console.log('call');
+    
     this.user.getCatagory().subscribe(res=>{
       this.catagoryList=res
+    })
+    this.user.getSome_Course().subscribe(res=>{
+      this.courseList=res
     })
     if (this.authGurd.canActivate() == false) this.router.navigate([''])
   }

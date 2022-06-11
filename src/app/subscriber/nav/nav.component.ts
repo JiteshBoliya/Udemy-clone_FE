@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthGuard } from 'src/app/shared/service/auth.guard';
 import { AuthService } from 'src/app/shared/service/auth.service';
 import { LoginService } from 'src/app/shared/service/login.service';
+import { UserService } from 'src/app/shared/service/user.service';
 
 @Component({
   selector: 'app-nav',
@@ -11,23 +12,29 @@ import { LoginService } from 'src/app/shared/service/login.service';
 })
 export class NavComponent implements OnInit {
   manuopen!:Boolean
-  user!: any;
+  cartArray=new Array();
+  // user!: any;
   constructor(private auth:AuthService,
-              private login:LoginService,) { }
+              private login:LoginService,
+              private authGurd: AuthGuard,
+              private router: Router,
+              public userservice:UserService) { }
 
   ngOnInit(): void {
     this.manuopen=false
+    // this.userservice.user=null
     this.auth.usersubject.subscribe(res=>{
       if(res==null){
         this.login.getUserInfo(localStorage.getItem('UID')).subscribe(res=>{
           this.auth.updateUser(res)
         })
       }
-      this.user=res
-      console.log(this.user);
-      
+      this.userservice.user=res
+      // console.log(this.user);
     })
-   
+    let data: any = localStorage.getItem('cartarray') ? localStorage.getItem('cartarray') : '[]'
+    this.cartArray = JSON.parse(data)
+    
   }
   manuop(){
     this.manuopen=!this.manuopen

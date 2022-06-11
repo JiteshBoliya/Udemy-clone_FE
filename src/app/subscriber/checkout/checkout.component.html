@@ -39,7 +39,7 @@
                             </ul>
                             <div class="tab-content" id="pills-tabContent">
                                 <div class="tab-pane fade show active" id="pills-checkout" role="tabpanel" aria-labelledby="pills-checkout-tab">
-                                    <form action="#">
+                                    <form>
                                         <div class="mb-3">
                                             <label for="card-name-one">Name on Card</label>
                                             <input type="text" class="form-control" placeholder="Type here" id="card-name-one" />
@@ -68,43 +68,12 @@
                                                 </label>
                                             </div>
                                         </div>
-                                        <button type="submit" class="button button-lg button--primary w-100">Confirm Payment</button>
+                                        <button type="button" class="button button-lg button--primary w-100" >Confirm Payment</button>
+                                        <!-- <a href="index.html">hey</a> -->
                                     </form>
                                 </div>
 
-                                <div class="tab-pane fade" id="pills-paypal" role="tabpanel" aria-labelledby="pills-paypal-tab">
-                                    <form action="#">
-                                        <div class="mb-3">
-                                            <label for="card-name-two">Name on Card</label>
-                                            <input type="text" class="form-control" placeholder="Type here" id="card-name-two" />
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="card-number-two">Card Number</label>
-                                            <input type="text" class="form-control" placeholder="Type here" id="card-number-two" />
-                                        </div>
-                                        <div class="mb-3">
-                                            <div class="row">
-                                                <div class="col-md-6 mb-3 mb-lg-0">
-                                                    <label for="expiration-date-two">Expiration Date (MM/YY)</label>
-                                                    <input type="text" class="form-control" placeholder="Type here" id="expiration-date-two" />
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label for="cvc-two">CVC</label>
-                                                    <input type="text" class="form-control" id="cvc-two" placeholder="Type here" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="mb-4">
-                                            <div class="form-check d-flex align-items-center ps-0">
-                                                <input type="checkbox" id="flexCheckIndeterminate-two" />
-                                                <label class="form-check-label ms-2 mb-0" for="flexCheckIndeterminate-two">
-                                                    Save my information for a faster checkout
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <button type="submit" class="button button-lg button--primary w-100">Confirm Payment</button>
-                                    </form>
-                                </div>
+                                
                             </div>
                         </div>
                     </div>

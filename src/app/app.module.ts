@@ -58,7 +58,7 @@ import {
 import { environment } from '../environments/environment';
 import { UploadDetailsComponent } from './shared/file-upload/upload-details/upload-details.component';
 import { UploadListComponent } from './shared/file-upload/upload-list/upload-list.component';
-// import { FileUpload } from './shared/models/file-upload';
+
 @NgModule({
   declarations: [
     //Subscriber
