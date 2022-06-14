@@ -15,6 +15,15 @@ export class CourseDetailsComponent implements OnInit {
   courseDetails: any;
   curriculam: any;
   cartArray=new Array()
+  rating = Array()
+  commentList: any;
+  SubScriber: any;
+  AllcommentList=new Array();
+  totalAvg: any;
+  avg: any;
+  fakeArray = new Array();
+  star = new Array(5);
+  avgStar= new Array(5);
   constructor(private authGurd: AuthGuard,
               private router: Router,
               private route: ActivatedRoute,
@@ -31,6 +40,22 @@ export class CourseDetailsComponent implements OnInit {
     this.user.get_tutorial(this.CourseId).subscribe(res=>{
       this.curriculam=res
     })
+    this.refresh()
+  }
+
+  refresh() {
+    this.user.getcommentCourse(this.route.snapshot.paramMap.get('id')).subscribe(res=>{
+      this.commentList=res
+    })
+    this.user.getcommentCourseAll(this.route.snapshot.paramMap.get('id')).subscribe(res=>{
+      this.AllcommentList=res
+      this.ratingAvg()
+      this.ratingAvgList()
+      this.fakeArray = new Array(this.avg);    
+    })
+  }
+  loadAll(){
+    this.commentList=this.AllcommentList
   }
   addToCart(course:any){
     let Coursedetail={
@@ -62,4 +87,37 @@ export class CourseDetailsComponent implements OnInit {
     console.log(this.cartArray);
     
   }
+
+  ratingAvg(){
+    let total=0
+    this.AllcommentList.map(res=>{
+     total+=res.rating;
+    })
+    if(total==0 || this.AllcommentList.length ==0) this.avg = 0
+    else this.avg=Math.round(total/this.AllcommentList.length)
+  }
+  ratingAvgList(){
+    this.star=[0,0,0,0,0]
+    this.AllcommentList.map(res=>{
+      if(res.rating==5) this.star[4]++ 
+      if(res.rating==4) this.star[3]++
+      if(res.rating==3) this.star[2]++
+      if(res.rating==2) this.star[1]++
+      if(res.rating==1) this.star[0]++
+    })
+    console.log(this.star);
+    
+    for(let i=0;i<5;i++){
+      if(this.star[i]==0 || this.AllcommentList.length==0) this.avgStar[i] = 0
+      else this.avgStar[i]=Math.round(this.star[i]/this.AllcommentList.length*100)
+    }
+  }
+  starData(data:any){
+    let ratData=new Array()
+    for(let i=0;i<data;i++){
+      ratData[i]=data
+    }
+    return ratData
+  }
+
 }

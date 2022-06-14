@@ -48,76 +48,16 @@
 
             <div class="card-header">
                 <h1 class="card-title" style="padding: 10px">
-                  <!-- <h1 class="" style="padding: 10px;"> -->
-                  <!-- <i class="fa-duotone fa-list-timeline"></i> -->
-  
                   Rating and Review list
-                  <!-- </h1> -->
                 </h1>
-                <!-- <button
-                    style="float: right; margin-left: 2px"
-                    class="btn btn-info"
-                    data-widget="control-sidebar"
-                    data-controlsidebar-slide="true"
-                  >
-                    <i class="fa-solid fa-filter"></i>
-                    filter
-                  </button> -->
-                <!-- <button
-                    style="float: right"
-                    class="btn btn-primary"
-                    (click)="onCreate()"
-                  >
-                    + Add
-                  </button>
-     -->
                 <br>
                 <mat-form-field class="example-full-width" appearance="fill" style="width: 100%;">
                     <mat-select placeholder="Select Course">
-                        <mat-option [value]="">abc</mat-option>
-                        <mat-option [value]="">xyzsdfgggggggggggggggggggggggcccccccccccc</mat-option>
-                        <mat-option [value]="">pqr</mat-option>
-                        <mat-option [value]="">mno</mat-option>
+                        <mat-option *ngFor="let course of courseList" [value]="course._id">{{course.title}}</mat-option>
                     </mat-select>
                     </mat-form-field>
-
-                <!-- <button class="btn btn-primary" (click)="exportAsXLSX()">export As XLSX</button> -->
-        
               </div>
-              <!-- /.card-header -->
               <div class="card-body">
-                <!-- <div class="row">
-                    <div class="col-md-2 mb-4 courseCard" >
-                        <div class="contentCard contentCard--course">
-                            <div class="contentCard-top" >
-                                <a routerLink="../course-details"><img src="https://eduguard-html.netlify.app/dist/images/courses/demo-img-04.png" alt="images" class="img-fluid" /></a>
-                            </div>
-                            <div class="contentCard-bottom">
-                                <h5>
-                                    <a   class="font-title--card">Chicago International Conference on Education</a>
-                                </h5>
-                                <div class="row contentCard-more">
-                                    <div class="col-md-4 d-flex align-items-center">
-                                        <div class="icon">
-                                            <img src="https://eduguard-html.netlify.app/dist/images/icon/star.png" alt="star" />
-                                        </div>
-                                        <span>4.5</span>
-                                    </div>
-                                    <div class=" col-md-4 eye d-flex align-items-center">
-                                        <div class="icon">
-                                            <img src="https://eduguard-html.netlify.app/dist/images/icon/eye.png" alt="eye" />
-                                        </div>
-                                        <span>24,517</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <button class="btn btn-outline-primary" style="width: 100%;"> View Rating</button>
-                        </div>
-                    </div>
-                </div> -->
-
                 <div class="table-responsive" >
                   <table
                     datatable
@@ -127,7 +67,7 @@
                     <thead align="center">
                       <tr>
                         <th>Name</th>
-                        <th>Course</th>
+                        <th>Publisher</th>
                         <th>Date</th>
                         <th>Rating</th>
                         <th>Review</th>
@@ -135,13 +75,13 @@
                       </tr>
                     </thead>
                     <tbody align="center">
-                      <tr *ngFor="let user of subscriberlist; let index = index">
+                      <tr *ngFor="let rate of ratings; let index = index">
+                        <td>{{ rate.user.firstname }}</td>
+                        <td>{{rate.publisher.name}}</td>
+                        <td>{{rate.uploadDate | date:"medium"}}</td>
+                        <td><span class="badge" style="background-color: blue;width: fit-content;">{{ rate.rating}} / 5</span> </td>
+                        <td>{{rate.review}}</td>
                         
-                        <td>Image</td>
-                        <td>{{ user.firstname }}</td>
-                        <td>{{ user.phoneno ? user : "abc@123"}}</td>
-                        <td>1</td>
-                        <td>1</td>
                         <td>
                             <i class="fas fa-trash-alt " style="color: red;"></i>
                         </td>

@@ -49,4 +49,10 @@ export class PublisherService {
   updateProfile(id:any,data:any){
     return this.http.get<any>(`${this.Url}/publisher/update/${id}`,data)
   }
+  getCoursebyPublisher(id:any){
+    return this.http.get<any>(`${this.Url}/publisher/course/`+id)
+  }
+  getPublisherDetail(id:any){
+    return this.http.get<any>(`${this.Url}/publisherById/`+id)
+  }
 }

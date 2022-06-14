@@ -1,0 +1,92 @@
+/* Dynamic  Variables */
+
+  i {
+    &.hoveredStars, &.clickedStars {
+      background-color: var(--Color);
+    }
+  }
+  
+  /* Document Styles, the below are actually Unnecessary */
+  
+  // * {
+  //   background-color: #def4f0;
+  //   color: black;
+  //   text-align: center;
+  //   font-family: sans-serif;
+  //   font-size: 24px;
+  // }
+  
+  // h1 {
+  //   font-size: 1.75em;
+  //   color: #444;
+  // }
+  
+  // #main {
+  //   position: absolute;
+  //   margin: 0 auto;
+  //   top: 25%;
+  //   left: 50%;
+  // }
+  
+  // #container {
+  //   position: relative;
+  //   left: -50%;
+  // }
+  
+  form {
+    margin-top: 65px;
+  
+    > * {
+      display: inline-block;
+    }
+  
+    input[type="submit"] {
+      background-color: #400082;
+      color: white;
+      margin: 25px 25px 0 0;
+      padding: 10px;
+      border-radius: 15px;
+      transition: 0.1s ease-in-out;
+  
+      &:hover {
+        background-color: #200052;
+        transform: translate(0, -3px);
+      }
+  
+      &:active {
+        transform: translate(0, 1px);
+      }
+    }
+  }
+  
+  #ratingVal {
+    position: absolute;
+    color: white;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.9);
+    padding: 12px 20px;
+    font-family: sans-serif;
+    border-radius: 5px;
+  }
+  
+  /* Icons, somewhat necessary */
+  
+  form > i {
+    user-select: none;
+    color: white;
+    background-color: #bbb;
+    font-size: 1.2em;
+    transition: .1s ease-in-out;
+    padding: 10px;
+    border-radius: 10px;
+  
+    &:hover {
+      box-shadow: 1px 1.5px 3px #555;
+      transform: translate(0, -3px);
+    }
+  
+    &:active {
+      transform: translate(0, 1px);
+    }
+  }

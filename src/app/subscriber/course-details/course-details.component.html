@@ -305,7 +305,7 @@
                                                                                 stroke-linejoin="round"
                                                                             />
                                                                         </svg>
-                                                                        <p class="font-para--md">4.9 Star Rating</p>
+                                                                        <p class="font-para--md">{{avg}} Star Rating</p>
                                                                     </div>
                                                                     <div class="d-flex align-items-center ratings-icon">
                                                                         <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -462,8 +462,7 @@
 
                                                                     <a href="#">Brandon Dias</a>
                                                                 </div>
-                                                                <div class="price">
-                                                                    <del>$95</del>
+                                                                <div class="price"> 
                                                                     <span>$12</span>
                                                                 </div>
                                                             </div>
@@ -1320,7 +1319,7 @@
                                                 <div class="col-lg-12">
                                                     <div class="instructor-rating-area d-flex">
                                                         <div class="rating-number">
-                                                            <h2>4.6</h2>
+                                                            <h2>{{avg}}</h2>
                                                             <div class="rating-icon">
                                                                 <ul class="list-inline">
                                                                     <li class="list-inline-item">
@@ -1485,10 +1484,10 @@
                                                                     </ul>
                                                                 </div>
                                                                 <div class="rating-range-item-bar">
-                                                                    <div class="rating-width" style="width: 60%;"></div>
+                                                                    <div class="rating-width" [ngStyle]="{width: avgStar[4]+'%'}"></div>
                                                                 </div>
                                                                 <div class="rating-range-item-percent">
-                                                                    <p>59%</p>
+                                                                    <p>{{avgStar[4]}}%</p>
                                                                 </div>
                                                             </div>
                                                             <div class="rating-range-item d-flex align-items-center four-star">
@@ -1577,10 +1576,10 @@
                                                                     </ul>
                                                                 </div>
                                                                 <div class="rating-range-item-bar">
-                                                                    <div class="rating-width" style="width: 60%;"></div>
+                                                                    <div class="rating-width" [ngStyle]="{width: avgStar[3]+'%'}"></div>
                                                                 </div>
                                                                 <div class="rating-range-item-percent">
-                                                                    <p>31%</p>
+                                                                    <p>{{avgStar[3]}}%</p>
                                                                 </div>
                                                             </div>
                                                             <div class="rating-range-item d-flex align-items-center three-star">
@@ -1669,10 +1668,10 @@
                                                                     </ul>
                                                                 </div>
                                                                 <div class="rating-range-item-bar">
-                                                                    <div class="rating-width" style="width: 60%;"></div>
+                                                                    <div class="rating-width" [ngStyle]="{width: avgStar[2]+'%'}"></div>
                                                                 </div>
                                                                 <div class="rating-range-item-percent">
-                                                                    <p>1%</p>
+                                                                    <p>{{avgStar[2]}}%</p>
                                                                 </div>
                                                             </div>
                                                             <div class="rating-range-item d-flex align-items-center two-star">
@@ -1761,10 +1760,10 @@
                                                                     </ul>
                                                                 </div>
                                                                 <div class="rating-range-item-bar">
-                                                                    <div class="rating-width" style="width: 60%;"></div>
+                                                                    <div class="rating-width" [ngStyle]="{width: avgStar[1]+'%'}"></div>
                                                                 </div>
                                                                 <div class="rating-range-item-percent">
-                                                                    <p>1%</p>
+                                                                    <p>{{avgStar[1]}}%</p>
                                                                 </div>
                                                             </div>
                                                             <div class="rating-range-item d-flex align-items-center one-star">
@@ -1853,18 +1852,18 @@
                                                                     </ul>
                                                                 </div>
                                                                 <div class="rating-range-item-bar">
-                                                                    <div class="rating-width" style="width: 60%;"></div>
+                                                                    <div class="rating-width" [ngStyle]="{width: avgStar[0]+'%'}"></div>
                                                                 </div>
                                                                 <div class="rating-range-item-percent">
-                                                                    <p>1%</p>
+                                                                    <p>{{avgStar[0]}}%</p>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="students-feedback">
                                                         <div class="students-feedback-heading">
-                                                            <h5 class="font-title--card">Students Feedback <span>(57,685)</span></h5>
-                                                            <div class="right">
+                                                            <h5 class="font-title--card">Students Feedback <span>({{AllcommentList.length }})</span></h5>
+                                                            <!-- <div class="right">
                                                                 <h6 class="font-para--md">Sort by:</h6>
                                                                 <div class="dropdown ms-2">
                                                                     <button class="dropdown-toggle font-para--md border-0 bg-white" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
@@ -1888,88 +1887,24 @@
                                                                         </li>
                                                                     </ul>
                                                                 </div>
-                                                            </div>
+                                                            </div> -->
                                                         </div>
-                                                        <div class="students-feedback-item">
+                                                        <div class="students-feedback-item" *ngFor="let comment of commentList">
                                                             <div class="feedback-rating">
                                                                 <div class="feedback-rating-start">
                                                                     <div class="image">
-                                                                        <img src="https://eduguard-html.netlify.app/dist/images/ellipse/user.jpg" alt="Image" />
+                                                                        <img src="{{comment.user?comment.user.image:'https://eduguard-html.netlify.app/dist/images/ellipse/user.jpg'}}" alt="Image" />
                                                                     </div>
                                                                     <div class="text">
                                                                         <h6 class="font-para--md">
-                                                                            <a href="students-profile.html">Harry Pinsky</a>
+                                                                            <a href="students-profile.html">{{comment.user.firstname}} {{comment.user.lastname}}</a>
                                                                         </h6>
-                                                                        <p>1 hour ago</p>
+                                                                        <p>{{comment.uploadDate | date:'medium'}}</p>
                                                                     </div>
                                                                 </div>
                                                                 <div class="feedback-rating-end">
                                                                     <ul class="testimonial__item-star d-flex align-items-center">
-                                                                        <li>
-                                                                            <svg
-                                                                                xmlns="http://www.w3.org/2000/svg"
-                                                                                width="24"
-                                                                                height="24"
-                                                                                viewBox="0 0 24 24"
-                                                                                fill="currentColor"
-                                                                                stroke="currentColor"
-                                                                                stroke-width="2"
-                                                                                stroke-linecap="round"
-                                                                                stroke-linejoin="round"
-                                                                                class="feather feather-star"
-                                                                            >
-                                                                                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                                                                            </svg>
-                                                                        </li>
-                                                                        <li>
-                                                                            <svg
-                                                                                xmlns="http://www.w3.org/2000/svg"
-                                                                                width="24"
-                                                                                height="24"
-                                                                                viewBox="0 0 24 24"
-                                                                                fill="currentColor"
-                                                                                stroke="currentColor"
-                                                                                stroke-width="2"
-                                                                                stroke-linecap="round"
-                                                                                stroke-linejoin="round"
-                                                                                class="feather feather-star"
-                                                                            >
-                                                                                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                                                                            </svg>
-                                                                        </li>
-                                                                        <li>
-                                                                            <svg
-                                                                                xmlns="http://www.w3.org/2000/svg"
-                                                                                width="24"
-                                                                                height="24"
-                                                                                viewBox="0 0 24 24"
-                                                                                fill="currentColor"
-                                                                                stroke="currentColor"
-                                                                                stroke-width="2"
-                                                                                stroke-linecap="round"
-                                                                                stroke-linejoin="round"
-                                                                                class="feather feather-star"
-                                                                            >
-                                                                                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                                                                            </svg>
-                                                                        </li>
-                                                                        <li>
-                                                                            <svg
-                                                                                xmlns="http://www.w3.org/2000/svg"
-                                                                                width="24"
-                                                                                height="24"
-                                                                                viewBox="0 0 24 24"
-                                                                                fill="currentColor"
-                                                                                stroke="currentColor"
-                                                                                stroke-width="2"
-                                                                                stroke-linecap="round"
-                                                                                stroke-linejoin="round"
-                                                                                class="feather feather-star"
-                                                                            >
-                                                                                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                                                                            </svg>
-                                                                        </li>
-                                                                        <li>
+                                                                        <li *ngFor="let i of starData(comment.rating);">
                                                                             <svg
                                                                                 xmlns="http://www.w3.org/2000/svg"
                                                                                 width="24"
@@ -1989,311 +1924,10 @@
                                                                 </div>
                                                             </div>
                                                             <p class="font-para--md">
-                                                                Aliquam eget leo quis neque molestie dictum. Etiam ut tortor tempor, vestibulum ante non, vulputate nibh. Cras non molestie diam. Great Course for Beginner 😀
-                                                            </p>
-                                                        </div>
-                                                        <div class="students-feedback-item">
-                                                            <div class="feedback-rating">
-                                                                <div class="feedback-rating-start">
-                                                                    <div class="image">
-                                                                        <img src="https://eduguard-html.netlify.app/dist/images/ellipse/1.png" alt="Image" />
-                                                                    </div>
-                                                                    <div class="text">
-                                                                        <h6><a href="#">Harry Pinsky</a></h6>
-                                                                        <p>2 hour ago</p>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="feedback-rating-end">
-                                                                    <ul class="testimonial__item-star d-flex align-items-center">
-                                                                        <li>
-                                                                            <svg
-                                                                                xmlns="http://www.w3.org/2000/svg"
-                                                                                width="24"
-                                                                                height="24"
-                                                                                viewBox="0 0 24 24"
-                                                                                fill="currentColor"
-                                                                                stroke="currentColor"
-                                                                                stroke-width="2"
-                                                                                stroke-linecap="round"
-                                                                                stroke-linejoin="round"
-                                                                                class="feather feather-star"
-                                                                            >
-                                                                                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                                                                            </svg>
-                                                                        </li>
-                                                                        <li>
-                                                                            <svg
-                                                                                xmlns="http://www.w3.org/2000/svg"
-                                                                                width="24"
-                                                                                height="24"
-                                                                                viewBox="0 0 24 24"
-                                                                                fill="currentColor"
-                                                                                stroke="currentColor"
-                                                                                stroke-width="2"
-                                                                                stroke-linecap="round"
-                                                                                stroke-linejoin="round"
-                                                                                class="feather feather-star"
-                                                                            >
-                                                                                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                                                                            </svg>
-                                                                        </li>
-                                                                        <li>
-                                                                            <svg
-                                                                                xmlns="http://www.w3.org/2000/svg"
-                                                                                width="24"
-                                                                                height="24"
-                                                                                viewBox="0 0 24 24"
-                                                                                fill="currentColor"
-                                                                                stroke="currentColor"
-                                                                                stroke-width="2"
-                                                                                stroke-linecap="round"
-                                                                                stroke-linejoin="round"
-                                                                                class="feather feather-star"
-                                                                            >
-                                                                                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                                                                            </svg>
-                                                                        </li>
-                                                                        <li>
-                                                                            <svg
-                                                                                xmlns="http://www.w3.org/2000/svg"
-                                                                                width="24"
-                                                                                height="24"
-                                                                                viewBox="0 0 24 24"
-                                                                                fill="currentColor"
-                                                                                stroke="currentColor"
-                                                                                stroke-width="2"
-                                                                                stroke-linecap="round"
-                                                                                stroke-linejoin="round"
-                                                                                class="feather feather-star"
-                                                                            >
-                                                                                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                                                                            </svg>
-                                                                        </li>
-                                                                        <li>
-                                                                            <svg
-                                                                                xmlns="http://www.w3.org/2000/svg"
-                                                                                width="24"
-                                                                                height="24"
-                                                                                viewBox="0 0 24 24"
-                                                                                fill="currentColor"
-                                                                                stroke="currentColor"
-                                                                                stroke-width="2"
-                                                                                stroke-linecap="round"
-                                                                                stroke-linejoin="round"
-                                                                                class="feather feather-star"
-                                                                            >
-                                                                                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                                                                            </svg>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                            <p class="font-para--md">
-                                                                Aliquam eget leo quis neque molestie dictum. Etiam ut tortor tempor, vestibulum ante non, vulputate nibh.
-                                                            </p>
-                                                        </div>
-                                                        <div class="students-feedback-item">
-                                                            <div class="feedback-rating">
-                                                                <div class="feedback-rating-start">
-                                                                    <div class="image">
-                                                                        <img src="https://eduguard-html.netlify.app/dist/images/ellipse/2.png" alt="Image" />
-                                                                    </div>
-                                                                    <div class="text">
-                                                                        <h6><a href="#">Watcraz Eggsy</a></h6>
-                                                                        <p>1 day ago</p>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="feedback-rating-end">
-                                                                    <ul class="testimonial__item-star d-flex align-items-center">
-                                                                        <li>
-                                                                            <svg
-                                                                                xmlns="http://www.w3.org/2000/svg"
-                                                                                width="24"
-                                                                                height="24"
-                                                                                viewBox="0 0 24 24"
-                                                                                fill="currentColor"
-                                                                                stroke="currentColor"
-                                                                                stroke-width="2"
-                                                                                stroke-linecap="round"
-                                                                                stroke-linejoin="round"
-                                                                                class="feather feather-star"
-                                                                            >
-                                                                                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                                                                            </svg>
-                                                                        </li>
-                                                                        <li>
-                                                                            <svg
-                                                                                xmlns="http://www.w3.org/2000/svg"
-                                                                                width="24"
-                                                                                height="24"
-                                                                                viewBox="0 0 24 24"
-                                                                                fill="currentColor"
-                                                                                stroke="currentColor"
-                                                                                stroke-width="2"
-                                                                                stroke-linecap="round"
-                                                                                stroke-linejoin="round"
-                                                                                class="feather feather-star"
-                                                                            >
-                                                                                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                                                                            </svg>
-                                                                        </li>
-                                                                        <li>
-                                                                            <svg
-                                                                                xmlns="http://www.w3.org/2000/svg"
-                                                                                width="24"
-                                                                                height="24"
-                                                                                viewBox="0 0 24 24"
-                                                                                fill="currentColor"
-                                                                                stroke="currentColor"
-                                                                                stroke-width="2"
-                                                                                stroke-linecap="round"
-                                                                                stroke-linejoin="round"
-                                                                                class="feather feather-star"
-                                                                            >
-                                                                                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                                                                            </svg>
-                                                                        </li>
-                                                                        <li>
-                                                                            <svg
-                                                                                xmlns="http://www.w3.org/2000/svg"
-                                                                                width="24"
-                                                                                height="24"
-                                                                                viewBox="0 0 24 24"
-                                                                                fill="currentColor"
-                                                                                stroke="currentColor"
-                                                                                stroke-width="2"
-                                                                                stroke-linecap="round"
-                                                                                stroke-linejoin="round"
-                                                                                class="feather feather-star"
-                                                                            >
-                                                                                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                                                                            </svg>
-                                                                        </li>
-                                                                        <li>
-                                                                            <svg
-                                                                                xmlns="http://www.w3.org/2000/svg"
-                                                                                width="24"
-                                                                                height="24"
-                                                                                viewBox="0 0 24 24"
-                                                                                fill="currentColor"
-                                                                                stroke="currentColor"
-                                                                                stroke-width="2"
-                                                                                stroke-linecap="round"
-                                                                                stroke-linejoin="round"
-                                                                                class="feather feather-star"
-                                                                            >
-                                                                                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                                                                            </svg>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                            <p class="font-para--md">
-                                                                Aenean vulputate nisi ligula. Quisque in tempus sapien. Quisque vestibulum massa eget consequat scelerisque. Phasellus varius risus nec maximus auctor.
-                                                            </p>
-                                                        </div>
-                                                        <div class="students-feedback-item border-0">
-                                                            <div class="feedback-rating">
-                                                                <div class="feedback-rating-start">
-                                                                    <div class="image">
-                                                                        <img src="https://eduguard-html.netlify.app/dist/images/ellipse/3.png" alt="Image" />
-                                                                    </div>
-                                                                    <div class="text">
-                                                                        <h6><a href="#">Watcraz Eggsy</a></h6>
-                                                                        <p>1 day ago</p>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="feedback-rating-end">
-                                                                    <ul class="testimonial__item-star d-flex align-items-center">
-                                                                        <li>
-                                                                            <svg
-                                                                                xmlns="http://www.w3.org/2000/svg"
-                                                                                width="24"
-                                                                                height="24"
-                                                                                viewBox="0 0 24 24"
-                                                                                fill="currentColor"
-                                                                                stroke="currentColor"
-                                                                                stroke-width="2"
-                                                                                stroke-linecap="round"
-                                                                                stroke-linejoin="round"
-                                                                                class="feather feather-star"
-                                                                            >
-                                                                                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                                                                            </svg>
-                                                                        </li>
-                                                                        <li>
-                                                                            <svg
-                                                                                xmlns="http://www.w3.org/2000/svg"
-                                                                                width="24"
-                                                                                height="24"
-                                                                                viewBox="0 0 24 24"
-                                                                                fill="currentColor"
-                                                                                stroke="currentColor"
-                                                                                stroke-width="2"
-                                                                                stroke-linecap="round"
-                                                                                stroke-linejoin="round"
-                                                                                class="feather feather-star"
-                                                                            >
-                                                                                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                                                                            </svg>
-                                                                        </li>
-                                                                        <li>
-                                                                            <svg
-                                                                                xmlns="http://www.w3.org/2000/svg"
-                                                                                width="24"
-                                                                                height="24"
-                                                                                viewBox="0 0 24 24"
-                                                                                fill="currentColor"
-                                                                                stroke="currentColor"
-                                                                                stroke-width="2"
-                                                                                stroke-linecap="round"
-                                                                                stroke-linejoin="round"
-                                                                                class="feather feather-star"
-                                                                            >
-                                                                                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                                                                            </svg>
-                                                                        </li>
-                                                                        <li>
-                                                                            <svg
-                                                                                xmlns="http://www.w3.org/2000/svg"
-                                                                                width="24"
-                                                                                height="24"
-                                                                                viewBox="0 0 24 24"
-                                                                                fill="currentColor"
-                                                                                stroke="currentColor"
-                                                                                stroke-width="2"
-                                                                                stroke-linecap="round"
-                                                                                stroke-linejoin="round"
-                                                                                class="feather feather-star"
-                                                                            >
-                                                                                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                                                                            </svg>
-                                                                        </li>
-                                                                        <li>
-                                                                            <svg
-                                                                                xmlns="http://www.w3.org/2000/svg"
-                                                                                width="24"
-                                                                                height="24"
-                                                                                viewBox="0 0 24 24"
-                                                                                fill="currentColor"
-                                                                                stroke="currentColor"
-                                                                                stroke-width="2"
-                                                                                stroke-linecap="round"
-                                                                                stroke-linejoin="round"
-                                                                                class="feather feather-star"
-                                                                            >
-                                                                                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                                                                            </svg>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                            <p class="font-para--md">
-                                                                Cras non molestie diam. Aenean vulputate nisi ligula. Quisque in tempus sapien. Quisque vestibulum massa eget consequat scelerisque.
-                                                            </p>
+                                                                {{comment.review}} </p>
                                                         </div>
                                                         <div class="text-center">
-                                                            <button class="button button-md button--primary-outline" type="button">
+                                                            <button class="button button-md button--primary-outline" (click)="loadAll()" type="button">
                                                                 Load more
                                                             </button>
                                                         </div>

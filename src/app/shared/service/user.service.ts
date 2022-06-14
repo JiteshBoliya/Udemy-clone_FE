@@ -51,4 +51,25 @@ export class UserService {
   getPublisherListlimit(){
     return this.http.get<any>(`${this.Url}/publisher/some`)
   }
+  setComment(data:any){
+    return this.http.post<any>(`${this.Url}/rating`,data)
+  }
+  getcommentPublisher(id:any){
+    return this.http.get<any>(`${this.Url}/rating/publisher/`+id)
+  }
+  getcommentCourse(id:any){
+    return this.http.get<any>(`${this.Url}/rating/course/`+id)
+  }
+  getcommentPublisherAll(id:any){
+    return this.http.get<any>(`${this.Url}/rating/publisher/All/`+id)
+  }
+  getcommentCourseAll(id:any){
+    return this.http.get<any>(`${this.Url}/rating/course/All/`+id)
+  }
+  sendInvoice(data:any){
+    return this.http.post<any>(`${this.Url}/invoice`,data)
+  }
+  getPublisherDetailById(id:any){
+    return this.http.get<any>(`${this.Url}/publisherById/`+id)
+  }
 }

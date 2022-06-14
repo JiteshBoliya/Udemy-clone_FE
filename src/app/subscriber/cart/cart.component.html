@@ -91,13 +91,15 @@
               <h6 class="font-title--card">Total:</h6>
               <p class="font-title--card">{{total | currency:"INR"}}</p>
             </div>
-            <form action="#">
+            <form >
               <a
-                routerLink="../checkout"
+                (click)="makePayment(total)"
                 class="button button-lg button--primary form-control mb-lg-3"
                 [hidden]="total==0"
                 >Checkout</a
               >
+
+              
               <!-- <label for="coupon">Apply Coupon</label>
               <div class="cart-input">
                 <input
@@ -117,3 +119,4 @@
   <!-- Cart Section Ends Here -->
 </div>
 <app-footer></app-footer>
+

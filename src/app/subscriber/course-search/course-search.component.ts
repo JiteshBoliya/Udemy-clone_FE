@@ -10,7 +10,7 @@ import { UserService } from 'src/app/shared/service/user.service';
 })
 export class CourseSearchComponent implements OnInit {
   catagoryList: any;
-  courseList: any;
+  courseList=new Array();
 
   constructor(private user:UserService,
               private authGurd: AuthGuard,

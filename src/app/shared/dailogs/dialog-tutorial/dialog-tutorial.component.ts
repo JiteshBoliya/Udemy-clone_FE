@@ -28,10 +28,12 @@ export class DialogTutorialComponent implements OnInit {
   basepath = ""
   curriculams = new Array<any>()
   CourseList:any
+  publisherDetail: any;
   constructor(private uploadService: FileUploadService,
               private publisherService: PublisherService,
               private dialogRef:MatDialogRef<DialogTutorialComponent>,
-              private snackBar: MatSnackBar) { }
+              private snackBar: MatSnackBar,
+              private publisher:PublisherService) { }
 
   ngOnInit(): void {
 
@@ -42,15 +44,17 @@ export class DialogTutorialComponent implements OnInit {
       file: new FormControl(""),
     })
     this.editor = new Editor();
-    this.publisherService.getCourseList_ById(localStorage.getItem('UID')).subscribe(res=>{
-      this.CourseList=res
-      console.log(res);
-    
-      
-    },err=>{
-      console.log(err.massage);
-      
+    this.publisher.getPublisherDetail(localStorage.getItem('UID')).subscribe(res=>{
+      this.publisherDetail=res
+      this.publisherService.getCourseList_ById(this.publisherDetail._id).subscribe(res=>{
+        this.CourseList=res
+        console.log(res);
+      },err=>{
+        console.log(err.massage);
+        
+      })  
     })
+    
 
   }
   ngOnDestroy(): void {

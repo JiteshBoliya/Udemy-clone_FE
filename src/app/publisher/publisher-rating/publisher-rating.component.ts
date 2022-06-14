@@ -12,6 +12,8 @@ import { AdminService } from 'src/app/shared/service/admin.service';
 import * as XLSX from 'xlsx'
 import { ExcelService } from 'src/app/shared/service/excel.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { PublisherService } from 'src/app/shared/service/publisher.service';
+import { UserService } from 'src/app/shared/service/user.service';
 
 @Component({
   selector: 'app-publisher-rating',
@@ -41,6 +43,9 @@ export class PublisherRatingComponent implements OnInit {
   paggerno!:any
   fakearray!:any
   isSelected!:any
+  courseList=new Array();
+  publisherDetail: any;
+  ratings: any;
   constructor(private router: Router,
     private authGurd: AuthGuard,
     private dialog: MatDialog,
@@ -49,6 +54,8 @@ export class PublisherRatingComponent implements OnInit {
     private activeRoute: ActivatedRoute,
     private http: HttpClient,
     private admin:AdminService,
+    private publisher:PublisherService,
+    private User:UserService,
     private excelService:ExcelService,
     protected sanitizer: DomSanitizer) { }
 
@@ -69,15 +76,19 @@ export class PublisherRatingComponent implements OnInit {
       sortwith:new FormControl(''),
       sortby:new FormControl('')
     })
-    // this.slidetoggle=new FormGroup({
-    //   block:new FormControl('')
-    // })
     this.admin.getsubscriberlimit().subscribe(res=>{
-      console.log(res);
-      
       this.subscriberlist=res
     })
-
+    this.publisher.getCoursebyPublisher(localStorage.getItem('UID')).subscribe(res=>{
+      this.courseList=res
+    })
+    this.publisher.getPublisherDetail(localStorage.getItem('UID')).subscribe(res=>{
+      this.publisherDetail=res
+      this.User.getcommentPublisher(this.publisherDetail._id).subscribe(res=>{
+        console.log(res);
+        this.ratings=res
+      })
+    })
     this.refreash()
 
     this.userData = ''

@@ -31,82 +31,108 @@
                                     <!-- Lesson Comments Starts Here -->
                                     <div class="lesson-comments">
                                         <div class="feedback-comment pt-0 ps-0 pe-0">
-                                            <h6 class="font-title--card">Add a Public Comment</h6>
+
+                    <div class="feedback-comment">
+                        <form
+                          [formGroup]="RatingReviewForm"
+                          (ngSubmit)="addReview()"
+                        >
+                          <h6 class="font-title--card">Leave a Rating</h6>
+                          <i
+                            class="fas fa-star"
+                            style="color: rgb(255, 213, 23)"
+                            *ngFor="let rate of rating"
+                          ></i>
+                          <br />
+                          <select
+                            name="rating"
+                            id=""
+                            (change)="change($event)"
+                            formControlName="rate"
+                            [value]="0"
+                            class="form-control"
+                          >
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                          </select>
+                          <!-- <mat-slider
+                            thumbLabel
+                            tickInterval="1"
+                            step="1"
+                            min="0"
+                            max="5"
+                            aria-label="units"
+                            formControlName="rate"
+                            (input)="pitch($event)"
+                          ></mat-slider> -->
+                          <span>Rate us out of 5 😄️</span>
+                          <br /> <br>
+                          <label for="comment">Message</label>
+                          <textarea
+                            class="form-control"
+                            id="comment"
+                            placeholder="how is your feeling about the instructor"
+                            formControlName="comment"
+                          ></textarea>
+                          <button
+                            type="submit"
+                            class="button button-lg button--primary float-end"
+                          >
+                            Post Review
+                          </button>
+                        </form>
+                      </div>
+                                            <!-- <h6 class="font-title--card">Add a Public Comment</h6>
                                             <form action="#">
                                                 <label for="comment">Comment</label>
                                                 <textarea class="form-control" id="comment" placeholder="Add a Public Comment"></textarea>
                                                 <button type="submit" class="button button-md button--primary float-end">Post Comment</button>
-                                            </form>
+                                            </form> -->
                                         </div>
                                         <div class="students-feedback pt-0 ps-0 pe-0 pb-0 mb-0">
                                             <div class="students-feedback-heading">
-                                                <h5 class="font-title--card">Comments <span>(57,685)</span></h5>
+                                                <h5 class="font-title--card">Comments <span>({{this.AllcommentList.length}})</span></h5>
                                             </div>
-                                            <div class="students-feedback-item">
+                                            <div class="students-feedback-item" *ngFor="let comment of commentList">
                                                 <div class="feedback-rating">
                                                     <div class="feedback-rating-start">
                                                         <div class="image">
-                                                            <img src="https://eduguard-html.netlify.app/dist/images/ellipse/user.jpg" alt="Image" />
+                                                            <img src="{{comment.user?comment.user.image:'https://eduguard-html.netlify.app/dist/images/ellipse/user.jpg'}}" alt="Image" />
                                                         </div>
                                                         <div class="text">
-                                                            <h6><a href="#">Harry Pinsky</a></h6>
-                                                            <p>1 hour ago</p>
+                                                            <h6><a>{{comment.user?comment.user.firstname:''}}</a></h6>
+                                                            <p>{{comment.uploadDate | date:'medium'}}</p>
                                                         </div>
+                                                    </div>
+                                                    <div class="feedback-rating-end">
+                                                        <ul class="testimonial__item-star d-flex align-items-center">
+                                                            <li *ngFor="let i of starData(comment.rating);">
+                                                                <svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="24"
+                                                                    height="24"
+                                                                    viewBox="0 0 24 24"
+                                                                    fill="currentColor"
+                                                                    stroke="currentColor"
+                                                                    stroke-width="2"
+                                                                    stroke-linecap="round"
+                                                                    stroke-linejoin="round"
+                                                                    class="feather feather-star"
+                                                                >
+                                                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                                                </svg>
+                                                            </li>
+                                                        </ul>
                                                     </div>
                                                 </div>
                                                 <p>
-                                                    Aliquam eget leo quis neque molestie dictum. Etiam ut tortor tempor, vestibulum ante non, vulputate nibh. Cras non molestie diam. Great Course for Beginner 😀
+                                                    {{comment.review}}
                                                 </p>
                                             </div>
-                                            <div class="students-feedback-item">
-                                                <div class="feedback-rating">
-                                                    <div class="feedback-rating-start">
-                                                        <div class="image">
-                                                            <img src="https://eduguard-html.netlify.app/dist/images/ellipse/1.png" alt="Image" />
-                                                        </div>
-                                                        <div class="text">
-                                                            <h6><a href="#">Harry Pinsky</a></h6>
-                                                            <p>2 hour ago</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <p>
-                                                    Aliquam eget leo quis neque molestie dictum. Etiam ut tortor tempor, vestibulum ante non, vulputate nibh.
-                                                </p>
-                                            </div>
-                                            <div class="students-feedback-item">
-                                                <div class="feedback-rating">
-                                                    <div class="feedback-rating-start">
-                                                        <div class="image">
-                                                            <img src="https://eduguard-html.netlify.app/dist/images/ellipse/2.png" alt="Image" />
-                                                        </div>
-                                                        <div class="text">
-                                                            <h6><a href="#">Watcraz Eggsy</a></h6>
-                                                            <p>1 day ago</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <p>
-                                                    Aenean vulputate nisi ligula. Quisque in tempus sapien. Quisque vestibulum massa eget consequat scelerisque. Phasellus varius risus nec maximus auctor.
-                                                </p>
-                                            </div>
-                                            <div class="students-feedback-item border-0">
-                                                <div class="feedback-rating">
-                                                    <div class="feedback-rating-start">
-                                                        <div class="image">
-                                                            <img src="https://eduguard-html.netlify.app/dist/images/ellipse/3.png" alt="Image" />
-                                                        </div>
-                                                        <div class="text">
-                                                            <h6><a href="#">Watcraz Eggsy</a></h6>
-                                                            <p>1 day ago</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <p>
-                                                    Cras non molestie diam. Aenean vulputate nisi ligula. Quisque in tempus sapien. Quisque vestibulum massa eget consequat scelerisque.
-                                                </p>
-                                            </div>
-                                            <button class="button button-md button--primary-outline">Load More</button>
+                                            <button class="button button-md button--primary-outline" (click)="loadAll()">Load More</button>
                                         </div>
                                     </div>
                                     <!-- Lesson Comments Ends Here -->
