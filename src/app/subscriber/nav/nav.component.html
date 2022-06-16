@@ -2,7 +2,7 @@
     <nav class="navbar navbar-expand-xl navbar-light" >
         <div class="container">
             <!-- Logo -->
-            <a class="navbar-brand" routerLink="../Admin-dashboard">
+            <a class="navbar-brand" >
                 <img src="https://eduguard-html.netlify.app/dist/images/favicon/favicon.png
                 " alt="Logo" class="img-fluid" style="height: 50px ;"/>
             </a>
@@ -86,7 +86,7 @@
                                 fill="#35343E"
                             ></path>
                         </svg>
-                        <span class="badge bg-primary" *ngIf="cartArray.length>0" >{{cartArray.length}}</span>
+                        <span class="badge bg-primary" *ngIf="simsInCartLength>0 && simsInCartLength<50" >{{simsInCartLength}}</span>
                         <span class="visually-hidden">Items Added</span>
                     </a>
                     <a *ngIf="userservice.user==null" class="button button--text" routerLinkActive="active" routerLink="/signin" aria-current="signin">Sign in</a>

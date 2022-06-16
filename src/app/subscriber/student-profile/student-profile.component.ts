@@ -5,6 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { FileUpload } from 'src/app/shared/models/file-upload';
 import { AdminService } from 'src/app/shared/service/admin.service';
+import { AuthGuard } from 'src/app/shared/service/auth.guard';
 import { AuthService } from 'src/app/shared/service/auth.service';
 import { FileUploadService } from 'src/app/shared/service/file-upload.service';
 import { LoginService } from 'src/app/shared/service/login.service';
@@ -33,6 +34,7 @@ export class StudentProfileComponent implements OnInit {
               private snackBar: MatSnackBar,
               private auth:AuthService,
               private login:LoginService,
+              private authGurd: AuthGuard,
               private router: Router,
               public userservice:UserService,
               private uploadService: FileUploadService,
@@ -67,6 +69,9 @@ export class StudentProfileComponent implements OnInit {
       this.SubscriberDetail=res
       this.img=this.SubscriberDetail.image
     })
+
+  // #Auto logout
+  if (this.authGurd.canActivate() == false) this.router.navigate([''])
   }
   OnSubmit(){
     
@@ -108,7 +113,8 @@ export class StudentProfileComponent implements OnInit {
       if (result.isConfirmed) {
         localStorage.clear()
         this.userservice.user=null
-        this.router.navigate([''])  
+        this.router.navigate([''])
+        window.location.href = 'http://localhost:4200/home'  
       }
     })
   }

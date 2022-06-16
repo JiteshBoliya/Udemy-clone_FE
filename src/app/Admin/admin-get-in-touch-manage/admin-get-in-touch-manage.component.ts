@@ -51,29 +51,6 @@ export class AdminGetInTouchManageComponent implements OnInit {
     private excelService:ExcelService) { }
 
   ngOnInit(): void {
-    // const that = this;
-
-    // this.dtOptions = {
-    //   pagingType: 'full_numbers',
-    //   pageLength: 2,
-    //   serverSide: true,
-    //   processing: true,
-    //   ajax: (dataTablesParameters: any, callback:any) => {
-    //     this.admin.getpublisher().subscribe(resp => {
-    //         this.persons = resp;
-    //         callback({
-    //           recordsTotal: resp.recordsTotal,
-    //           recordsFiltered: resp.recordsFiltered,
-    //           data: []
-    //         });
-    //       });
-    //   },
-    //   columns: [{ data: 'Sr' },{ data: 'name' },{ data: 'Email' }, { data: 'phoneno' }]
-    // };
-
-    // this.deshboard.getUserDetail(localStorage.getItem('userid')).subscribe(res => {
-    //   this.user = res
-    // })
     this.isSelected=0
 
     this.userForm = new FormGroup({
@@ -89,9 +66,7 @@ export class AdminGetInTouchManageComponent implements OnInit {
       sortwith:new FormControl(''),
       sortby:new FormControl('')
     })
-    // this.slidetoggle=new FormGroup({
-    //   block:new FormControl('')
-    // })
+    
     this.admin.getGITLimit().subscribe(res=>{
       this.GITlist=res
     })
@@ -131,7 +106,7 @@ export class AdminGetInTouchManageComponent implements OnInit {
       var list=res
       this.AllGITList=res
       this.rowsLength=[...list].length
-      this.paggerno=Math.ceil([...list].length/3)
+      this.paggerno=Math.ceil([...list].length/10)
       this.fakearray=new Array(this.paggerno)
     })
   }

@@ -110,6 +110,8 @@
                   >
                     <thead align="center">
                       <tr>
+                        <th>Sr.</th>
+                        <th>Image</th>
                         <th>Name</th>
                         <th>Email</th>
                         <th>Subject</th>
@@ -120,7 +122,8 @@
                     </thead>
                     <tbody align="center">
                       <tr *ngFor="let user of GITlist; let index = index">
-                        <!-- <td>{{ index + 1 }}</td> -->
+                        <td>{{ index + 1 }}</td>
+                        <td><img src="{{user.image?user.image:'https://i.pinimg.com/474x/4b/71/f8/4b71f8137985eaa992d17a315997791e.jpg'}}" alt="{{user.image}}" height="50px"></td>
                         <td>{{ user.name }}</td>
                         <td>{{user.email}}</td>
                         <td>{{ user.Subject }}</td>

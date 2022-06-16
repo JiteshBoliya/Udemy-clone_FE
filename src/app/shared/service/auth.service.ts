@@ -33,7 +33,7 @@ export class AuthService {
               ) {}
 
   updateUser(data:any){
-    this.usersubject.next(data)}
+    return this.usersubject.next(data)}
 
   userLogin(user:any):Observable<any>{
     return this.http.post<any>(`${this.url}/login`,user)}

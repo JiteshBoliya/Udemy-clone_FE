@@ -34,7 +34,7 @@
                     </div>
                     <div class="col-lg-4">
                         <div class="icon-with-date d-flex align-items-lg-center">
-                            <div class="icon-with-date-start d-flex align-items-center">
+                            <!-- <div class="icon-with-date-start d-flex align-items-center">
                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path
                                         fill-rule="evenodd"
@@ -60,10 +60,10 @@
                                     <path d="M9 4.5V9L12 10.5" stroke="#FFC91B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
                                 </svg>
                                 <p class="font-para--md">3 Hours</p>
-                            </div>
+                            </div> -->
                         </div>
                         <div class="icon-with-date d-flex align-items-lg-cente mb-0">
-                            <div class="icon-with-date-start d-flex align-items-center">
+                            <!-- <div class="icon-with-date-start d-flex align-items-center">
                                 <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M1 9C1 9 4 3 9.25 3C14.5 3 17.5 9 17.5 9C17.5 9 14.5 15 9.25 15C4 15 1 9 1 9Z" stroke="#1089FF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
                                     <path
@@ -94,7 +94,7 @@
                                     />
                                 </svg>
                                 <p class="font-para--md">35 Lesson</p>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -1959,7 +1959,7 @@
                                         <button type="button" (click)="addToCart(courseDetails)" class="button button-lg button--primary w-100">
                                             Add to Cart
                                         </button>
-                                        <button type="button" routerLink="../course-watches" class="button button-lg button--primary-outline mt-3 w-100">
+                                        <button type="button" (click)="makePayment(courseDetails.price)" class="button button-lg button--primary-outline mt-3 w-100">
                                             Buy Now
                                         </button>
                                     </form>
@@ -2067,209 +2067,6 @@
         </section>
         <!-- Event Info Ends Here -->
 
-        <!-- <section class="section new-course-feature section--bg-offwhite-five">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-12">
-                        <h2 class="font-title--md text-center">Related Course</h2>
-                    </div>
-                    <div class="row">
-                        <div class="col-12 position-relative px-0 mx-0">
-                            <div class="new__courses row">
-                                <div class="contentCard contentCard--course contentCard--space col-md-3">
-                                    <div class="contentCard-top">
-                                        <a href="course-details.html"><img src="https://eduguard-html.netlify.app/dist/images/courses/demo-img-01.png" alt="images" class="img-fluid" /></a>
-                                    </div>
-                                    <div class="contentCard-bottom">
-                                        <h5>
-                                            <a href="course-details.html" class="font-title--card">Chicago International Conference on Education</a>
-                                        </h5>
-                                        <div class="contentCard-info d-flex align-items-center justify-content-between">
-                                            <a href="instructor-profile.html" class="contentCard-user d-flex align-items-center">
-                                                <img src="https://eduguard-html.netlify.app/dist/images/courses/7.png" alt="client-image" class="rounded-circle" />
-                                                <p class="font-para--md">Brandon Dias</p>
-                                            </a>
-                                            <div class="price">
-                                                <span>$12</span>
-                                                <del>$95</del>
-                                            </div>
-                                        </div>
-                                        <div class="contentCard-more">
-                                            <div class="d-flex align-items-center">
-                                                <div class="icon">
-                                                    <img src="https://eduguard-html.netlify.app/dist/images/icon/star.png" alt="star" />
-                                                </div>
-                                                <span>4.5</span>
-                                            </div>
-                                            <div class="eye d-flex align-items-center">
-                                                <div class="icon">
-                                                    <img src="https://eduguard-html.netlify.app/dist/images/icon/eye.png" alt="eye" />
-                                                </div>
-                                                <span>24,517</span>
-                                            </div>
-                                            <div class="book d-flex align-items-center">
-                                                <div class="icon">
-                                                    <img src="https://eduguard-html.netlify.app/dist/images/icon/book.png" alt="location" />
-                                                </div>
-                                                <span>37 Lesson</span>
-                                            </div>
-                                            <div class="clock d-flex align-items-center">
-                                                <div class="icon">
-                                                    <img src="https://eduguard-html.netlify.app/dist/images/icon/Clock.png" alt="clock" />
-                                                </div>
-                                                <span>3 Hours</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="contentCard contentCard--course contentCard--space col-md-3">
-                                    <div class="contentCard-top">
-                                        <a href="course-details.html"><img src="https://eduguard-html.netlify.app/dist/images/courses/demo-img-02.png" alt="images" class="img-fluid" /></a>
-                                    </div>
-                                    <div class="contentCard-bottom">
-                                        <h5>
-                                            <a href="course-details.html" class="font-title--card">Chicago International Conference on Education</a>
-                                        </h5>
-                                        <div class="contentCard-info d-flex align-items-center justify-content-between">
-                                            <a href="instructor-profile.html" class="contentCard-user d-flex align-items-center">
-                                                <img src="https://eduguard-html.netlify.app/dist/images/courses/7.png" alt="client-image" class="rounded-circle" />
-                                                <p class="font-para--md">Brandon Dias</p>
-                                            </a>
-                                            <div class="price">
-                                                <span>$12</span>
-                                                <del>$95</del>
-                                            </div>
-                                        </div>
-                                        <div class="contentCard-more">
-                                            <div class="d-flex align-items-center">
-                                                <div class="icon">
-                                                    <img src="https://eduguard-html.netlify.app/dist/images/icon/star.png" alt="star" />
-                                                </div>
-                                                <span>4.5</span>
-                                            </div>
-                                            <div class="eye d-flex align-items-center">
-                                                <div class="icon">
-                                                    <img src="https://eduguard-html.netlify.app/dist/images/icon/eye.png" alt="eye" />
-                                                </div>
-                                                <span>24,517</span>
-                                            </div>
-                                            <div class="book d-flex align-items-center">
-                                                <div class="icon">
-                                                    <img src="https://eduguard-html.netlify.app/dist/images/icon/book.png" alt="location" />
-                                                </div>
-                                                <span>37 Lesson</span>
-                                            </div>
-                                            <div class="clock d-flex align-items-center">
-                                                <div class="icon">
-                                                    <img src="https://eduguard-html.netlify.app/dist/images/icon/Clock.png" alt="clock" />
-                                                </div>
-                                                <span>3 Hours</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="contentCard contentCard--course contentCard--space col-md-3">
-                                    <div class="contentCard-top">
-                                        <a href="course-details.html"><img src="https://eduguard-html.netlify.app/dist/images/courses/demo-img-03.png" alt="images" class="img-fluid" /></a>
-                                    </div>
-                                    <div class="contentCard-bottom">
-                                        <h5>
-                                            <a href="course-details.html" class="font-title--card">Chicago International Conference on Education</a>
-                                        </h5>
-                                        <div class="contentCard-info d-flex align-items-center justify-content-between">
-                                            <a href="instructor-profile.html" class="contentCard-user d-flex align-items-center">
-                                                <img src="https://eduguard-html.netlify.app/dist/images/courses/7.png" alt="client-image" class="rounded-circle" />
-                                                <p class="font-para--md">Brandon Dias</p>
-                                            </a>
-                                            <div class="price">
-                                                <span>$12</span>
-                                                <del>$95</del>
-                                            </div>
-                                        </div>
-                                        <div class="contentCard-more">
-                                            <div class="d-flex align-items-center">
-                                                <div class="icon">
-                                                    <img src="https://eduguard-html.netlify.app/dist/images/icon/star.png" alt="star" />
-                                                </div>
-                                                <span>4.5</span>
-                                            </div>
-                                            <div class="eye d-flex align-items-center">
-                                                <div class="icon">
-                                                    <img src="https://eduguard-html.netlify.app/dist/images/icon/eye.png" alt="eye" />
-                                                </div>
-                                                <span>24,517</span>
-                                            </div>
-                                            <div class="book d-flex align-items-center">
-                                                <div class="icon">
-                                                    <img src="https://eduguard-html.netlify.app/dist/images/icon/book.png" alt="location" />
-                                                </div>
-                                                <span>37 Lesson</span>
-                                            </div>
-                                            <div class="clock d-flex align-items-center">
-                                                <div class="icon">
-                                                    <img src="https://eduguard-html.netlify.app/dist/images/icon/Clock.png" alt="clock" />
-                                                </div>
-                                                <span>3 Hours</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="contentCard contentCard--course contentCard--space col-md-3">
-                                    <div class="contentCard-top">
-                                        <a href="course-details.html"><img src="https://eduguard-html.netlify.app/dist/images/courses/demo-img-04.png" alt="images" class="img-fluid" /></a>
-                                    </div>
-                                    <div class="contentCard-bottom">
-                                        <h5>
-                                            <a href="course-details.html" class="font-title--card">Chicago International Conference on Education</a>
-                                        </h5>
-                                        <div class="contentCard-info d-flex align-items-center justify-content-between">
-                                            <a href="instructor-profile.html" class="contentCard-user d-flex align-items-center">
-                                                <img src="https://eduguard-html.netlify.app/dist/images/courses/7.png" alt="client-image" class="rounded-circle" />
-                                                <p class="font-para--md">Brandon Dias</p>
-                                            </a>
-                                            <div class="price">
-                                                <span>$12</span>
-                                                <del>$95</del>
-                                            </div>
-                                        </div>
-                                        <div class="contentCard-more">
-                                            <div class="d-flex align-items-center">
-                                                <div class="icon">
-                                                    <img src="https://eduguard-html.netlify.app/dist/images/icon/star.png" alt="star" />
-                                                </div>
-                                                <span>4.5</span>
-                                            </div>
-                                            <div class="eye d-flex align-items-center">
-                                                <div class="icon">
-                                                    <img src="https://eduguard-html.netlify.app/dist/images/icon/eye.png" alt="eye" />
-                                                </div>
-                                                <span>24,517</span>
-                                            </div>
-                                            <div class="book d-flex align-items-center">
-                                                <div class="icon">
-                                                    <img src="https://eduguard-html.netlify.app/dist/images/icon/book.png" alt="location" />
-                                                </div>
-                                                <span>37 Lesson</span>
-                                            </div>
-                                            <div class="clock d-flex align-items-center">
-                                                <div class="icon">
-                                                    <img src="https://eduguard-html.netlify.app/dist/images/icon/Clock.png" alt="clock" />
-                                                </div>
-                                                <span>3 Hours</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="new-course-overlay">
-                <img src="https://eduguard-html.netlify.app/dist/images/shape/circle5.png" alt="shape" class="img-fluid shape01" />
-                <img src="https://eduguard-html.netlify.app/dist/images/shape/dots/dots-img-15.png" alt="shape" class="img-fluid shape02" />
-            </div>
-        </section> -->
 
 </div>
 <app-footer></app-footer>

@@ -1,9 +1,4 @@
 <div class="wrapper">
-  <!-- Preloader -->
-  <!-- <div class="preloader flex-column justify-content-center align-items-center">
-        <img class="animation__shake" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Android_O_Preview_Logo.png/1024px-Android_O_Preview_Logo.png" alt="AdminLTELogo" height="60" width="60">
-      </div> -->
-
   <app-publisher-nav></app-publisher-nav>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -14,14 +9,6 @@
           <div class="col-sm-6">
             <h1 class="m-0">Subscriber</h1>
           </div>
-          <!-- /.col -->
-          <!-- <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                  <li class="breadcrumb-item"><a href="#">Home</a></li>
-                  <li class="breadcrumb-item active">Dashboard v1</li>
-                </ol>
-              </div> -->
-          <!-- /.col -->
         </div>
         <!-- /.row -->
       </div>
@@ -33,93 +20,31 @@
     <section class="content">
       <div class="container-fluid">
         <div class="row">
-          <!-- Main content -->
-          <!-- <section class="content"> -->
-          <!-- <div class="container-fluid"> -->
-          <!-- <div class="row"> -->
-          <!-- <div class="col-md-12"> -->
-
-          <!-- /.card -->
-
           <div
             class="card"
             style="width: 100%; border-top: solid rgb(150, 150, 151)"
           >
             <div class="card-header">
               <h1 class="card-title" style="padding: 10px">
-                <!-- <h1 class="" style="padding: 10px;"> -->
-                <!-- <i class="fa-duotone fa-list-timeline"></i> -->
-
                 Subscriber list
-                <!-- </h1> -->
               </h1>
-              <!-- <button
-                  style="float: right; margin-left: 2px"
-                  class="btn btn-info"
-                  data-widget="control-sidebar"
-                  data-controlsidebar-slide="true"
-                >
-                  <i class="fa-solid fa-filter"></i>
-                  filter
-                </button> -->
-              <!-- <button
-                  style="float: right"
-                  class="btn btn-primary"
-                  (click)="onCreate()"
-                >
-                  + Add
-                </button>
-   -->
             <div style="float: right; margin-left: 2px;">
              
              
-              <button class="btn btn-primary" (click)="exportAsXLSX()">export As XLSX</button>
+              <button class="btn btn-outline-secondary" (click)="exportAsXLSX()">export As XLSX</button>
             </div>
-            <mat-form-field class="example-full-width" appearance="fill" style="width: 100%;">
-              <mat-select placeholder="Select Course">
-                  <mat-option [value]="">abc</mat-option>
-                  <mat-option [value]="">xyzsdfgggggggggggggggggggggggcccccccccccc</mat-option>
-                  <mat-option [value]="">pqr</mat-option>
-                  <mat-option [value]="">mno</mat-option>
-              </mat-select>
-              </mat-form-field>
-
             </div>
             <!-- /.card-header -->
             <div class="card-body">
               <div class="table-responsive">
-                <!-- <table datatable [dtOptions]="dtOptions" class="row-border hover">
-                    <thead>
-                      <tr>
-                        <th>Sr</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>phoneno</th>
-                      </tr>
-                    </thead>
-                    <tbody *ngIf="persons?.length != 0">
-                      <tr *ngFor="let person of persons;let i=index">
-                        <td>{{i+1}}</td>
-                        <td>{{ person.name }}</td>
-                        <td>{{ person.user?person.user.email:'abc@123' }}</td>
-                        <td>{{ person.phoneno }}</td>
-                      </tr>
-                    </tbody>
-                    <tbody *ngIf="persons?.length == 0">
-                      <tr>
-                        <td colspan="3" class="no-data-available">No data!</td>
-                      </tr>
-                    </tbody>
-                  </table> -->
-                <!-- <br><br> -->
                 <table
-                  datatable
+                 
                   class="table table-hover"
                   style="min-height: 300px"
                 >
                   <thead align="center">
                     <tr>
-                      <th>Course</th>
+                      <th>Sr</th>
                       <th>Image</th>
                       <th>first Name</th>
                       <th>last Name</th>
@@ -132,7 +57,7 @@
                   <tbody align="center">
                     <tr *ngFor="let user of subscriberlist; let index = index">
                       <td>{{ index + 1 }}</td>
-                      <td>Image</td>
+                      <td><img src="{{user.image}}" alt="Image" srcset="{{user.image}}" style="height: 40px;"> </td>
                       <td>{{ user.firstname }}</td>
                       <td>{{ user.lastname }}</td>
                       <td>{{ user.job }}</td>
@@ -166,7 +91,6 @@
                   <mat-option value="firstName">LastName</mat-option>
                   <mat-option value="phoneno">Mobile number</mat-option>
                   <mat-option value="Nationality">Nationality</mat-option>
-                  <mat-option value="phoneno">Nationality</mat-option>
                 </mat-select>
                 <mat-select style="width: 200px;padding: 5px;" formControlName="sortwith" placeholder="Sort Type">
                   <mat-option value="Assending" >Assending</mat-option>

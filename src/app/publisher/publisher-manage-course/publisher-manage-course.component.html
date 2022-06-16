@@ -110,43 +110,25 @@
                 >
                   <thead align="center">
                     <tr>
+                      <th>Sr.</th>
                       <th>Image</th>
                       <th>title</th>
-                      <!-- <th>Description</th> -->
                       <th>UploadOn</th>
-                      <!-- <th>Duration</th>
-                      <th>Lesson</th> -->
                       <th>Price</th>
                       <th>Catagory</th>
+                      <th>View</th>
                       <th>Opration</th>
                     </tr>
                   </thead>
                   <tbody align="center">
                     <tr *ngFor="let course of courselist; let index = index">
-                      <!-- <td>{{ index + 1 }}</td> -->
-                      <td><img src="{{course.image}}" alt="Image" srcset="{{course.image}}" style="height: 50px; width:100px"> </td>
-                      <!-- <td>{{ course.title }}</td> -->
-                      <td style="font-size: small;"> 
-                        <mat-accordion>
-                          <mat-expansion-panel
-                            (opened)="panelOpenState = true"
-                            (closed)="panelOpenState = false"
-                          >
-                            <mat-expansion-panel-header
-                              style="box-shadow: 0px 0px 5px black"
-                            >
-                              <mat-panel-title>{{ course.title }}</mat-panel-title>
-                              <mat-panel-description>
-                              
-                              </mat-panel-description>
-                            </mat-expansion-panel-header>
-                            <div [innerHTML]="course.description"></div>
-                          </mat-expansion-panel>
-                        </mat-accordion>  
-                      </td>
-                      <td>{{ course.uploadDate }}</td>
-                      <td>{{ course.price }}/-</td>
+                      <td>{{ index + 1 }}</td>
+                      <td><img src="{{course.image}}" alt="Image" srcset="{{course.image}}" style="height: 80px;"> </td>
+                      <td>{{ course.title }}</td>
+                      <td>{{ course.uploadDate | date}}</td>
+                      <td>{{ course.price| currency:"INR" }}</td>
                       <td>{{ course.catagory?.name }}</td>
+                      <td><i class="fas fa-eye " style="color: rgb(0, 68, 255);cursor: pointer;"></i></td>
                       <td>
                         <i class="fas fa-trash-alt " style="color: red;cursor: pointer;"></i> | 
                         <i class="fas fa-pen " style="color: green;cursor: pointer;"></i>
@@ -160,22 +142,11 @@
                   </p>
                 </div>
                 <form [formGroup]="filterForm" (ngSubmit)="onApply()" style="float: right;border-radius: 50px;">
-                  <!-- <select name="" id="" class="form-control"  formControlName="sortby">
-                    <option value="name">Name</option>
-                    <option value="dob">Birthdate</option>
-                    <option value="gender">Gender</option>
-                    <option value="mobileno">Mobileno</option>
-                  </select>
-                  <select name="" id="" class="form-control" formControlName="sortwith">
-                    <option value="Assending">Assending</option>
-                    <option value="Desending">Desending</option>
-                  </select> -->
                    <mat-select style="width: 200px;padding: 5px; ;" formControlName="sortby" placeholder="Sort column">
-                  <mat-option value="firstName">firstName</mat-option>
-                  <mat-option value="firstName">LastName</mat-option>
-                  <mat-option value="phoneno">Mobile number</mat-option>
-                  <mat-option value="Nationality">Nationality</mat-option>
-                  <mat-option value="phoneno">Nationality</mat-option>
+                  <mat-option value="title">Course title</mat-option>
+                  <mat-option value="UploadOn">UploadOn</mat-option>
+                  <mat-option value="price">price</mat-option>
+                  <mat-option value="catagory">Catagory</mat-option>
                 </mat-select>
                 <mat-select style="width: 200px;padding: 5px;" formControlName="sortwith" placeholder="Sort Type">
                   <mat-option value="Assending" >Assending</mat-option>

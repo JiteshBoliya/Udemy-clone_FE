@@ -49,7 +49,8 @@ export class AdminNavComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         localStorage.clear()
-        this.router.navigate([''])  
+        // this.router.navigate([''])
+        window.location.href = 'http://localhost:4200/home'   
       }
     })
   }

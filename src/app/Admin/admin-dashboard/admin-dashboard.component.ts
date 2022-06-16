@@ -9,6 +9,7 @@ import Swal from 'sweetalert2';
 import { DeshboardService } from 'src/app/shared/service/deshboard.service';
 import { LoginService } from 'src/app/shared/service/login.service';
 import { Subject } from 'rxjs';
+import { PublisherService } from 'src/app/shared/service/publisher.service';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -35,6 +36,10 @@ export class AdminDashboardComponent implements OnInit {
   countPublisher!:any
   countSubscriber!:any
   countGIT!:any
+  countSales=new Array();
+  totalSalesAmount!:any
+  courseList: any;
+  countCourse!: number;
 
   constructor(private router: Router,
     private authGurd: AuthGuard,
@@ -42,8 +47,19 @@ export class AdminDashboardComponent implements OnInit {
     private deshboard: DeshboardService,
     private login:LoginService,
     private snackBar: MatSnackBar,
-    private activeRoute: ActivatedRoute) { 
+    private activeRoute: ActivatedRoute,
+    private publisher:PublisherService) { 
     }
+    public barChartOptions = {
+      scaleShowVerticalLines: false,
+      responsive: true
+    };
+    public barChartLabels = new Array();
+    public barChartType = 'bar';
+    public barChartLegend = true;
+    public barChartData = [
+      { data: [65, 59, 80, 81, 56, 55, 40], label: 'Subscriber' }
+    ];
   ngOnInit(): void {
     // this.login.UserId.subscribe(res=>{
     //   console.log(res);
@@ -59,7 +75,19 @@ export class AdminDashboardComponent implements OnInit {
     this.deshboard.Count_GIT().subscribe(res=>{
       this.countGIT=res.data
     })
-    
+    this.totalsales()
+    this.publisher.getCoursebyPublisher(localStorage.getItem('UID')).subscribe(res => {
+      let array = new Array()
+      array = res
+      this.countCourse = array.length
+      for (const data of array) {
+        this.barChartLabels.push(data.title.slice(0, 30))
+      }
+
+    })
+    this.deshboard.Count_course().subscribe(res=>{
+      this.courseList=res
+    })
     // this.login.getUserInfo(this.userId).subscribe(res=>{
     //   console.log(res);
     // })
@@ -78,9 +106,16 @@ export class AdminDashboardComponent implements OnInit {
       sortwith:new FormControl(''),
       sortby:new FormControl('')
     })
-
-
     this.userData = ''
+  }
+  totalsales(){
+    this.totalSalesAmount=0
+    this.deshboard.count_sales().subscribe(res=>{
+      this.countSales=res.data
+      this.countSales.forEach(data=>{
+        if(data.course.price!='')this.totalSalesAmount+=data.course.price;
+      })
+    })    
   }
 
 }

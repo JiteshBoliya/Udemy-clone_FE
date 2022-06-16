@@ -11,6 +11,8 @@ import { HttpClient } from '@angular/common/http';
 import { AdminService } from 'src/app/shared/service/admin.service';
 import * as XLSX from 'xlsx'
 import { ExcelService } from 'src/app/shared/service/excel.service';
+import { UserService } from 'src/app/shared/service/user.service';
+import { PublisherService } from 'src/app/shared/service/publisher.service';
 
 @Component({
   selector: 'app-publisher-sales',
@@ -40,6 +42,8 @@ export class PublisherSalesComponent implements OnInit {
   paggerno!:any
   fakearray!:any
   isSelected!:any
+  publisherDetail: any;
+  Limitlist: any;
   constructor(private router: Router,
     private authGurd: AuthGuard,
     private dialog: MatDialog,
@@ -48,34 +52,37 @@ export class PublisherSalesComponent implements OnInit {
     private activeRoute: ActivatedRoute,
     private http: HttpClient,
     private admin:AdminService,
-    private excelService:ExcelService) { }
+    private excelService:ExcelService,
+    private userService:UserService,
+    private publisher:PublisherService) { }
 
   ngOnInit(): void {
 
     this.isSelected=0
 
-    this.userForm = new FormGroup({
-      name: new FormControl("", Validators.required),
-      email: new FormControl("", Validators.required),
-      gender: new FormControl("", Validators.required),
-      mobileno: new FormControl("", Validators.required),
-      dob: new FormControl("", Validators.required),
-      file: new FormControl("", Validators.required)
-    })
-
     this.filterForm=new FormGroup({
       sortwith:new FormControl(''),
       sortby:new FormControl('')
     })
-    // this.slidetoggle=new FormGroup({
-    //   block:new FormControl('')
-    // })
-    this.admin.getsubscriberlimit().subscribe(res=>{
-      console.log(res);
+    // this.admin.getsubscriberlimit().subscribe(res=>{
+    //   console.log(res);
       
-      this.subscriberlist=res
+    //   this.subscriberlist=res
+    // })
+    this.publisher.getPublisherDetail(localStorage.getItem('UID')).subscribe(res=>{
+      this.publisherDetail=res
+      this.userService.getCoursePurchaseList(this.publisherDetail._id).subscribe(res=>{
+        this.Limitlist=res
+        console.log(res);
+      })
+      // this.publisher.getAllRating(this.publisherDetail._id).subscribe(res=>{
+      //   var list=res
+      //   this.AllList=res
+      //   this.rowsLength=[...list].length
+      //   this.paggerno=Math.ceil([...list].length/5)
+      //   this.fakearray=new Array(this.paggerno)
+      // })
     })
-
     this.refreash()
 
     this.userData = ''

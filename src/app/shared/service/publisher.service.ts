@@ -55,4 +55,15 @@ export class PublisherService {
   getPublisherDetail(id:any){
     return this.http.get<any>(`${this.Url}/publisherById/`+id)
   }
+  getAllRating(id:any){
+    return this.http.get<any>(`${this.Url}/publisher/rating/`+id)
+  }
+  getRatingPagger(id:any,page:any){
+    return this.http.get<any>(`${this.Url}/rating/pagger/`+id+`/`+page)
+  }
+  getRatingsort(id:any,sortby:any,sortwith:any){
+    return this.http.get<any>(`${this.Url}/rating/sort/`+id+`/`+sortby+`/`+sortwith)
+  }
+  
+  
 }

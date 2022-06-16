@@ -37,6 +37,7 @@ export class CartComponent implements OnInit {
       }
     })
     this.cartArray = this.tempArray
+    this.user.cartItemCount.next(this.cartArray.length)
     localStorage.setItem('cartarray', JSON.stringify(this.cartArray))
     this.summary()
   }

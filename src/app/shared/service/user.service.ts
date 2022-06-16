@@ -1,14 +1,19 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
   private Url= "http://localhost:3000"
+  public cartItemCount = new BehaviorSubject<number>(50);
   public user:any
   constructor(private http:HttpClient) { }
 
+  getCartItemCount(){
+    return this.cartItemCount.asObservable();
+  }
   getCatagory(){
     return this.http.get<any>(`${this.Url}/Catagory`)
   }
@@ -48,6 +53,9 @@ export class UserService {
   getCourseUserList(id:any){
     return this.http.get<any>(`${this.Url}/course/getUser/`+id)
   }
+  getCoursePurchaseList(id:any){
+    return this.http.get<any>(`${this.Url}/course/purchase/`+id)
+  }
   getPublisherListlimit(){
     return this.http.get<any>(`${this.Url}/publisher/some`)
   }
@@ -71,5 +79,8 @@ export class UserService {
   }
   getPublisherDetailById(id:any){
     return this.http.get<any>(`${this.Url}/publisherById/`+id)
+  }
+  Search(data:any){
+    return this.http.get<any>(`${this.Url}/search/`+data)
   }
 }

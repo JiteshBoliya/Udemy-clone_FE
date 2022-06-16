@@ -25,6 +25,8 @@ import { DialogUserComponent } from './shared/dailogs/dialog-user/dialog-user.co
 import { DialogAdduserComponent } from './shared/dailogs/dialog-adduser/dialog-adduser.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { Chart } from 'chart.js';
+import { NgChartsModule } from 'ng2-charts';
 // import { HttpModule } from 'http';
 import { AuthInterceptorServiceService } from './shared/service/auth-interceptor.service.service';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -118,6 +120,7 @@ import { UploadListComponent } from './shared/file-upload/upload-list/upload-lis
     NgxPrintModule,
     AngularFireModule,
     AngularFireModule.initializeApp(environment.firebaseConfig, "cloud"),
+    NgChartsModule,
     // FileUpload
   ],
   providers: [],

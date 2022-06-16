@@ -110,7 +110,7 @@
                   >
                     <thead align="center">
                       <tr>
-                        <!-- <th>Image</th> -->
+                        <th>Sr</th>
                         <th>Name</th>
                         <th>Course</th>
                         <th>Date</th>
@@ -118,14 +118,12 @@
                       </tr>
                     </thead>
                     <tbody align="center">
-                      <tr *ngFor="let user of subscriberlist; let index = index">
-                        <!-- <td>{{ index + 1 }}</td> -->
-                        <!-- <td>Image</td> -->
-                        <!-- <td>{{ user.firstname }}</td> -->
-                        <td>{{ user.lastname ? user : "abc@123" }}</td>
-                        <td>{{ user.job ? user : "abc@123"}}</td>
-                        <td>{{ user.phoneno ? user : "abc@123"}}</td>
-                        <td>{{ user.user ? user.user.email : "abc@123" }}</td>
+                      <tr *ngFor="let list of Limitlist; let index = index">
+                        <td>{{ index + 1 }}</td>
+                        <td>{{ list[0].user.name }}</td>
+                        <td>{{ list[0].course.title}}</td>
+                        <td>{{ list[0].date | date }}</td>
+                        <td><span class="badge" style="width: fit-content;background-color: green;">{{ list[0].course.price |currency:"INR" }}</span> </td>
                       </tr>
                     </tbody>
                   </table>
@@ -146,12 +144,11 @@
                       <option value="Desending">Desending</option>
                     </select> -->
                      <mat-select style="width: 200px;padding: 5px; ;" formControlName="sortby" placeholder="Sort column">
-                    <mat-option value="firstName">firstName</mat-option>
-                    <mat-option value="firstName">LastName</mat-option>
-                    <mat-option value="phoneno">Mobile number</mat-option>
-                    <mat-option value="Nationality">Nationality</mat-option>
-                    <mat-option value="phoneno">Nationality</mat-option>
-                  </mat-select>
+                    <mat-option value="name">Name</mat-option>
+                    <mat-option value="course">Course</mat-option>
+                    <mat-option value="date">Date</mat-option>
+                    <mat-option value="price">price</mat-option>
+                    </mat-select>
                   <mat-select style="width: 200px;padding: 5px;" formControlName="sortwith" placeholder="Sort Type">
                     <mat-option value="Assending" >Assending</mat-option>
                     <mat-option value="Desending">Dissending</mat-option>

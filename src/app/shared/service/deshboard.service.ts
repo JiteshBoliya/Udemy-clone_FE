@@ -19,4 +19,9 @@ export class DeshboardService {
   Count_GIT(){
     return this.http.get<any>(`${this.Url}count-GIT`)}
   
+  count_sales(){
+    return this.http.get<any>(`${this.Url}count-sales`)}
+  
+  Count_course(){
+    return this.http.get<any>(`${this.Url}count-Course`)}
 }
