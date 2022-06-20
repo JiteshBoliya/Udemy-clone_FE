@@ -38,7 +38,11 @@ export class InstructorProfileComponent implements OnInit {
       this.cousreList = res
     })
     this.user.getCourseUserList(this.route.snapshot.paramMap.get('id')).subscribe(res => {
-      this.students = res
+      let arr=[]= res
+      const result = arr.reduce((accumulator:any, current:any) => {
+        return accumulator + current;
+      }, 0);
+      this.students=result?result:0
     })
     this.user.getSubscriberDetail(localStorage.getItem('UID')).subscribe(res=>{
       this.SubScriber=res

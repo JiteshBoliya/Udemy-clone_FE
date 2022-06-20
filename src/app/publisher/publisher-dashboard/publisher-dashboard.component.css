@@ -1,0 +1,11 @@
+canvas{
+    max-height: 500px !important;
+    
+}
+canvas.pie{
+    /* height:fit-content !important; */
+    /* width: 1000px !important; */
+    margin:0px;
+    padding: 0px;
+    /* float: right; */
+}

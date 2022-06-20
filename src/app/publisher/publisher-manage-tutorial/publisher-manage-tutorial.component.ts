@@ -100,7 +100,7 @@ export class PublisherManageTutorialComponent implements OnInit {
   }
   getpagedata(pagerdata:any){
     this.isSelected=pagerdata
-    this.publisher.getpage(pagerdata*3).subscribe(res=>{
+    this.publisher.getpage(pagerdata*5).subscribe(res=>{
         this.Tutoriallist=res
       })
   }
@@ -111,7 +111,7 @@ export class PublisherManageTutorialComponent implements OnInit {
     this.publisher.getTutorialList_ById(localStorage.getItem('UID')).subscribe(res=>{
       var list=res
       this.rowsLength=[...list].length
-      this.paggerno=Math.ceil([...list].length/3)
+      this.paggerno=Math.ceil([...list].length/5)
       this.fakearray=new Array(this.paggerno)
     })
   }
@@ -168,6 +168,7 @@ export class PublisherManageTutorialComponent implements OnInit {
       
       })
     })
+
   }
 }
 

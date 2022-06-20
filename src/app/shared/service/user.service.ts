@@ -83,4 +83,7 @@ export class UserService {
   Search(data:any){
     return this.http.get<any>(`${this.Url}/search/`+data)
   }
+  getdeshboardcommentPublisherAll(id:any){
+    return this.http.get<any>(`${this.Url}/count-rating/`+id)
+  }
 }

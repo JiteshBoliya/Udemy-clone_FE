@@ -27,6 +27,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Chart } from 'chart.js';
 import { NgChartsModule } from 'ng2-charts';
+// import { ChartsModule } from 'ng2-charts/ng2-charts';
 // import { HttpModule } from 'http';
 import { AuthInterceptorServiceService } from './shared/service/auth-interceptor.service.service';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -60,6 +61,7 @@ import {
 import { environment } from '../environments/environment';
 import { UploadDetailsComponent } from './shared/file-upload/upload-details/upload-details.component';
 import { UploadListComponent } from './shared/file-upload/upload-list/upload-list.component';
+import { DialogCourseViewComponent } from './shared/dailogs/dialog-course-view/dialog-course-view.component';
 @NgModule({
   declarations: [
     //Subscriber
@@ -106,6 +108,7 @@ import { UploadListComponent } from './shared/file-upload/upload-list/upload-lis
     PublisherRatingComponent,
     UploadDetailsComponent,
     UploadListComponent,
+    DialogCourseViewComponent,
    
   ],
   imports: [

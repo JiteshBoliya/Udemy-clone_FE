@@ -55,9 +55,9 @@
                   <!-- small box -->
                   <div class="small-box bg-warning">
                     <div class="inner">
-                      <h3>0</h3>
+                      <h3>{{avg}}</h3>
       
-                      <p>Rating</p>
+                      <p>Rating Average</p>
                     </div>
                     <div class="icon">
                       <i class="ion ion-person-add">
@@ -72,7 +72,7 @@
                   <!-- small box -->
                   <div class="small-box bg-danger">
                     <div class="inner">
-                      <h3>{{countSales.data?countSales.data:'12153' | currency:'INR'}}</h3>
+                      <h3>{{countSales?countSales.data?countSales.data:'0':'12153' | currency:'INR'}}</h3>
       
                       <p>Sales</p>
                     </div>
@@ -104,7 +104,7 @@
       
         <div class="container-fluid">
           <!-- row -->
-          <button class="btn btn-primary" (click)="Refresh()">Refresh</button>
+          <button class="btn btn-outline-primary" (click)="Refresh()">Refresh</button>
           <div class="row">
             <div class="col-12">
               <!-- jQuery Knob -->
@@ -112,7 +112,7 @@
                 <div class="card-header">
                   <h3 class="card-title">
                     <i class="far fa-chart-bar"></i>
-                    Pie-Chart: Course-Subscriber
+                  <b>  Bar-Chart:</b> <i> Subscribers in each course</i>
                   </h3>
   
                   <div class="card-tools">
@@ -125,12 +125,16 @@
                   </div>
                 </div>
                 <!-- /.card-header -->
-                <div class="card-body">
+                <div class="card-body" >
                   <canvas baseChart
+                  style="height: 100px !important;"
+                  height="100px"
                   [datasets]="barChartData"
                   [labels]="barChartLabels"
                   [options]="barChartOptions"
-                  [legend]="barChartLegend">
+                  [legend]="barChartLegend"
+                  type="bar"
+                  >
                   </canvas>
                 </div>
                 <!-- /.card-body -->
@@ -146,7 +150,7 @@
                 <div class="card-header">
                   <h3 class="card-title">
                     <i class="far fa-chart-bar"></i>
-                    Pie-Chart: Course-Rating
+                    <b>  Donat-Chart: </b> <i> Avarage rating(out of 5) in each course</i>
                   </h3>
   
                   <div class="card-tools">
@@ -160,6 +164,18 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
+                  <canvas baseChart
+                  class="pie"
+                  style="height: 100px !important;"
+                  height="10px"
+                  [datasets]="donatChartData"
+                  [labels]="barChartLabels"
+                  [options]="barChartOptions"
+                  [legend]="barChartLegend"
+                  type="doughnut"
+                  >
+                  </canvas>
+                 
                 </div>
                 <!-- /.card-body -->
               </div>
@@ -174,9 +190,8 @@
                 <div class="card-header">
                   <h3 class="card-title">
                     <i class="far fa-chart-bar"></i>
-                    Pie-Chart: Course-Sales
+                    <b>  Pie-Chart: </b> <i> Avarage rating (In parentage) on Selected course</i>
                   </h3>
-  
                   <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
                       <i class="fas fa-minus"></i>
@@ -188,6 +203,21 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
+                  <mat-select placeholder="Select Course" formControlName="course" (valueChange)="onSelect($event)">
+                    <mat-option *ngFor="let list of CourseList" value="{{list._id}}">{{list.title}}</mat-option>
+                  </mat-select>
+                  <hr>
+                  <canvas baseChart
+                    class="pie"
+                    style="height: 100px !important;"
+                    height="10px"
+                    [datasets]="pieChartData"
+                    [labels]="pieChartLabels"
+                    [options]="barChartOptions"
+                    [legend]="barChartLegend"
+                    type="pie"
+                    >
+                    </canvas>
                 </div>
                 <!-- /.card-body -->
               </div>

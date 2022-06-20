@@ -128,7 +128,7 @@
                       <td>{{ course.uploadDate | date}}</td>
                       <td>{{ course.price| currency:"INR" }}</td>
                       <td>{{ course.catagory?.name }}</td>
-                      <td><i class="fas fa-eye " style="color: rgb(0, 68, 255);cursor: pointer;"></i></td>
+                      <td><i class="fas fa-eye " style="color: rgb(0, 68, 255);cursor: pointer;" (click)="viewCourse(course)"></i></td>
                       <td>
                         <i class="fas fa-trash-alt " style="color: red;cursor: pointer;"></i> | 
                         <i class="fas fa-pen " style="color: green;cursor: pointer;"></i>

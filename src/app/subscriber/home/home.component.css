@@ -1,3 +1,7 @@
 .nav-link.active{
     background-color: transparent;
 }
+.img-{
+    width: auto;
+    height: 100%;
+}

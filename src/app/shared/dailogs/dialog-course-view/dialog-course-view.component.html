@@ -1,0 +1,27 @@
+<div style="height: 700px; width: 1000px">
+  <div class="row">
+    
+    <div class="col-md-8 order-2 order-lg-0" >
+        <h3><b>Course information</b></h3>
+        <hr />
+        <div style="color: gray;">
+            <div [innerHTML]="obj.description" style="height:60vh;overflow-y: scroll;"></div>
+            <hr><span>Scroll To <b>read more</b> </span>
+        </div>
+        
+    </div>
+    <div class="col-md-4">
+        <img src="{{obj.image}}" alt="" style="max-height: 250px;">
+        <div style="color: gray;">
+            <b>Title </b><hr>
+            <h6>{{obj.title}}</h6>
+            <br><b>Catagory:</b><hr>
+            <h6>{{obj.catagory.name}}</h6>
+            <br><b>UploadOn:</b><hr>
+            <h6>{{obj.uploadDate | date}}</h6>
+            <br><b>Price:</b><hr>
+            <h6>{{obj.price| currency:"INR"}}</h6>
+        </div>
+    </div>
+  </div>
+</div>

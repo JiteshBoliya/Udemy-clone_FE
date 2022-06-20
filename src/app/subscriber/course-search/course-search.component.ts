@@ -30,6 +30,7 @@ export class CourseSearchComponent implements OnInit {
   onSearch(){
     this.user.Search(this.SearchForm.get('search')?.value).subscribe(res=>{
       // console.log(res);
+      
       if(res.data==0) this.courseList=[]
       else this.courseList= res.data
     })

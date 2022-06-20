@@ -225,7 +225,7 @@
                   </svg>
                 </div>
                 <div class="text text-center">
-                  <h6>{{ students.data }}</h6>
+                  <h6>{{ students }}</h6>
                   <p>Students Learning</p>
                 </div>
               </div>
@@ -368,7 +368,7 @@
                   <div class="col-md-6 mb-4" *ngFor="let course of cousreList">
                     <div class="contentCard contentCard--course">
                       <div class="contentCard-top">
-                        <a routerLink="/course-details/{{ course._id }}"
+                        <a routerLink="/course-details/{{ course._id }}" align="center"
                           ><img
                             src="{{
                               course.image
@@ -409,7 +409,7 @@
                             <span>{{ course.price | currency: "INR" }}</span>
                           </div>
                         </div>
-                        <div class="contentCard-more">
+                        <!-- <div class="contentCard-more">
                           <div class="d-flex align-items-center">
                             <div class="icon">
                               <img
@@ -446,13 +446,13 @@
                             </div>
                             <span>3 Hours</span>
                           </div>
-                        </div>
+                        </div> -->
                       </div>
                     </div>
                   </div>
                 </div>
                 <div class="row">
-                  <div
+                  <!-- <div
                     class="pagination-group justify-content-center mt-lg-5 mt-2"
                   >
                     <a href="#" class="p_prev">
@@ -494,7 +494,7 @@
                         ></path>
                       </svg>
                     </a>
-                  </div>
+                  </div> -->
                 </div>
               </div>
               <div

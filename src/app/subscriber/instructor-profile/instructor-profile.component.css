@@ -4,3 +4,9 @@
 mat-slider {
     width: 300px;
   }
+
+.img-fluid{
+    width: auto;
+    height: 100%;
+    align-self: center;
+}

@@ -13,6 +13,7 @@ import * as XLSX from 'xlsx'
 import { ExcelService } from 'src/app/shared/service/excel.service';
 import { DialogCourseComponent } from 'src/app/shared/dailogs/dialog-course/dialog-course.component';
 import { PublisherService } from 'src/app/shared/service/publisher.service';
+import { DialogCourseViewComponent } from 'src/app/shared/dailogs/dialog-course-view/dialog-course-view.component';
 @Component({
   selector: 'app-publisher-manage-course',
   templateUrl: './publisher-manage-course.component.html',
@@ -123,14 +124,13 @@ export class PublisherManageCourseComponent implements OnInit {
   }
   
   open(user: any) {
-    // this.deshboard.userData = user
     this.dialog.open(DialogAdduserComponent).afterClosed().subscribe(res=>{
-      // this.deshboard.getUserlist().subscribe(res => {
-      //   this.userlist = res
-      // })
     })
   }
-  
+  viewCourse(course: any) {
+    this.dialog.open(DialogCourseViewComponent).componentInstance.obj = course;
+    
+  }
   onStatuschnage(id:any,status:any){
     var state="active"
     if(status=="active") state="Deactive"

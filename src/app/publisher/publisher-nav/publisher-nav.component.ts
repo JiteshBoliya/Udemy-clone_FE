@@ -29,14 +29,16 @@ export class PublisherNavComponent implements OnInit {
   ngOnInit(): void {
     this.auth.usersubject.subscribe(res=>{
       if(res==null){
-        this.login.getUserInfo(localStorage.getItem('UID')).subscribe(res=>{
+        this.user=this.login.getUserInfo(localStorage.getItem('UID')).subscribe(res=>{
           this.auth.updateUser(res)
+          this.publisher.getPublisherDetail(res?.data._id).subscribe(res=>{
+            this.UserData=res
+            console.log(res);
+            
+          })
         })
       }
-      this.user=res
-      this.publisher.getPublisherDetail(this.user.data._id).subscribe(res=>{
-        this.UserData=res
-      })
+      
     })
   // #Auto logout
   if (this.authGurd.canActivate() == false) this.router.navigate([''])

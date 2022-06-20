@@ -1,81 +1,146 @@
-<div style="height: 700px;width: 1000px;" >
-    <div class="row">
-        <div class="col-lg-9 order-2 order-lg-0">
-            <div class="white-bg">
-                <div class="students-info-form">
-                    <h6 class="font-title--card">Your Information</h6>
-                    <form [formGroup]="profileForm" (ngSubmit)="save()" >
-                        <div class="row g-3">
-                            <div class="col-lg-6">
-                                <label for="fname">Name</label>
-                                <input type="text" class="form-control" placeholder="Name" formControlName="name" />
-                            </div>
-                            <div class="col-lg-6">
-                                <label for="lname">Phone number</label>
-                                <input type="number" class="form-control" placeholder="000000000000" formControlName="phoneno"/>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <label for="email">Email</label>
-                                <input type="email" id="email" class="form-control" placeholder="phillip.bergson@gmail.com" formControlName="email"/>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <label for="do">What Do You Do</label>
-                                <input type="text" id="do" class="form-control" placeholder="UI/UX Designer" formControlName="job"/>
-                            </div>
-                        </div>
-                        <div class="row g-3">
-                            <div class="col-lg-6">
-                                <label for="pnumber">Intsgram link</label>
-                                <input type="text" class="form-control" placeholder="https://instagram/"  formControlName="instagram"/>
-                            </div>
-                            <div class="col-lg-6">
-                                <label for="nationality">Facebook link</label>
-                                <input type="text" class="form-control" placeholder="https://facebook/" formControlName="Facebook"/>
-                            </div>
-                        </div>
-                        <div class="row g-3">
-                            <div class="col-lg-6">
-                                <label for="pnumber">LinkedIn link</label>
-                                <input type="text" class="form-control" placeholder="https://linkedin/"  formControlName="linkedin"/>
-                            </div>
-                            <div class="col-lg-6">
-                                <label for="nationality">Twitter link</label>
-                                <input type="text" class="form-control" placeholder="https://twitter/" formControlName="twitter"/>
-                            </div>
-                        </div>
-                        <div class="row g-3">
-                            <div class="col-lg-6">
-                                <label for="pnumber">Youtube link</label>
-                                <input type="text" class="form-control" placeholder="https://youtube/"  formControlName="youtube"/>
-                            </div>
-                            <div class="col-lg-6">
-                                <label for="pnumber"></label><br>
-                                <button class="button button-lg button--primary" type="submit">Save Changes</button>
-                            </div>
-                        </div>
-                        
-                    </form>
-                </div>
+<div style="height: 700px; width: 1000px">
+  <div class="row">
+    <div class="col-lg-9 order-2 order-lg-0">
+      <div class="white-bg">
+        <div class="students-info-form">
+          <h6 class="font-title--card">Your Information</h6>
+          <form [formGroup]="profileForm" (ngSubmit)="save()">
+            <div class="row g-3">
+              <div class="col-lg-6">
+                <label for="fname">Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Name"
+                  formControlName="name"
+                />
+              </div>
+              <div class="col-lg-6">
+                <label for="lname">Phone number</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  placeholder="000000000000"
+                  formControlName="phoneno"
+                />
+              </div>
             </div>
-        </div>
-        <div class="col-lg-3 order-1 order-lg-0 mt-4 mt-lg-0">
-            <div class="white-bg">
-                <div class="change-image-wizard">
-                    <div class="image mx-auto">
-                        <img src="https://eduguard-html.netlify.app/dist/images/user/user-img-01.jpg" alt="User" />
-                    </div>
-                    <form action="#">
-                        <div class="d-flex justify-content-center">
-                            <button type="submit" class="button button--primary-outline">CHANGE iMAGE</button>
-                        </div>
-                    </form>
-                    <p>Image size should be under 1MB image ratio 200px.</p>
-                </div>
+            <div class="row">
+              <div class="col-12">
+                <label for="email">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  class="form-control"
+                  placeholder="phillip.bergson@gmail.com"
+                  formControlName="email"
+                />
+              </div>
             </div>
+            <div class="row">
+              <div class="col-12">
+                <label for="do">What Do You Do</label>
+                <input
+                  type="text"
+                  id="do"
+                  class="form-control"
+                  placeholder="UI/UX Designer"
+                  formControlName="job"
+                />
+              </div>
+            </div>
+            <div class="row g-3">
+              <div class="col-lg-6">
+                <label for="pnumber">Intsgram link</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="https://instagram/"
+                  formControlName="instagram"
+                />
+              </div>
+              <div class="col-lg-6">
+                <label for="nationality">Facebook link</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="https://facebook/"
+                  formControlName="Facebook"
+                />
+              </div>
+            </div>
+            <div class="row g-3">
+              <div class="col-lg-6">
+                <label for="pnumber">LinkedIn link</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="https://linkedin/"
+                  formControlName="linkedin"
+                />
+              </div>
+              <div class="col-lg-6">
+                <label for="nationality">Twitter link</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="https://twitter/"
+                  formControlName="twitter"
+                />
+              </div>
+            </div>
+            <div class="row g-3">
+              <div class="col-lg-6">
+                <label for="pnumber">Youtube link</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="https://youtube/"
+                  formControlName="youtube"
+                />
+              </div>
+              <div class="col-lg-6">
+                <label for="pnumber"></label><br />
+                <button class="button button-lg button--primary" type="submit">
+                  Save Changes
+                </button>
+              </div>
+            </div>
+          </form>
         </div>
+      </div>
     </div>
+    <div class="col-lg-3 order-1 order-lg-0 mt-4 mt-lg-0">
+      <div class="white-bg">
+        <div class="change-image-wizard">
+          <div class="image mx-auto">
+            <img
+              src="{{ img?img:'https://i.pinimg.com/474x/4b/71/f8/4b71f8137985eaa992d17a315997791e.jpg'}}"
+              alt="User"
+            />
+          </div>
+          <form action="#">
+            <div class="d-flex justify-content-center">
+              <button
+                type="button"
+                class="btn btn-success"
+                mat-raised-button
+                (click)="fileInput.click()"
+              >
+                Change Image
+              </button>
+              <input
+                type="file"
+                #fileInput
+                multiple
+                (change)="detectFiles($event)"
+                hidden
+              />
+            </div>
+          </form>
+          <p>Image size should be under 1MB image ratio 200px.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

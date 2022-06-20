@@ -8,8 +8,9 @@ import { AuthGuard } from 'src/app/shared/service/auth.guard';
 import Swal from 'sweetalert2';
 import { DeshboardService } from 'src/app/shared/service/deshboard.service';
 import { LoginService } from 'src/app/shared/service/login.service';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { PublisherService } from 'src/app/shared/service/publisher.service';
+import { UserService } from 'src/app/shared/service/user.service';
 
 @Component({
   selector: 'app-publisher-dashboard',
@@ -39,6 +40,19 @@ export class PublisherDashboardComponent implements OnInit {
   countCourse!: any
   countSales: any;
   cousreList = new Array()
+  // graphData=new Array()
+  graphData = [10, 20]
+  AllcommentList = new Array();
+  avg!: number;
+  // AvrageArray=new Array();
+  AvrageArray=[1,2]
+  AvarageStarRating=new Array()
+  AvarageList=new Array()
+  star=new Array();
+  avgStar: any;
+  publisherDetail: any;
+  CourseList: any;
+
 
   constructor(private router: Router,
     private authGurd: AuthGuard,
@@ -47,51 +61,67 @@ export class PublisherDashboardComponent implements OnInit {
     private login: LoginService,
     private snackBar: MatSnackBar,
     private activeRoute: ActivatedRoute,
-    private publisher: PublisherService) {
+    private publisher: PublisherService,
+    private User: UserService) {
   }
   public barChartOptions = {
     scaleShowVerticalLines: false,
     responsive: true
   };
+
+  //Chart 1
   public barChartLabels = new Array();
-  public barChartType = 'bar';
   public barChartLegend = true;
   public barChartData = [
-    { data: [65, 59, 80, 81, 56, 55, 40], label: 'Subscriber' }
+    { data: this.graphData, label: 'Subscriber' }
   ];
+
+  //Chart 2
+  public donatChartLabels = this.barChartLabels;
+  public donatChartData = [
+    { data: this.AvrageArray, label: 'Rating' }
+  ];
+
+    //Chart 3
+    public pieChartLabels = ['1 Star','2 Star','3 Star','4 Star','5 Star'];
+    public pieChartData = [
+      { data: this.AvarageList, label: 'Rating' }
+    ];
+  
   ngOnInit(): void {
-    // this.login.UserId.subscribe(res=>{
-    //   console.log(res);
-    //   this.userId=res
-    // })
-    // this.authGurd.canActivate()
-
     this.Refresh()
-
-    // this.login.getUserInfo(this.userId).subscribe(res=>{
-    //   console.log(res);
-    // })
     this.isSelected = 0
-
-    this.userForm = new FormGroup({
-      name: new FormControl("", Validators.required),
-      email: new FormControl("", Validators.required),
-      gender: new FormControl("", Validators.required),
-      mobileno: new FormControl("", Validators.required),
-      dob: new FormControl("", Validators.required),
-      file: new FormControl("", Validators.required)
-    })
-
-    this.filterForm = new FormGroup({
-      sortwith: new FormControl(''),
-      sortby: new FormControl('')
-    })
     this.userData = ''
     this.graphdata()
+    this.graphData = [10, 20]
   }
   graphdata() {
+    this.publisher.getPublisherDetail(localStorage.getItem('UID')).subscribe(data => {
+      let result = data
+
+      this.User.getCourseUserList(result._id).subscribe(res => {
+        let arr = [] = res
+        const results = arr.reduce((accumulator: any, current: any) => {
+          return accumulator + current;
+        }, 0);
+        this.countSubscriber = results ? results : 0
+      })
+      this.User.getCourseUserList(result._id).subscribe((res: any) => {
+        this.graphData = res
+      })
+    })
+
   }
   Refresh() {
+    this.barChartData = [
+      { data: this.graphData, label: 'Subscriber' }]
+
+    this.donatChartData = [
+        { data: this.AvrageArray, label: 'Rating' }
+    ];
+    // this.pieChartData = [
+    //   { data: this.AvarageList, label: 'Rating' }
+    // ];
     this.deshboard.Count_publisher().subscribe(res => {
       this.countPublisher = res.data
     })
@@ -105,23 +135,81 @@ export class PublisherDashboardComponent implements OnInit {
       let array = new Array()
       array = res
       this.countCourse = array.length
+      this.barChartLabels=[]
       for (const data of array) {
         this.barChartLabels.push(data.title.slice(0, 30))
       }
-
     })
     this.deshboard.count_sales().subscribe(res => {
-      this.countSales = 0
-      this.deshboard.count_sales().subscribe(res => {
-        this.countSales = res.data
-        this.countSales.forEach((data: any) => {
-          if (data.course.price != '') this.countSales += data.course.price;
-        })
+      let arr: [] = res.data
+      arr.forEach((data: any) => {
+        if (data.course.price != '') this.countSales += data.course.price;
       })
-      // console.log(this.countSales);
-
     })
 
+    this.publisher.getPublisherDetail(localStorage.getItem('UID')).subscribe(data => {
+      let result = data
+      //----------------------------
+      this.User.getCourseUserList(result._id).subscribe(res => {
+        let arr = [] = res
+        const results = arr.reduce((accumulator: any, current: any) => {
+          return accumulator + current;
+        }, 0);
+        this.countSubscriber = results ? results : 0
+      })
+      //-------------------------------
+      this.User.getcommentPublisherAll(result._id).subscribe(res => {
+        this.AllcommentList = res
+        this.ratingAvg()
+      })
+      this.User.getdeshboardcommentPublisherAll(result._id).subscribe(res => {this.ratingAllcourse(res)})
+      this.publisher.getCourseList_ById(result._id).subscribe(res=>{this.CourseList=res})
+    })
+    this.onSelect(1)
 
   }
+  ratingAvg() {
+    let total = 0
+    this.AllcommentList.map(res => {total += res.rating})
+    if (total == 0 || this.AllcommentList.length == 0) this.avg = 0
+    else this.avg = Math.round(total / this.AllcommentList.length)
+  }
+
+  ratingAllcourse(list: []) {
+    let result=new Array()
+    list.map(data => {
+      let arr: [] = data
+      let total = 0
+      let avg=0
+      arr?.map((rate: any) => { if (rate.rating > 0) total += rate.rating})
+      if (total == 0 || arr.length == 0) avg = 0
+      else avg = Math.round(total / arr.length)
+      result.push(avg)
+    })
+    this.AvrageArray=result
+  }
+  ratingAvgList(){
+    this.star=[0,0,0,0,0]
+    this.AvarageStarRating.map(res=>{
+      if(res.rating==5) this.star[4]++ 
+      if(res.rating==4) this.star[3]++
+      if(res.rating==3) this.star[2]++
+      if(res.rating==2) this.star[1]++
+      if(res.rating==1) this.star[0]++
+    })
+    for(let i=0;i<5;i++){
+      if(this.star[i]==0 || this.AvarageStarRating.length==0) this.AvarageList[i] = 0
+      else this.AvarageList[i]=Math.round(this.star[i]/this.AvarageStarRating.length*100)
+    }
+  }
+  onSelect(event:any){
+    this.User.getcommentCourseAll(event).subscribe(res=>{
+      this.AvarageStarRating=res
+      this.ratingAvgList()
+    })
+    this.pieChartData = [
+      { data: this.AvarageList, label: 'Rating' }
+    ];
+  }
+  
 }
