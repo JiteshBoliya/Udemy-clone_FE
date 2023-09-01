@@ -63,4 +63,4 @@ The Udemy-Clone project can be developed using a wide range of technologies, inc
 <img src="https://cdn.freebiesupply.com/logos/large/2x/css3-logo-png-transparent.png" width="50PX" alt="CSS3">
 </p>
 
-For back-end repository click on <a href="https://github.com/jitesh8182/Udemy-clone_BE">Udemy-clone_BE</a>.
+**For back-end repository click on <a href="https://github.com/jitesh8182/Udemy-clone_BE">Udemy-clone_BE</a>.**
