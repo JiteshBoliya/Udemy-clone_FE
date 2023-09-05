@@ -56,11 +56,7 @@ Technology Stack:
 The Udemy-Clone project can be developed using a wide range of technologies, including but not limited to:
 
 - Frontend: 
-<p>
-<img src="https://angular.io/assets/images/logos/angularjs/AngularJS-Shield.svg" width="40PX" alt="Angular">
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/2048px-Typescript_logo_2020.svg.png" width="40PX" alt="Typescript">
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/512px-HTML5_logo_and_wordmark.svg.png" width="50PX" alt="HTML5">
-<img src="https://cdn.freebiesupply.com/logos/large/2x/css3-logo-png-transparent.png" width="50PX" alt="CSS3">
-</p>
+
+   [![My Skills](https://skillicons.dev/icons?i=angular,ts,html,css)](https://skillicons.dev)
 
 **For back-end repository click on <a href="https://github.com/jitesh8182/Udemy-clone_BE">Udemy-clone_BE</a>.**
